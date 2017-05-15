@@ -1,0 +1,118 @@
+@import "variable.less";
+@import "mixin.less";
+
+#button-bundle {
+    .middle-btn-layout(){
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+        font-size: .8rem;
+        //font-family: SimHei;
+    }
+}
+
+
+/*按钮样式*/
+.com-middle-btn-a {
+    #button-bundle > .middle-btn-layout();
+    width: 90%;
+    height: 2.2rem;
+    line-height: 2.2rem;
+    border: none;
+    border-radius: .2rem;
+    background-color: @button-default-color;
+    color: #fff;
+
+    &:active{
+        background-color: @button-default-active-color;
+    }
+    &:disabled{
+        background-color: @button-disabled-color;
+    }
+}
+
+
+.com-middle-btn-b{
+    #button-bundle > .middle-btn-layout();
+    width: 100%;
+    height: 42px;
+    line-height: 42px;
+    background-color: #fff;
+    color: #f14f33;
+    .bottom-border();
+    .top-border();
+
+    &:active {
+        background-color: @button-active-color-a;
+    }
+    &:disabled{
+        color: @button-disabled-color;
+    }
+}
+
+
+
+.com-middle-btn-c{
+    #button-bundle > .middle-btn-layout();
+    width: 90%;
+    height:2rem;
+    line-height: 2rem;
+    background-color: transparent;
+    color: @button-default-color;
+    border: 1px solid @button-default-color;
+    border-radius: .2rem;
+
+
+    &:active {
+        color: @button-default-active-color;
+        border: 1px solid @button-default-active-color;
+    }
+    &:disabled {
+        color: @button-disabled-color;
+        border: 1px solid @button-disabled-color;
+    }
+}
+
+
+.com-small-btn-a {
+    height: 22px;
+    width: 13%;
+    line-height: 20px;
+    font-size: 0.7rem;
+    color: #fff;
+    background-color: @button-default-color;
+    border: 1px solid #fff;
+    border-radius: 5px;
+
+    &:active{
+        background-color: @button-default-active-color;
+    }
+    &:disabled{
+        background-color: @button-disabled-color;
+    }
+
+}
+
+
+.com-middle-btn-d {
+    display: block;
+    text-decoration: none;
+    border: none;
+    outline: none;
+
+    width: 90.625%; // 580/640
+    height: 2.2rem;
+    font-size: 0.75rem;
+    line-height: 2.933333333333333;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: .2rem;
+    color: #fff;
+    background: #4591ff;
+    &:active,&.active {
+        background: #1b74c8;
+    }
+    &.disabled, &:disabled, &.ah {
+        background: #d6d6d6;
+    }
+}

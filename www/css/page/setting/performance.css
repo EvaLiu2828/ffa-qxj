@@ -1,0 +1,122 @@
+/*绩效查询*/
+
+/*隐藏div*/
+.perform>div{
+    display: none;
+}
+.performDisplayBlock{
+    display: block !important;
+}
+
+/*没有权限*/
+.no-perform{
+    font-size: 0.7rem;
+    text-align: center;
+    position:absolute;
+    top:50%;
+    margin-top:-3.825rem;
+}
+.no-perform img{
+    width: 100px;
+}
+.no-perform-detail{
+    display: inline-block;
+    line-height: 1rem;
+    padding: 0 64px;
+}
+
+/*可以查询*/
+.perform-top {
+    padding-top: 40px;
+    background: #fff;
+}
+
+.perform-top > div {
+    display: inline-block;
+}
+
+/*总金额*/
+.perform-top .info {
+    padding: 0 20px;
+    width: 100%;
+    font-size: 0.6rem;
+    text-align: center;
+    line-height: 0.7rem;
+    margin-bottom: 20px;
+}
+.perform-title{
+    display: inline-block;
+    height: 0.7rem;
+    line-height: 0.7rem;
+}
+
+.question{
+     display: inline-block;
+     padding: 0 4px;
+     height: 0.7rem;
+     line-height: 0.7rem;
+ }
+.question img{
+    width: 0.7rem;
+    vertical-align: text-bottom;
+}
+.perform-pay {
+    display: block;
+    padding-top: 20px;
+    margin-bottom: 20px;
+    color: #018def;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+}
+.perform-pay.negative{
+    color: #ff5c3c;
+}
+.perform-info{
+    display: block;
+    margin: 20px 0;
+    line-height: 0.9rem;
+    color:#a5a5a5;
+}
+
+.perform-list-nav {
+    margin-top: 10px;
+    font-family: Arial,'Microsoft YaHei',SimHei,sans-serif;
+    font-size: 0.7rem ;
+}
+/*.perform-list-nav li {*/
+    /*height: 38px;*/
+    /*line-height: 38px;*/
+/*}*/
+.perform-list-nav li:active {
+    background-color: #fff;
+}
+.perform-list-nav li .block-right {
+    height: 44px;
+    line-height: 44px;
+    font-size: 0.75rem;
+    color: #018def;
+}
+.perform-list-nav li .negative{
+    color: #ff5c3c;
+}
+.bottom-text{
+    font-size: 0.5rem;
+    color:#a5a5a5;
+    width: 80%;
+    text-align: center;
+    position:fixed;
+    bottom:12px;
+    left: 10%;
+}
+/*绩效说明*/
+.perform-instructions{
+    padding: 1.45rem 0.625rem;
+}
+.perform-instructions p{
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+}
+
+
+
+

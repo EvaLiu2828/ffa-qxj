@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>指尖金融家-指尖币</title>
+
+    <script src="../../js/common/FFA.js"></script>
+    <script src="../../js/common/initRootFontSize.js"></script>
+    <script src="../../js/external/modernizr-min.js"></script>
+    <link rel="stylesheet" href="../../css/base/base.css" />
+    <link rel="stylesheet" href="../../css/component/component.css" />
+    <link rel="stylesheet" href="../../css/page/setting/coin.css" />
+</head>
+<body>
+<div>
+    <header class="header">
+        <span class="header-btn header-left-btn icon-left-arrow js-back"></span>
+        <span class="header-title js-header-title">指尖币</span>
+        <span class="header-btn header-right-btn js-header-right-btn icon-coin"></span>
+    </header>
+    <div class="content js-content">
+        <div class="coin">
+            <!--指尖币start-->
+            <div class="js-coin-info coin-info coinDisplayBlock">
+                <div id="coinInfoContainer">
+                </div>
+                <script type="text/template" id="coinInfoContent">
+                    <div class="coin-top bottom-border">
+                        <div class="info">
+                            <span class="coin-title">当前指尖币
+                                <span class="question"><img src="../../images/question3.png"></span>
+                            </span>
+                            <p class="coin-sum"><%= coinInfoData.integralCount %></p>
+                        </div>
+                    </div>
+                    <ul class="com-list-a daily-tasks js-daily-tasks">
+                        <% var list1 = coinInfoData.activeIntegral;
+                        for(var i=0; i < list1.length; i++){%>
+                        <li class="top-border task-item" data-mark="<%= list1[i].completeness %>">
+                            <div class="left-text">
+                                <p class="item-name"><%= list1[i].name %></p>
+                                <p class="item-info"><%= list1[i].integralRule %></p>
+                            </div>
+                            <div class="right-num block-right"><%= list1[i].result %></div>
+                            <div class="right-text block-right">
+                                <div class="coin-stamp">已完成</div>
+                            </div>
+                        </li>
+                        <%}%>
+                    </ul>
+                    <% var list2 = coinInfoData.achieveIntegral;
+                    if((list2 != null) && (list2.length != 0)){%>
+                    <ul class="com-list-a customer-tasks js-customer-tasks">
+                        <% for(var i=0; i < list2.length; i++){
+                            var n = list2[i].result;
+                            var num = "";
+                            if((n != null) && (n >= 1)){
+                                num = "完成×"+n;
+                            }
+                            %>
+                        <li class="top-border task-item">
+                            <div class="left-text">
+                                <p class="item-name"><%= list2[i].name %></p>
+                                <p class="item-info"><%= list2[i].integralRule %></p>
+                            </div>
+                            <div class="right-text block-right">
+                                <div class="coin-stamp1">
+                                    <span class="stamp-text"><%= num %></span>
+                                </div>
+                            </div>
+                        </li>
+                        <%}%>
+                    </ul>
+                    <%}%>
+                </script>
+            </div>
+            <!--指尖币end-->
+
+            <!--指尖币交易明细start-->
+            <div class="js-coin-detail coin-detail">
+                <div class="com-tab-btn-group-c">
+                    <a class="com-tab-btn js-tab-btn">收入记录</a>
+                    <a class="com-tab-btn js-tab-btn"><span>消费记录</span></a>
+                </div>
+                <div id="swipe-container" class='swipe'>
+                    <div class='swipe-wrap'>
+                        <div class="swipe-innerBox" style="width: 100%;">
+                            <!--收入记录-->
+                            <div class="coinIncome">
+                                <ul id="coinIncomeContainer" class="com-list-a">
+                                </ul>
+                                <script type="text/template" id="coinIncomeContent">
+                                    <% for(var i=0; i < coinIncomeData.length; i++){
+                                        var num = "";
+                                        var n = coinIncomeData[i].integral;
+                                        if( n != null){
+                                            num = "+ "+n
+                                        }
+                                    %>
+                                    <li class="item">
+                                        <div class="left-text">
+                                            <p class="item-name"><%= coinIncomeData[i].way %></p>
+                                            <p class="item-info">
+                                                <span><%= coinIncomeData[i].dateTime %></span>
+                                            </p>
+                                        </div>
+                                        <div class="right-text block-right"><%= num %></div>
+                                    </li>
+                                    <%}%>
+                                </script>
+                            </div>
+                        </div>
+                        <div class="swipe-innerBox" style="width: 100%;">
+                            <!--消费记录-->
+                            <div class="coinConsume">
+                                <ul id="coinConsumeContainer" class="com-list-a">
+                                </ul>
+                                <script type="text/template" id="coinConsumeContent">
+                                    <%for(var i=0; i < coinConsumeData.length; i++){
+                                    var num = "";
+                                    var n = coinConsumeData[i].integral;
+                                    if( n != null){
+                                    num = "- "+n
+                                    }
+                                    %>
+                                    <li class="item">
+                                        <div class="left-text">
+                                            <p class="item-name"><%= coinConsumeData[i].way %></p>
+                                            <p class="item-info">
+                                                <span><%= coinConsumeData[i].dateTime %></span>
+                                            </p>
+                                        </div>
+                                        <div class="right-text block-right"><%= num %></div>
+                                    </li>
+                                    <%}%>
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--指尖币交易明细end-->
+
+            <!--指尖币说明start-->
+            <div class="js-coin-instruction coin-instruction">
+                <ul>
+                    <li>
+                        <span>一、什么是指尖币？</span>
+                        <ul>
+                            <li>指尖币是为了全新上线的抢商机功能而特别定制的回馈平台。所有用户均可使用，通过登录、展业、跟进客户等活跃表现都能够获得指尖币，用于历史查询、抢购商机等功能使用消耗，还可在活动中兑换奖品。</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span>二、如何获得指尖币</span>
+                        <ul>
+                            <li>1、每日首次登录指尖将获得2指尖币</li>
+                            <li>2、转发一篇微营销展业模板或者名片将获得2指尖币，每天最多奖励5次</li>
+                            <li>3、客户自获取后三天内每天第一次拨打电话/发送短信/添加有效跟进记录可获得2指尖币，每天最多奖励5次 </li>
+                            <li>4、用户首次开通抢商机权限将自动增加1000指尖币 </li>
+                            <li>5、开通抢商机权限后，每位客户进件将获得100指尖币，每日无上限</li>
+                            <li>6、开通抢商机权限后，每位客户放款将获得500指尖币，每日无上限</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span>三、补充说明</span>
+                        <ul>
+                            <li>提交建议并被采纳将额外获得数量不等的指尖币，亲爱的小伙伴们快把你们的金点子抛给我们吧~同理，若涉嫌违规等操作也将扣除数量不等的指尖币，大家要时刻谨记哟！ </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!--指尖币说明end-->
+        </div>
+    </div>
+</div>
+
+<script src="../../js/external/zepto.min.js"></script>
+<script src="../../js/external/underscore-min.js"></script>
+<script src="../../js/core/detect.js"></script>
+<script src="../../js/common/strings.js"></script>
+<script src="../../js/common/local_storage_utils.js"></script>
+<script src="../../js/common/hashmap.js"></script>
+<script src="../../js/common/constant.js"></script>
+<script src="../../js/common/config.js"></script>
+<script src="../../js/external/fastclick.js"></script>
+<script src="../../js/external/swipe.js"></script>
+<script src="../../js/common/http_response.js"></script>
+<script src="../../js/common/ajax_common.js"></script>
+<script src="../../js/common/utils.js"></script>
+<script src="../../cordova.js"></script>
+<script src="../../js/common/main.js"></script>
+<script src="../../js/common/json_conversion.js"></script>
+<script src="../../js/common/exit_system.js"></script>
+<script type="text/javascript" src="../../js/callback/http/check_version_callback.js"></script>
+<script type="text/javascript" src="../../js/common/offline.js"></script>
+<script type="text/javascript" src="../../js/common/pause.js"></script>
+<script type="text/javascript" src="../../js/common/resume.js"></script>
+<!--2015-7-7 wangjunbao-->
+<script src="../../js/external/indexeddbshim.min.js" ></script>
+<script src="../../js/callback/http/exit_callback.js"></script>
+
+<!--弹窗类-->
+<script src="../../js/common/component/popup.js"></script>
+<script src="../../js/common/coin_info_dao.js"></script>
+<script src="../../js/page/setting/set_coin.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "result": "OK",
+  "codeInfo": 0,
+  "msgInfo":"",
+  "data":
+  {
+    "action":0,
+    "message":"抱歉，商机被人抢走了。",
+    "nicheId":"SJ0001"
+  }
+}

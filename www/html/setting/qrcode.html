@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>微信二维码</title>
+
+    <script src="../../js/common/FFA.js"></script>
+    <script src="../../js/common/initRootFontSize.js"></script>
+    <script src="../../js/external/modernizr-min.js"></script>
+
+    <link rel="stylesheet" href="../../css/base/base.css"/>
+    <link rel="stylesheet" href="../../css/component/component.css"/>
+    <link rel="stylesheet" href="../../css/page/setting/qrcode.css"/>
+</head>
+<body>
+<div class="qr-con">
+    <header class="header">
+        <span class="header-btn header-left-btn icon-left-arrow" onclick="history.back();"></span>
+        <span class="header-title">微信二维码</span>
+    </header>
+
+
+    <div class="qrcode-container content">
+        <div id="qrcodeCanvas" style="margin:0 auto; text-align:center; padding: 38px; background-color: #ababab;">
+        </div>
+        <div class="info">
+            <div class="contacter">
+                <span class="avatar-container avatar-img sale_header" id="js-header-photo">
+                    <!--<img class="avatar-img sale_header" id="js-header-photo" src="../../images/nogender.png">-->
+                </span>
+                <span class="name-container"><span class="name sale_name"></span><br>
+                <!--<span class="remarks sale_position"></span>-->
+                <span class="remarks">快来打印我到线下展业吧！</span>
+                </span>
+            </div>
+        </div>
+
+    </div>
+
+    <button class="com-middle-btn-a" onclick="saveImage()">保存到相册</button>
+</div>
+
+<script src="../../cordova.js"></script>
+<script src="../../js/external/jquery-1.7.2.min.js"></script>
+<script src="../../js/common/FFA.js"></script>
+<script src="../../js/external/zepto.min.js"></script>
+<script src="../../js/core/detect.js"></script>
+<script src="../../js/common/strings.js"></script>
+<script src="../../js/common/local_storage_utils.js"></script>
+<script src="../../js/callback/http/change_pwd_callback.js"></script>
+<script src="../../js/common/hashmap.js"></script>
+<script src="../../js/common/constant.js"></script>
+<script src="../../js/external/fastclick.js"></script>
+<script src="../../js/common/http_response.js"></script>
+<script src="../../js/common/ajax_common.js"></script>
+<script src="../../js/common/utils.js"></script>
+<script src="../../js/common/constant.js"></script>
+
+<script src="../../js/common/main.js"></script>
+<script src="../../js/common/json_conversion.js"></script>
+<script src="../../js/common/exit_system.js"></script>
+<script src="../../js/common/component/popup.js"></script>
+<script src="../../js/callback/http/check_version_callback.js"></script>
+<script src="../../js/common/offline.js"></script>
+<script src="../../js/common/pause.js"></script>
+<script src="../../js/common/resume.js"></script>
+<script src="../../js/external/jquery.qrcode.js"></script>
+<script src="../../js/external/qrcode.js"></script>
+<script src="../../js/page/frame/frame_hot_spot_query.js"></script>
+<script src="../../js/common/utils.js"></script>
+<script src="../../js/common/download_pic.js"></script>
+<script src="../../js/common/header_download.js"></script>
+<script src="../../js/common/cell_info_dao.js"></script>
+<script src="../../js/common/config.js"></script>
+<script src="../../js/external/indexeddbshim.min.js"></script>
+<script src="../../js/callback/http/qcode_cell_info_callback.js"></script>
+<script src="../../js/common/date_utils.js"></script>
+<script src="../../js/common/statistics_utils.js"></script>
+<script src="../../js/common/parse_url.js"></script>
+
+<script>
+    //TODO 改为局部变量
+    var qrcode_loading;
+    $(function () {
+
+        var bind_name = 'input';
+        if (navigator.userAgent.indexOf("MSIE") != -1) {
+            bind_name = 'propertychange';
+        }
+        $('.qr-con').css('min-height', $(window).height());
+        qrcode_loading = FFA.Components.Popup.Loading('A', {
+            //withMask: 'A'   //蒙层类型
+        });
+    });
+
+    var micro_shop_url = get(me_micro_shop);//获取微店二维码
+    var deleteTitleAndImageUrl="";
+    var parseUrl = new ParseUrl();
+    var map = parseUrl.spliteURL(micro_shop_url);
+    deleteTitleAndImageUrl=parseUrl.spliteUrlLink(micro_shop_url)+"?userUUID="+ map.get('userUUID')+"&productID="+map.get('productID');
+    jQuery('#qrcodeCanvas').qrcode({
+        text: deleteTitleAndImageUrl
+    });
+
+    jQuery("canvas").css("width","100%");
+
+    function saveImage() {
+        var statistics = new Statistics();
+        var dateUtils = new DateUtils();
+        var data = {
+            id: dateUtils.getTime(),
+            time: dateUtils.getYMD(),
+            user_id: get(user_uuid)
+        };
+        statistics.microShopQcodeDownloadStatistics(data);
+        window.canvas2ImagePlugin.saveImageDataToLibrary(
+                function (msg) {
+                    console.log(msg);
+                    showToast("已保存到手机相册", 1500);
+                },
+                function (err) {
+                    console.log(err);
+                    showToast("保存失败", 1500);
+                },
+                jQuery('#qrcodeCanvas').qrgetcanvas());
+    }
+    var showCellInfo = function (data) {
+        showInfo(data);
+    };
+    setTimeout("mine(getMineSuccess,getMineFail,true,showCellInfo)", 500);//mine(getMineSuccess,getMineFail)
+    var getMineSuccess = function (data) {
+        if (data.codeInfo == '0') {
+            var cellInfo = new CellInfoDao();
+            cellInfo.init(function () {
+                cellInfo.insertData(data, function () {
+                });
+            });
+            showInfo(data);
+        }
+    };
+    var getMineFail = function () {
+        qrcode_loading.remove();
+    };
+    function showInfo(data) {
+        var qCode = new QCodeCellInfo();
+        qCode.showCellInfo(data);
+        qrcode_loading.remove();
+    }
+    //自定义弹框
+    function showToast(msg, duration) {
+        duration = isNaN(duration) ? 3000 : duration;
+        var m = document.createElement('div');
+        m.innerHTML = msg;
+        m.style.cssText = "width:60%; min-width:50px; background:#000; opacity:0.5; height:40px; color:#fff; line-height:40px; text-align:center; border-radius:5px; position:fixed; top:400px; left:20%; z-index:999999; font-weight:bold;";
+        document.body.appendChild(m);
+        setTimeout(function () {
+            var d = 0.5;
+            m.style.webkitTransition = '-webkit-transform ' + d + 's ease-in, opacity ' + d + 's ease-in';
+            m.style.opacity = '0';
+            setTimeout(function () {
+                document.body.removeChild(m)
+            }, d * 1000);
+        }, duration);
+    }
+
+</script>
+</body>
+</html>

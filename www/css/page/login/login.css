@@ -1,0 +1,309 @@
+body {
+    background-color: #fff;
+}
+.marAuto {
+    margin: 0 auto;
+}
+.main {
+    width: 100%;
+    height: 100%;
+}
+.login-top {
+    background: url(../../../images/in-bg.png) top center no-repeat;
+    background-size: 100%;
+    height: 234px;
+    min-width: 320px;
+    max-width: 640px;
+    position: relative;
+}
+.login-top .img {
+    height: 200px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.login-top .img span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+.login-top img {
+    position: relative;
+    left: -50%;
+    top: -50%;
+    width: 67%;
+    margin: 0 auto;
+    display: block;
+}
+.login-top .wod {
+    width: 100%;
+    font-size: .75rem;
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    z-index: 99;
+}
+.login-top .wod a {
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    float: left;
+    height: 40px;
+    line-height: 40px;
+}
+.login-top .wod span.wodL {
+
+}
+.login-top .tgl {
+    width: 100%;
+    float: left;
+    position: absolute;
+    bottom: 0;
+}
+.login-top .tgl p {
+    width: 50%;
+    float: left;
+}
+.login-top .tgl p span {
+    display: block;
+    margin: 0 auto;
+}
+.login-top .tgl p span.in-sp1 {
+    visibility: hidden;
+}
+.login-top .tgl p span.re-sp2 {
+    visibility: hidden;
+}
+.triangle-down {
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 9px solid #fff;
+}
+.content-down {
+    width: 100%;
+    height: 55.3%;
+    background: #fff;
+}
+.content-down .spn {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    top: 12px;
+    right: 12%;
+    background: transparent;
+}
+.content-down .login_delete {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    top: 12px;
+    right: 12%;
+    background: transparent;
+}
+.content-down .inpt2 {
+    position: absolute;
+    width: 73%;
+    float: left;
+    top: 0;
+}
+.content-down .fgt2 {
+    float: right;
+    color: #408ddb;
+}
+.content-down p.getYzm {
+    display: none;
+}
+.content-down .bod {
+    width: 90.5%;
+    height: 47px;
+    font-size: .65rem;
+    font-family: SimHei;
+    color: #353535;
+    /*padding: 16px 0 16px 0;*/
+    display: block;
+    margin: 0 auto;
+    border-bottom: 1px solid #d8d8d9;
+    position: relative;
+}
+.content-down .bod .spn2 {
+    position: absolute;
+    width: 25%;
+    height: 26px;
+    border-radius: 5px;
+    right: 0;
+    background: #73adf2;
+    text-align: center;
+    line-height: 26px;
+    color: #fff;
+    font-size: 0.65rem;
+    font-family: SimHei;
+    top: 21%;
+}
+.content-down .bod .spn2_hui {
+    background: #eee;
+    color: #666;
+}
+.content-down .yzm {
+    width: 100%;
+    border-bottom: 1px solid #d8d8d9;
+}
+.content-down input {
+    display: block;
+    height: 100%;
+    /*line-height: 1;*/
+    vertical-align: middle;
+    padding: 17px 0 16px 0;
+}
+.fontF {
+    width: 85%;
+    font-size: 0.65rem;
+}
+.content-down .fgt {
+    float: right;
+    color: #408ddb;
+}
+.content-down .inpt {
+    width: 80%;
+}
+.content-down a.alogin {
+    display: block;
+    margin: 0 auto;
+    color: #3681da;
+    font-size: 0.75rem;
+    width: 76.56%;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #bcd5f3;
+    background: #fff;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 7px;
+    margin-top: 2%;
+    margin-bottom: 10px;
+}
+.content-down a.a2 {
+    color: #ababab;
+    border: 1px solid #9fa8b2;
+}
+.content-down a.aDown {
+    color: #3681da;
+    border: 1px solid #5192df;
+}
+.error {
+    color: #d84f35;
+    width: 90.5%;
+    height: 20px;
+    margin: 0 auto;
+    line-height: 20px;
+    visibility: hidden;
+    overflow: hidden;
+    font-size: .6rem;
+}
+.error span {
+    width: 100%;
+    display: none;
+}
+.register {
+    display: none;
+}
+.pas-spn3 {
+    position: absolute;
+    width: 31%;
+    height: 26px;
+    border-radius: 5px;
+    right: 0;
+    background: #eee;
+    text-align: center;
+    line-height: 26px;
+    color: #666;
+    font-size: 0.6rem;
+    display: none;
+    top:21%
+}
+.alt {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    background: #000;
+    opacity: 0.65;
+    display: none;
+}
+.alt div {
+    background: #000;
+    width: 100px;
+    height: 64px;
+    margin: 80% auto;
+    border-radius: 6px;
+}
+.altW {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: none;
+    z-index: 9999;
+}
+.altW img {
+    width: 69px;
+    height: 69px;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -34.5px;
+    margin-left: -34.5px;
+}
+.altW p.point {
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    font-size: .55rem;
+    margin-top: 5px;
+}
+.altInner {
+    width: 93.75%;
+    height: 31.38%;
+    background: #fff;
+    border-radius: 3px;
+    margin: 50% auto;
+    position: relative;
+    font-size: .8rem;
+    text-align: center;
+}
+.altInner div {
+    position: relative;
+    margin: 0 auto;
+    width: 90%;
+    height: 100%;
+
+}
+.altInner p.pl {
+    position: absolute;
+    top: 25%;
+    width: 100%;
+    line-height: 25px;
+    color: #000;
+}
+.altInner a {
+    position: absolute;
+    bottom: 10px;
+    display: block;
+    color: #fff;
+    width: 100%;
+    height: 39px;
+    line-height: 39px;
+    text-align: center;
+    background: #0071db;
+    text-decoration: none;
+    margin-top: 8%;
+    border-radius: 7px;
+}
+.inputB {
+    background: url(../../../images/delete.png) center right no-repeat;
+    background-size: 17px 17px;
+}

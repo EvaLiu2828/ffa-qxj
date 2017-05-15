@@ -1,0 +1,300 @@
+/*弹框css*/
+/*所有弹出窗口初始都是隐藏状态，显示时将其上的ndis类删掉，隐藏时添加ndis类*/
+@import "variable.less";
+@import "mixin.less";
+
+
+.com-popup-mask(@alpha) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(44,44,44,@alpha);
+}
+/*半透明遮罩层*/
+.com-popup-mask-a {
+    .com-popup-mask(.65)
+}
+/*透明遮罩层*/
+.com-popup-mask-b {
+    .com-popup-mask(0)
+}
+
+/*加载中*/
+.com-popup-loading(@imgUrl) {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 999;
+    width: 80px;
+    height: 70px;
+    margin-left: -40px;
+    margin-top: -35px;
+    line-height: 70px;
+    text-align: center;
+    border-radius: 5px;
+    opacity: 0.65;
+    background: url(@imgUrl) center no-repeat;
+    background-size: 65px 65px;
+}
+.com-popup-loading-a {
+    .com-popup-loading("../../images/load.gif");
+}
+
+/*带文字的加载中*/
+.com-popup-loading-c {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 999;
+    width: 160px;
+    height: 120px;
+    margin-left: -80px;
+    margin-top: -80px;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #e0e0e0;
+    div:first-child{
+      .com-popup-loading-box('../../images/load.gif');
+    }
+    div:last-child{
+        //display: table;
+        //position: fixed;
+        //width: 140px;
+        //height: 20px;
+        //margin-top: 85px;
+        //margin-left: 14px;
+        font-size: .8rem;
+        font-family: "SimHei";
+        //内容
+        & > p {
+            //display: table-cell;
+            //position: fixed;
+            color: #666;
+            text-align: center;
+            vertical-align: middle;
+        }
+    }
+}
+
+.com-popup-loading-box(@imgUrl) {
+    //position: fixed;
+    width: 80px;
+    height: 80px;
+    //margin-left: 40px;
+    overflow: hidden;
+    background:url(@imgUrl) center no-repeat;
+    background-size: 65px 65px;
+    border-radius: 8px;
+    z-index: 999;
+    margin: 0 auto;
+}
+
+
+
+//**************************************************************确认&错误弹出框**************************************
+//弹出框盒子
+.com-popup-box(@radius: 8px, @fontFamily: SimHei, @fontSize: .75rem) {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 999;
+    width: 280px;
+    height: 160px;
+    margin-left: -140px;
+    margin-top: -80px;
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: @radius;
+}
+
+.com-popup-content-wrapper (@height:120px, @fontFamily: SimHei, @fontSize: .75rem){
+
+    position: relative;
+    display: table;
+    left: 15px;
+    width: 250px;
+    height: @height;
+    font-size: @fontSize;
+    font-family: @fontFamily;
+    text-align: center;
+    //内容
+    &>p {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+
+}
+//**************************************************************alert**************************************
+
+//错误弹出框按钮样式
+.com-popup-alert-button(@btnHeight: 40px,@btnColor:#4591ff , @fontSize: .8rem, @fontColor: #fff){
+    position: absolute;
+    bottom: 10px;
+    left: 15px;
+    width: 250px;
+    height: @btnHeight;
+    font-size: @fontSize;
+    line-height: 40px;
+    text-align: center;
+    color: @fontColor;
+    background-color: @btnColor;
+    border-radius: 5px;
+}
+
+/*错误提示a*/
+.com-popup-alert-a {
+    .com-popup-box;
+
+    &>div{
+        .com-popup-content-wrapper(110px);
+    }
+
+    &>button {
+        .com-popup-alert-button();
+    }
+}
+
+
+/*错误提示b*/
+.com-popup-alert-b {
+    .com-popup-box;
+
+    &>div{
+        .com-popup-content-wrapper(110px);
+    }
+
+    &>button {
+        .com-popup-alert-button();
+    }
+}
+//**************************************************************confirm**************************************
+//确认弹出框按钮样式
+.com-popup-confirm-button(@btnHeight: 40px, @fontSize: .8rem, @fontColor: #4591ff) {
+    position: absolute;
+    bottom: 0;
+    width: 50%;
+    height: @btnHeight;
+    display: block;
+    font-size: @fontSize;
+    text-align: center;
+    line-height: @btnHeight;
+    color: @fontColor;
+    background-color: #fff;
+    border-top: 1px solid #E8E8E8;
+}
+
+.com-popup-confirm-button-left() {
+    left: 0;
+    border-bottom-left-radius: 5px;
+    border-right: 1px solid #E8E8E8;
+}
+.com-popup-confirm-button-right() {
+    border-bottom-right-radius: 5px;
+    right: 0;
+}
+
+
+
+/*确认弹出框a*/
+.com-popup-confirm-a {
+    .com-popup-box;
+
+    &>div{
+        .com-popup-content-wrapper(120px);
+    }
+
+    
+    &>button:nth-child(2) {
+        .com-popup-confirm-button(@btnHeight: 40px, @fontSize: .8rem, @fontColor: #4591ff);
+        .com-popup-confirm-button-left();
+    }
+
+    
+    &>button:nth-child(3) {
+        .com-popup-confirm-button(@btnHeight: 40px, @fontSize: .8rem, @fontColor: #4591ff);
+        .com-popup-confirm-button-right();
+    }
+}
+
+
+
+/*确认弹出框b*/
+.com-popup-confirm-b {
+    .com-popup-box(8px, SimHei, .7rem);
+
+    &>div{
+        .com-popup-content-wrapper(120px);
+    }
+
+    &>button:nth-child(2) {
+        .com-popup-confirm-button(@btnHeight: 40px, @fontSize: .8rem, @fontColor: #4591ff);
+        .com-popup-confirm-button-left();
+        &:disabled{
+            color: @disabledColor;
+        }
+    }
+
+    &>button:nth-child(3) {
+        .com-popup-confirm-button(@btnHeight: 40px, @fontSize: .8rem, @fontColor: #f14f33);
+        .com-popup-confirm-button-right();
+        &:disabled{
+            color: @disabledColor;
+        }
+    }
+}
+
+
+/*二维码*/
+.com-popup-qrcode {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -128px;
+    margin-left: -128px;
+    width: 256px;
+    height: 256px;
+    background: #fff;
+    z-index: 99;
+}
+
+/* 吐司 */
+.com-popup-toast-a {
+    font: 0.7rem  微软雅黑;
+    width: 60%;
+    min-width: 50px;
+    background: #000;
+    opacity: 0.5;
+    //height: 40px;
+    color: #fff;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 5px;
+    position: fixed;
+    bottom: 20px;
+    left: 20%;
+    z-index:999999;
+}
+
+.com-popup-toast-b {
+    font: 0.7rem  微软雅黑;
+    width: 160px;
+    min-width: 50px;
+    background: #000;
+    opacity: 0.5;
+    //height: 40px;
+    color: #fff;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 5px;
+    position: fixed;
+
+    top: 40%;
+    left: 50%;
+    margin-left: -80px;
+    z-index: 999;
+}
+

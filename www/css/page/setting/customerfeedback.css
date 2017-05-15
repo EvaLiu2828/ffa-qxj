@@ -1,0 +1,128 @@
+/*customerfeedback.html*/
+
+.com-small-btn-a {
+    position: absolute;
+    right: 10px;
+    bottom: 12px;
+}
+.marAuto{
+    margin: 0 auto;
+}
+.ndis{
+    display: none;
+}
+.pos-abs {
+    position: absolute;
+}
+.sz-con {
+    width: 100%;
+    height: 100%;
+    background-color: #f8f8f8;
+}
+.com-small-btn-a{
+    position: absolute;
+    right: 10px;
+    bottom: 12px;
+}
+.cfb-write {
+    width: 100%;
+}
+
+.cfb-writeIn {
+    width: 95%;
+    margin-top: 5%;
+}
+
+.cfb-input1 {
+    padding: 2%;
+    width: 100%;
+    height: 110px;
+    border: 1px solid #d5d5d5;
+    /*border-radius: 5px;*/
+    -webkit-appearance: none;
+    font-size: 15px;
+    resize: none;
+    background: #fff;
+    border-radius: 0;
+}
+
+.cfb-conInner-sp1 {
+    display: block;
+    width: 38px;
+    height: 38px;
+    border-radius: 31px;
+    border: 2px solid #1a98f0;
+    background-size: 100% 100%;
+    background-position: 2px;
+    float: left;
+}
+
+.cfb-alert {
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #444;
+    opacity: 0.65;
+}
+
+.cfb-alert2 {
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+}
+
+.cfb-alert3 {
+    width: 84%;
+    height: 182px;
+    background: #fff;
+    border-radius: 8px;
+    margin-top: 46%;
+    font: .93rem "StHeitiSC Light", "微软雅黑";
+    position: relative;
+}
+
+.cfb-alert3 p {
+    position: absolute;
+    bottom: 0;
+    height: 52px;
+    text-align: center;
+    width: 100%;
+}
+
+.cfb-alert3 p span {
+    display: block;
+    margin: 0 auto;
+    width: 95%;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #bcd5f3;
+    color: #fff;
+    border-radius: 5px;
+    background: #4070d7;
+}
+
+.cfb-alert3 h2 {
+    /*height: 129px;*/
+    font-size: 16px;
+    font-weight: normal;
+    text-align: center;
+    padding: 46px;
+}
+.chg-alt4 {
+    position: absolute;
+    top: 35%;
+    left: 40%;
+    z-index: 10;
+}
+.cfb-info p{
+    position: relative;
+    height: 52px;
+    text-align: left;
+    width: 100%;
+    color: #989898;
+    margin-top: 2%;
+    padding-left: 2.5%;
+    font: 0.7rem "StHeitiSC Light", "微软雅黑";
+    line-height: 1.5;
+}

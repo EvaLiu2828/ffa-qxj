@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="../css/base/reset.css">
+    <link rel="stylesheet" href="../css/startpage.css">
+    <script src='../js/page/startpage/fanvas3-min.js'></script>
+    <script src='../js/page/startpage/swfData.js'></script>
+    <script src="../cordova.js"></script>
+    <script src="../js/common/FFA.js"></script>
+    <script src="../js/external/zepto.min.js"></script>
+    <script src="../js/common/config.js"></script>
+    <script src="../js/external/indexeddbshim.min.js"></script>
+    <script src="../js/common/iniDB.js"></script>
+    <script src="../js/common/init_keep_data_db.js"></script>
+    <script src="../js/common/constant.js"></script>
+    <script src="../js/common/strings.js"></script>
+    <script src="../js/common/local_storage_utils.js"></script>
+    <script src="../js/common/utils.js"></script>
+    <script src='../js/page/startpage/startpage.js'></script>
+
+</head>
+<body onload="init();">
+<div class="container">
+    <canvas id="startCanvas"></canvas>
+    <!-- 客户人数 -->
+    <div class="custom-num">
+        <div class="text fadeInUp animated">来自指尖客户人数</div>
+        <div class="js-count count"></div>
+    </div>
+</div>
+
+</body>
+</html>

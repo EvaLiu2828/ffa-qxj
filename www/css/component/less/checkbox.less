@@ -1,0 +1,53 @@
+@import "variable.less";
+@import "mixin.less";
+
+
+//.checkedCon(@fs: 15px) {
+//&:before {
+//  display: inline-block;
+//  margin-top: 1px;
+//  margin-left: 2px;
+//  color: #FFFFFF;
+//  font-size: @fs;
+//}
+//}
+
+.com-checkbox-con{
+  font-size: @checkbox-fontSize;
+  height: @checkbox-fontSize + 0.2rem;
+  text-align: left;
+
+  .com-checkbox {
+    -webkit-appearance: none;
+    position: relative;
+    width: .8rem;
+    height: .8rem;
+    background-color: #fff;
+    border: solid 1px @base-color;
+    border-radius: 50%;
+    display: inline-block;
+    &:focus {
+      outline: 0 none;
+      outline-offset: -2px
+    }
+    &:checked {
+      background-color: @base-color;
+    }
+    &:disabled {
+      background-color: #d9d9d9;
+      border: solid 1px #d9d9d9;
+    }
+  }
+
+  label{
+    vertical-align: text-top;
+  }
+}
+
+
+
+.com-checkbox-anim {
+  //border等其他元素不做过渡效果，增加视觉差，更有动画效果
+  transition: background-color ease @checkbox-duration/2;
+
+}

@@ -1,0 +1,297 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>指尖金融家-宜人贷</title>
+
+    <script src="../../js/common/FFA.js"></script>
+    <script src="../../js/common/initRootFontSize.js"></script>
+    <script src="../../js/external/modernizr-min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../../css/base/base.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/component/component.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/page/exhibit/templatelist.css"/>
+
+
+    <script type="text/javascript" src="../../cordova.js"></script>
+
+    <script type="text/javascript" src="../../js/common/json_conversion.js"></script>
+    <script src="../../js/external/fastclick.js"></script>
+    <script src="../../js/external/zepto.min.js"></script>
+    <script src="../../js/core/detect.js"></script>
+
+    <script src="../../js/common/hashmap.js"></script>
+    <script src="../../js/common/main.js"></script>
+    <script src="../../js/common/config.js"></script>
+    <script src="../../js/common/constant.js"></script>
+    <script src="../../js/common/utils.js"></script>
+    <script src="../../js/external/indexeddbshim.min.js"></script>
+    <script src="../../js/common/local_storage_utils.js"></script>
+    <script src="../../js/page/exhibit/exh_templatelist.js"></script>
+    <script src="../../js/common/exit_system.js"></script>
+    <script src="../../js/callback/http/check_version_callback.js"></script>
+    <script src="../../js/external/iscroll.js"></script>
+    <script src="../../js/common/pull2refresh.js"></script>
+    <script src="../../js/common/download_pic.js"></script>
+    <script src="../../js/common/ajax_common.js"></script>
+    <script src="../../js/callback/http/templatelist_callback.js"></script>
+    <script src="../../js/common/http_response.js"></script>
+    <script src="../../js/common/strings.js"></script>
+    <script src="../../js/common/offline.js"></script>
+    <script src="../../js/common/pause.js"></script>
+    <script src="../../js/common/resume.js"></script>
+    <!--2015-7-7 wangjunbao-->
+    <script src="../../js/callback/http/exit_callback.js"></script>
+    <!--2015-7-7 wangjunbao-->
+    <script src="../../js/page/frame/frame_no_read_tpl_dao.js"></script>
+
+    <script>
+        $(function () {
+
+           // $("#js-menu-tab-ul > li").each(function(i){
+                $("#js-menu-tab-ul > li").live("tap",function() {
+                    $("#js-menu-tab-ul > li").removeClass("current");
+                    $(this).addClass("current");
+                    // 请求数据
+                    var categoryId = $(this).attr("data-menu-category");
+                    console.log("categoryId="+categoryId);
+                    put("zhanye-number", categoryId);
+                    if (categoryId == get("zhanye-number-pid"))
+                        put("zhanye-number-full", 'true'); // 表示全部
+                    else
+                        put("zhanye-number-full", 'false');
+
+                    tp.init(true);
+
+                });
+
+
+         //  }).bind(Zepto);
+
+
+
+
+
+            $(".test_share_value").live("tap", function (e) {
+                e.preventDefault();
+
+                console.log("zhanye-number" + get("zhanye-number"));
+                var n = $(this).attr("id");
+                var zy_length = zy_array.length;
+                for (var i in zy_array) {
+                    var zyObj = zy_array[i];
+                    if (n == zyObj.templateId) {
+                        put("webpageUrl", zyObj.url);
+                        put("title", zyObj.title);
+                        put("thumb", zyObj.thumbnailUlr);
+                        put("templateId", zyObj.templateId);
+                        put("forwardFlag", zyObj.forwardFlag);
+                        put("categoryNameId", get("zhanye-number"));
+                        break;
+                    }
+                }
+                put("tempListId", n);
+
+                // 渲染页面
+                $("#id-share-page").load("share.html");
+                $("#id-share-page").css({
+                    width: '100%'
+                });
+
+
+            });
+            $(".js-is-show").bind("click",function(){
+                window.location='newIdea.html';
+            });
+            $(".js-gold-idea").bind("click",function(){
+                $(".js-gold-idea").addClass('ndis');
+                localStorage.setItem(template_list_gold_idea_flag,'1');
+            });
+            var n = get("zhanye-number");
+            put("zy_tgroup_local", n);
+            if (n == 001) {
+                $(".templatelisname").text("特别企划");
+            }
+            if (n == 002) {
+                $(".templatelisname").text("信贷与综合");
+            }
+            if (n == 003) {
+                $(".templatelisname").text("宜人贷");
+            }
+            if (n == 004) {
+                $(".templatelisname").text("宜车贷");
+            }
+            if (n == 005) {
+                $(".templatelisname").text("宜房贷");
+            }
+            if (n == 006) {
+                $(".templatelisname").text("客户故事");
+
+            }
+            if (n == 007) {
+                $(".templatelisname").text("宜信品牌");
+                //$("#wrapper").addClass("ndis").next().removeClass("ndis");
+            }
+            if (n == 008) {
+                $(".templatelisname").text("媒体报道");
+                //$("#wrapper").addClass("ndis").next().removeClass("ndis");
+            }
+            if (n == 009) {
+                $(".templatelisname").text("客户指导");
+                //$("#wrapper").addClass("ndis").next().removeClass("ndis");
+            }
+            console.log("n" + n);
+            if (n == "010") {
+                $(".templatelisname").text("展业秘籍");
+            }
+            if (n == "011") {
+                $(".templatelisname").text("宜信之声");
+            }
+            if (n == "033") {
+                $(".templatelisname").text("营销物料");
+            }
+            if (n == "034") {
+                $(".templatelisname").text("宜信产品");
+            }
+            //显示秀出金点子
+            if(n=='012'){
+                $(".js-is-show").removeClass('ndis');
+                var gold_idea_flag = localStorage.getItem(template_list_gold_idea_flag);
+                if(!gold_idea_flag){
+                    $(".js-gold-idea").removeClass('ndis');
+                    localStorage.setItem(template_list_gold_idea_flag,'1');
+                }
+                $(".templatelisname").text("市场活动");
+            }
+            document.addEventListener("deviceready", function () {
+                var frameNoReadTempleteDao = FFA.namespace('frame_no_read_templete_dao');
+                frameNoReadTempleteDao.init(function () {
+                    frameNoReadTempleteDao.update(n);
+                })
+            });
+
+
+//            templateid
+            $("#yrd-content").css('min-height', $(window).height() - 75 + "px");
+            //document.addEventListener("deviceready", function(e){
+            //setTimeout(tp.init, 500);
+            //}, false);
+            setTimeout(tp.init, 500);
+
+
+        });
+
+        /**
+         * 引入iscroll.js　&　pull2refresh.js
+         * 下拉刷新 （自定义实现此方法）
+         * myScroll.refresh();        // 数据加载完成后，调用界面更新方法
+         */
+        function pullDownAction() {
+            //此处请自定义页面刷新方法…
+            put('pullRefreshStartTime', (new Date()).getTime());
+            tp.refresh();
+        }
+
+
+        /**
+         * 滚动翻页 （自定义实现此方法）
+         * myScroll.refresh();        // 数据加载完成后，调用界面更新方法
+         */
+        function pullUpAction() {
+            //此处请自定义翻页方法…
+        //    put('pullRefreshStartTime', (new Date()).getTime());
+            tp.zy_nextPage();
+        }
+
+        function menuClick(index, categoryId) {
+          //  $("#js-menu-tab-ul > li").live("tap",function() {
+                $("#js-menu-tab-ul > li").removeClass("current").eq(index).addClass("current");
+                $("#yrd-content").html('');
+
+                // 请求数据
+            //    var categoryId = this.data("menu-category");
+                put("zhanye-number", categoryId);
+                tp.init(true);
+
+         //   });
+        }
+
+
+    </script>
+</head>
+<body>
+<div>
+
+    <header class="js-header header">
+        <span class="header-btn header-left-btn icon-left-arrow" onclick="history.back()"></span>
+        <span class="header-title templatelisname">宜人贷</span>
+        <button class="header-btn header-right-btn share ndis icon-Duib js-is-show"></button>
+    </header>
+    <!--秀出金点子 ui-->
+    <div class="template-gold-idea ndis js-gold-idea">
+        <img src="../../images/mask-style.png" class="template-gold-mask"/>
+    </div>
+
+    <!-- 菜单 -->
+    <div class="template-menu-tab-outer">
+        <div class="template-menu-tab js-menu-tab" id="js-menu-tab-wrap">
+            <ul id="js-menu-tab-ul">
+            </ul>
+        </div>
+        <div class="menu-tab-diver-line"></div>
+    </div>
+
+    <!-- 列表页 -->
+    <div id="wrapper">
+        <div id="scroller">
+
+
+            <div id="yrd-content" class="yrd-content marAuto"></div>
+
+            <!-- 上拉/下拉效果 -->
+            <div id="pullDown" class="loading">
+                <br/>
+                <span class="pullDownIcon  small-person-icon-gif"></span>
+                <!--<span class="pullDownLabel">努力加载中...</span>-->
+            </div>
+            <div id="pullUp" style="display: none;">
+                <br/>
+                <span class="pullUpIcon"></span>
+                <!--<span class="pullUpLabel">上拉即可刷新</span>-->
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+<!-- 详情页面 -->
+
+<link rel="stylesheet" href="../../css/page/exhibit/share.css"/>
+
+<script type="text/javascript" src="../../js/common/toast_utils.js"></script>
+<script type="text/javascript" src="../../js/page/exhibit/exh_qq_share.js"></script>
+<script type="text/javascript" src="../../js/page/exhibit/exh_weiBo.js"></script>
+<script type="text/javascript" src="../../js/callback/http/statistics_callback.js"></script>
+<script type="text/javascript" src="../../js/external/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../../js/page/exhibit/exh_share.js"></script>
+<script type="text/javascript" src="../../js/common/component/popup.js"></script>
+<!--2015-7-7 wangjunbao-->
+<script type="text/javascript" src="../../js/external/jquery.qrcode.js"></script>
+<script type="text/javascript" src="../../js/external/qrcode.js"></script>
+<!--2015-7-7 wangjunbao-->
+<script src="../../js/common/statistics_utils.js"></script>
+<script src="../../js/common/template_list_utils.js"></script>
+<script src="../../js/common/date_utils.js"></script>
+
+
+<div id="id-share-page" style="position: absolute;top:0;width: 100%;z-index: 100;background: #fff">
+</div>
+
+</body>
+</html>

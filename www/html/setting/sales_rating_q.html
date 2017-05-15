@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>指尖金融家-普惠金融家问题</title>
+    <script src="../../js/common/FFA.js"></script>
+    <script src="../../js/common/initRootFontSize.js"></script>
+    <script src="../../js/core/UIUtils.js"></script>
+
+    <link rel="stylesheet" href="../../css/base/base.css"/>
+    <link rel="stylesheet" href="../../css/component/component.css"/>
+</head>
+<!-- body元素上设备标识class加入 写前边避免页面重绘-->
+<script src="../../js/page/frame/frame_UIInit.js"></script>
+<body>
+    <header class="header">
+        <span class="header-btn header-left-btn icon-left-arrow js-back"></span>
+        <span class="header-title">普惠金融家</span>
+    </header>
+    <div class="content js-content">
+
+    </div>
+    <script src="../../js/common/ajax_common.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var id = get("salesQueId");
+            var url=https_url+'static/qa/sales_rating_q'+id+'.html';
+            var html_height = document.body.scrollHeight - 45;
+            var iframe = "<iframe style=\"position: absolute;right:0px;left: 0px;\"src=\"" + url + "\" width=\"100%\"  height=\"" + html_height + "px\"></iframe>";
+            $(".js-content").html(iframe);
+            //返回
+            $(".js-back").on("click",function(){
+                window.location.href="./sales_rating.html";
+            })
+        });
+
+    </script>
+</body>
+</html>

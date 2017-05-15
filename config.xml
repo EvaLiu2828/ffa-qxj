@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.creditease.zjjrj" version="1.7.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>zjjrj</name>
+    <description>
+        Hello World sample application that responds to the deviceready event.
+    </description>
+    <author email="support@phonegap.com" href="http://phonegap.com">
+        PhoneGap Team
+    </author>
+    <content src="index.html" />
+    <preference name="permissions" value="none" />
+    <preference name="orientation" value="portrait" />
+    <preference name="target-device" value="universal" />
+    <preference name="fullscreen" value="false" />
+    <preference name="webviewbounce" value="true" />
+    <preference name="prerendered-icon" value="true" />
+    <preference name="stay-in-webview" value="false" />
+    <preference name="StatusBarStyle" value="lightcontent" />
+    <preference name="detect-data-types" value="true" />
+    <preference name="exit-on-suspend" value="false" />
+    <preference name="show-splash-screen-spinner" value="true" />
+    <preference name="auto-hide-splash-screen" value="false" />
+    <preference name="disable-cursor" value="false" />
+    <preference name="android-minSdkVersion" value="14" />
+    <preference name="android-installLocation" value="auto" />
+    <preference name="android-windowSoftInputMode" value="adjustPan" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="3000" />
+    <preference name="ShowSplashScreen" value="true" />
+    <preference name="BackgroundColor" value="0xffffffff" />
+    <platform name="android">
+        <preference name="StatusBarOverlaysWebView" value="false" />
+    </platform>
+    <preference name="StatusBarBackgroundColor" value="#000000" />
+    <preference name="wechatappid" value="wxda1dfa7fb8e3b50e" />
+    <platform name="ios">
+        <preference name="UIWebViewDecelerationSpeed" value="fast" />
+        <preference name="DisallowOverscroll" value="true" />
+        <preference name="StatusBarOverlaysWebView" value="true" />
+    </platform>
+    <gap:plugin name="com.creditease.ffa.extrainfo" />
+    <gap:plugin name="cordova-plugin-battery-status" />
+    <gap:plugin name="cordova-plugin-camera" />
+    <gap:plugin name="cordova-plugin-media-capture" />
+    <gap:plugin name="cordova-plugin-console" />
+    <gap:plugin name="cordova-plugin-contacts" />
+    <gap:plugin name="cordova-plugin-device" />
+    <gap:plugin name="cordova-plugin-device-motion" />
+    <gap:plugin name="cordova-plugin-device-orientation" />
+    <gap:plugin name="cordova-plugin-dialogs" />
+    <gap:plugin name="cordova-plugin-file" />
+    <gap:plugin name="cordova-plugin-file-transfer" />
+    <gap:plugin name="cordova-plugin-geolocation" />
+    <gap:plugin name="cordova-plugin-globalization" />
+    <gap:plugin name="cordova-plugin-inappbrowser" />
+    <gap:plugin name="cordova-plugin-media" />
+    <gap:plugin name="cordova-plugin-network-information" />
+    <gap:plugin name="cordova-plugin-splashscreen" />
+    <gap:plugin name="cordova-plugin-statusbar" />
+    <gap:plugin name="cordova-plugin-vibration" />
+    <gap:plugin name="xu.li.cordova.wechat" />
+    <gap:plugin name="org.devgeeks.Canvas2ImagePlugin" />
+    <icon src="www/icon.png" />
+    <platform name="android">
+        <icon density="ldpi" src="www/res/icon/android/icon-36-ldpi.png" />
+        <icon density="mdpi" src="www/res/icon/android/icon-48-mdpi.png" />
+        <icon density="hdpi" src="www/res/icon/android/icon-72-hdpi.png" />
+        <icon density="xhdpi" src="www/res/icon/android/icon-96-xhdpi.png" />
+        <splash density="land-hdpi" src="www/res/screen/android/splash-land-hdpi.png" />
+        <splash density="land-ldpi" src="www/res/screen/android/splash-land-ldpi.png" />
+        <splash density="land-mdpi" src="www/res/screen/android/splash-land-mdpi.png" />
+        <splash density="land-xhdpi" src="www/res/screen/android/splash-land-xhdpi.png" />
+        <splash density="port-hdpi" src="www/res/screen/android/splash-port-hdpi.png" />
+        <splash density="port-ldpi" src="www/res/screen/android/splash-port-ldpi.png" />
+        <splash density="port-mdpi" src="www/res/screen/android/splash-port-mdpi.png" />
+        <splash density="port-xhdpi" src="www/res/screen/android/splash-port-xhdpi.png" />
+    </platform>
+    <platform name="ios">
+        <icon height="57" src="www/res/icon/ios/icon-57.png" width="57" />
+        <icon height="72" src="www/res/icon/ios/icon-72.png" width="72" />
+        <icon height="114" src="www/res/icon/ios/icon-57-2x.png" width="114" />
+        <icon height="144" src="www/res/icon/ios/icon-72-2x.png" width="144" />
+        <splash height="480" src="www/res/screen/ios/screen-iphone-portrait.png" width="320" />
+        <splash height="960" src="www/res/screen/ios/screen-iphone-portrait-2x.png" width="640" />
+        <splash height="768" src="www/res/screen/ios/screen-ipad-landscape.png" width="1024" />
+        <splash height="1024" src="www/res/screen/ios/screen-ipad-portrait.png" width="768" />
+        <splash height="1136" src="www/res/screen/ios/screen-iphone-portrait-568h-2x.png" width="640" />
+        <splash height="1334" src="www/res/screen/ios/screen-iphone-portrait-6.png" width="750" />
+        <splash height="1920" src="www/res/screen/ios/screen-iphone-portrait-6plus.png" width="1080" />
+    </platform>
+    <access origin="*" />
+    <plugin name="cordova-plugin-whitelist" version="1" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <allow-navigation href="http://*/*" />
+    <allow-navigation href="https://*/*" />
+    <allow-navigation href="data:*" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+    <engine name="android" spec="^4.1.1" />
+</widget>

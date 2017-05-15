@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>指尖金融家-新建跟进记录</title>
+    <script src="../../js/common/FFA.js"></script>
+    <script src="../../cordova.js"></script>
+    <script src="../../js/common/initRootFontSize.js"></script>
+    <script src="../../js/external/zepto.min.js"></script>
+
+    <script src="../../js/core/detect.js"></script>
+    <link rel="stylesheet" href="../../css/base/base.css"/>
+    <link rel="stylesheet" href="../../css/component/component.css"/>
+    <link rel="stylesheet" href="../../css/page/customer/nfRecord.css"/>
+
+</head>
+<body>
+<div class="nfRecordPage">
+    <header class="header">
+        <span class="js-back header-btn header-left-btn" style="font-size: 0.75rem">取消</span>
+        <span class="header-title" id="title">新建跟进记录</span>
+        <button class="header-btn header-right-btn js-nfRecord-send">保存</button>
+    </header>
+
+    <div class="content nfRecord-frame">
+        <!--记录-->
+        <div class="nfRecord-detail js-cdetail-detail">
+            <ul class="js-nfRecord-container com-list-a">
+                <li id="category" class="js-modifiable">
+                <span class="block-left">
+                   <label>类别</label>
+                </span>
+                <span class="block-right js-chooseCategory">
+                    <span class="js-chooseCategoryContent">联络</span>
+                    <span class="icon icon-arrow"></span>
+                </span>
+
+                </li>
+                <li id="time">
+                <span class="block-left">
+                    <label>时间</label>
+                </span>
+                <span class="block-right btn mui-btn mui-btn-block">
+                    <span class="icon icon-arrow"></span>
+                    <span id='result' class="ui-alert block-right"></span>
+                </span>
+                </li>
+            </ul>
+            <textarea class="nfr-input js-text" placeholder="内容" ></textarea>
+            <div id="wordCheck" class="login_delete js-overPlus-length">0/30</div>
+        </div>
+    </div>
+</div>
+
+<div class = "categoryPage modify">
+    <header class="header">
+        <span class="header-btn header-left-btn icon-left-arrow"></span>
+        <span class="header-title">类别</span>
+    </header>
+    <div class="content">
+        <!--类别-->
+        <div class="rCategory-detail">
+            <ul class="js-rCategory-container com-check-list-a">
+                <li id="phone" class="checked js-chooseCategoryPhone">
+                <span class="block-left circle green icon-tel flip">
+                </span>
+                <span class="block-left">
+                    <label>联络</label>
+                </span>
+                </li>
+                <li id="cup" class="js-chooseCategoryCup">
+                <span class="block-left circle blue icon-cup">
+                </span>
+                <span class="block-left">
+                    <label>面谈</label>
+                </span>
+                </li>
+                <li id="home" class="js-chooseCategoryHome" >
+                <span class="block-left circle red icon-home">
+                </span>
+                <span class="block-left">
+                    <label>到店</label>
+                </span>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <script src="../../js/base/polyfill.js"></script>
+    <script src="../../js/base/vendor/plugin/mui.js"></script>
+    <script src="../../js/base/vendor/plugin/mui.picker.min.js"></script>
+    <script src="../../js/common/http_response.js"></script>
+    <script src="../../js/common/json_conversion.js"></script>
+    <script src="../../js/common/local_storage_utils.js"></script>
+    <script src="../../js/common/ajax_common.js"></script>
+    <script src="../../js/common/utils.js"></script>
+    <script src="../../js/common/hashmap.js"></script>
+    <script src="../../js/common/constant.js"></script>
+
+    <!--弹窗类-->
+    <script src="../../js/common/component/popup.js"></script>
+
+    <script src="../../js/page/customer/cus_nfRecord.js"></script>
+
+</body>
+</html>

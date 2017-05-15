@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>指尖金融家-短信模板</title>
+    <script src="../../js/common/FFA.js"></script>
+    <script src="../../js/common/initRootFontSize.js"></script>
+    <script src="../../js/core/UIUtils.js"></script>
+
+    <link rel="stylesheet" href="../../css/base/base.css"/>
+    <link rel="stylesheet" href="../../css/component/component.css"/>
+    <link rel="stylesheet" href="../../css/page/customer/smsTemp.css"/>
+</head>
+<body>
+<!-- body元素上设备标识class加入 写前边避免页面重绘-->
+<script src="../../js/page/frame/frame_UIInit.js"></script>
+<div class="smsTempPage">
+    <header class="header">
+        <span class="js-back header-btn header-left-btn icon-left-arrow"></span>
+        <span class="header-title js-header-title">短信模板</span>
+        <span class="header-btn header-right-btn js-header-right-btn js-new-btn">新建</span>
+    </header>
+    <!--content-->
+    <div class="content smsTempContent">
+        <!--没有短信模板-->
+        <div class="no-temp js-no-temp">
+            <div class="no-temp-img">
+                <img src="../../images/sms-temp.png">
+            </div>
+            <p>创建模板提高工作效率</p>
+            <button class="com-middle-btn-a custom-sms js-custom-sms">自定义短信</button>
+        </div>
+        <!--有短信模板-->
+        <div class="has-temp js-has-temp">
+            <div id="sms-wrapper">
+                <div id="sms-scroller">
+                    <ul id="smsInfoContainer"></ul>
+                    <div id="pullDown" class='loading' style="display: none">
+                        <span class="pullDownIcon small-person-icon-gif"></span><span class="pullDownLabel">努力加载中...</span>
+                    </div>
+                    <div id="pullUp" style="display: none">
+                        <span class="pullUpIcon"></span><span class="pullUpLabel">上拉即可刷新</span>
+                    </div>
+                </div>
+            </div>
+            <script type="text/template" id="smsTemplate">
+                <% for(var i=data.length-1; i >= 0; i--){
+                   var bd = 'bottom-border';
+                   <!--if (i == data.length-1) bd = '';-->
+                %>
+                <li class="item " id="sms-<%= data[i].key %>">
+                    <div class="touch-item js-touch-item <%= bd%>" id="sms-<%= data[i].key %>-item">
+                        <p><%= data[i].value%></p>
+                    </div>
+                    <div class="item-edit-btn js-item-edit-btn js-item-btn">编辑</div>
+                    <div class="item-del-btn js-item-del-btn js-item-btn">删除</div>
+                </li>
+                <%}%>
+
+            </script>
+            <button class="com-middle-btn-a js-custom-sms custom-sms">自定义短信</button>
+        </div>
+        <!--新建模板-->
+        <div class="new-temp js-new-temp">
+            <textarea class="js-textarea temp-textarea">短信模板限制300字</textarea>
+        </div>
+        <!--编辑短信模板-->
+        <div class="edit-temp js-edit-temp">
+            <textarea class="js-textarea temp-textarea">短信模板限制300字</textarea>
+        </div>
+        <!--删除短信模板按钮-->
+        <div class="del-btn">
+            <button class="com-middle-btn-b del-temp-btn js-del-temp-btn">删除短信模板</button>
+            <button class="com-middle-btn-b not-del-temp js-not-del-temp">取消</button>
+        </div>
+
+        <!--mask-->
+        <div class="com-popup-mask-a popup-mask js-popup-mask"></div>
+        <!--提示框-->
+        <div class="com-popup-alert-a popup-alert">
+            <div>
+                <p></p>
+            </div>
+            <button></button>
+        </div>
+    </div>
+</div>
+<script src="../../cordova.js"></script>
+<script src="../../js/external/zepto.min.js"></script>
+<script src="../../js/external/underscore-min.js"></script>
+<script src="../../js/external/indexeddbshim.min.js" ></script>
+<script src="../../js/external/iscroll.js"></script>
+<script src="../../js/external/fastclick.js"></script>
+<script src="../../js/external/zepto.fx.js"></script>
+<script src="../../js/external/polyfill.js"></script>
+<script src="../../js/external/hammer.min.js"></script>
+
+<script src="../../js/common/pull2refresh.js"></script>
+<script src="../../js/page/customer/cus_controller.js"></script>
+<script src="../../js/common/utils.js"></script>
+<!--indexDB数据库-->
+<script src="../../js/common/config.js"></script>
+<script src="../../js/common/sms_tmp_dao.js"></script>
+
+<script src="../../js/page/customer/cus_smsTemp.js"></script>
+
+<!--弹窗类-->
+<script src="../../js/common/component/popup.js"></script>
+</body>
+</html>

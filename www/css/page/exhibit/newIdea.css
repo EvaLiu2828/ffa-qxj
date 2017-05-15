@@ -1,0 +1,127 @@
+.ideaPara{
+    margin: 5px 10px;
+    font-size: 14px;
+    color: #a6a6a6;
+    line-height: 19px;
+}
+.ideaInputDiv{
+    position: relative;
+    margin: 0 auto;
+    width: 95%;
+    height: 38px;
+    overflow: hidden;
+    border: 1px solid #c8c7cc;
+    background-color: #fff;
+}
+.js-emptiableinput-wrapper input.normal-input {
+    width: 93.75%;
+    /*height: 38px;*/
+    /*padding-bottom: 5px;*/
+    /*text-indent: 3%;*/
+    /*font-size: 0.75rem;*/
+}
+.ideaTextDiv{
+    position: relative;
+    margin: 10px auto 10px;
+    width: 93.75%;
+    height: 130px;
+    overflow: hidden;
+    border: 1px solid #d6d6d6;
+    background-color: #fff;
+}
+.ideaText{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
+    padding-left: 3.33333333333333%;
+    height: 130px;
+    -webkit-appearance: none;
+    font-size: 0.65rem;
+    resize: none;
+}
+.ideaPicBox{
+    position: relative;
+    width: 93.75%;
+    height: 90px;
+    margin: 0 auto 10px;
+    overflow: hidden;
+}
+.ideaImageUl{
+    position: relative;
+    width: 100%;
+    height: 80px;
+    overflow: hidden;
+}
+.ideaImageUl li{
+    display: inline-block;
+    position: relative;
+    float: left;
+    width: 19.2%;
+    height: 80px;
+    margin-right: 1%;
+}
+.ideaImageUl li div{
+    height: 61px;
+    text-align: center;
+    margin-bottom: 7px;
+    background-color: #fff;
+}
+.ideaImageUl li p{
+    font-size: 0.6rem;
+    color: #ababab;
+    text-align: center;
+}
+.ideaImageUl li div span{
+    display: inline-block;
+    font-size: 27px;
+    color: #ababab;
+    margin: 16px auto 16px;
+ }
+.ideaImageUl li div img{
+    display: inline-block;
+    margin-top: 16px;
+}
+
+.ideaImg{
+    width: 25px;
+    height: 25px;
+}
+#ideaPhoto{
+    background: url("../../../images/exp.png") top center no-repeat;
+    background-size: 100% 100%;
+}
+
+/*-----选相片------*/
+
+
+.photo_choose {
+    background: #fff;
+    height: 37px;
+    border: 1px solid;
+    border-radius: 7px;
+    margin: 10px 10px 0 10px;
+    text-align: center;
+    line-height: 37px;
+}
+
+.popup_container_background {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #999999;
+    z-index: 11;
+    top: 0%;
+    opacity: 0.65;
+    display: none
+}
+
+.popup_container_back {
+    width: 100%;
+    position: absolute;
+    background: #5c5c5c;
+    z-index: 12;
+    bottom: 0px;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    display: none
+}

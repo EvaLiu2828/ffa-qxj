@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<title>指尖金融家-新建客户</title>
+    <script src="../../js/common/FFA.js"></script>
+    <script src="../../js/common/initRootFontSize.js"></script>
+    <script src="../../js/external/modernizr-min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../../css/base/base.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/component/component.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/page/enter/addCustomer.css" />
+
+<script src="../../cordova.js"></script>
+<script src="../../js/external/fastclick.js"></script>
+<script src="../../js/external/zepto.min.js"></script>
+<script src="../../js/core/detect.js"></script>
+<script src="../../js/common/config.js"></script>
+<script src="../../js/common/constant.js"></script>
+<script src="../../js/common/utils.js"></script>
+<script src="../../js/common/main.js"></script>
+<script src="../../js/common/hashmap.js"></script>
+
+<script src="../../js/common/ajax_common.js"></script>
+<script src="../../js/common/http_response.js"></script>
+<script src="../../js/common/json_conversion.js"></script>
+<script src="../../js/common/local_storage_utils.js"></script>
+<script src="../../js/common/exit_system.js"></script>
+<script src="../../js/callback/http/check_version_callback.js"></script>
+<script src="../../js/page/enter/enter_add_cus.js"></script>
+
+<script src="../../js/common/strings.js"></script>
+<script src="../../js/common/offline.js"></script>
+<script src="../../js/common/pause.js"></script>
+<script src="../../js/common/resume.js"></script>
+
+<!--弹窗类-->
+<script src="../../js/common/component/popup.js"></script>
+</head>
+<body onmousewheel="return false;">
+    <!----------------------新建客户页面start------------------------->
+    <div class="addCustomerPage">
+        <header class="js-header header">
+            <span class="js-addCustomerBack header-btn header-left-btn icon-left-arrow"></span>
+            <span id="title">新建客户</span>
+            <button class="header-btn header-right-btn js-addCustomer-complete" >完成</button>
+        </header>
+        <div class="content">
+            <p class="addCustomerP">
+                新建客户可同时创建咨询，<img src="../../images/imp.png">为必填
+            </p>
+
+            <ul class="com-list-a">
+                <li id="addCustomer-name" class="js-add-del">
+                    <img src="../../images/imp.png">
+                    <span class="block-left">
+                        <label>姓名</label>
+                    </span>
+                    <input type="text" class="addCustomer-input js-addCustomer-name" maxlength="10"/>
+                    <span class="addCustomer-del js-addCustomer-del"></span>
+                </li>
+                <li class="js-add-del">
+                    <span class="block-left">
+                        <label>备注</label>
+                    </span>
+                    <input type="text" class="addCustomer-input2 js-addCustomer-remark" maxlength="10"/>
+                    <span class="addCustomer-del js-addCustomer-del"></span>
+                </li>
+                <li>
+                    <span class="block-left">
+                        <label>性别</label>
+                    </span>
+                    <span class="block-right js-addCustomer-Gender">
+                        <span class="js-addCustomer-Gender-content">请选择</span>
+                        <span class="icon icon-arrow"></span>
+                    </span>
+                </li>
+                <li id="addCustomer-phone" class="js-add-del">
+                    <img src="../../images/imp.png">
+                    <span class="block-left">
+                        <label>手机</label>
+                    </span>
+                    <input type="text" class="addCustomer-input js-addCustomer-phone" maxlength="11"/>
+                    <span class="addCustomer-del js-addCustomer-del"></span>
+                </li>
+                <!--<li id="addCustomer-consult">-->
+                    <!--<img src="../../images/imp.png">-->
+                    <!--<span class="block-left">-->
+                        <!--<label>咨询类型</label>-->
+                    <!--</span>-->
+                    <!--<span class="block-right js-chooseConsult">-->
+                        <!--<span class="js-chooseConsultContent">信贷</span>-->
+                        <!--<span class="icon icon-arrow"></span>-->
+                    <!--</span>-->
+
+                <!--</li>-->
+                <li class="js-add-del">
+                    <span class="block-left" id="block-left-id">
+                        <label>身份证占坑</label>
+                    </span>
+                    <span class="addCustomer-rule js-addCustomer-rule">( 规则<img class="addCustomer-rule-img" id="js-addCustomer-rule-img" src="../../images/question.png"/> )</span>
+                    <input type="text" class="addCustomer-inputId js-addCustomer-ID" maxlength="18"/>
+                    <span class="addCustomer-del js-addCustomer-del"></span>
+                </li>
+            </ul>
+            <div class="error-info">
+                <p class="js-addCustomer-noName displayNone">请输入用户名</p>
+                <p class="js-addCustomer-telNone displayNone">请输入手机号</p>
+                <p class="js-addCustomer-telWrong displayNone">手机号码有误，请重新输入</p>
+                <p class="js-addCustomer-idWrong displayNone">身份证号有误，请重新输入</p>
+            </div>
+        </div>
+        <div class="chooseGender-bg"></div>
+
+        <!--mask-->
+        <div id='mask' class="addCustomer-alt1 pos-abs displayNone"></div>
+
+        <!--弹出框 正在加载-->
+        <div class="com-popup-loading-a displayNone"></div>
+
+        <!--弹出框 客户手机号重复以及客户姓名和手机号都重复，确认添加-->
+        <div class="js-addCustomer-repeat com-popup-confirm-a displayNone">
+            <div>
+                <p id="js-addCustomer-repeat-msg"></p>
+            </div>
+            <button class="js-addCustomer-cancel">取消</button>
+            <button id="js-addCustomer-confirm">确定</button>
+        </div>
+
+        <!--弹出框 新建客户成功-->
+        <div class="js-addCustomer-success com-popup-alert-a displayNone">
+            <div>
+                <p id="js-addCustomer-p-success"></p>
+            </div>
+            <button class="js-addCustomer-success-button">确认</button>
+        </div>
+
+        <!--弹出框 新建客户失败-->
+        <div class="js-addCustomer-fail com-popup-alert-a displayNone">
+            <div>
+                <p id="js-addCustomer-p-fail"></p>
+            </div>
+            <button class="js-addCustomer-error-btn">取消</button>
+        </div>
+
+        <!--弹出框 占坑规则-->
+        <div id="addCustomer-rule-alert-id" class="js-addCustomer-rule-alert com-popup-alert-a displayNone">
+            <div>
+                <h4 class="addCustomer-rule-head">占坑规则</h4>
+                <p id="js-addCustomer-rule-p" class="addCustomer-rule-p"></p>
+            </div>
+            <button class="js-addCustomer-rule-alt-button">确认</button>
+        </div>
+    </div>
+    <!----------------------新建客户页面end------------------------->
+
+    <!----------------------选择性别页面start------------------------->
+    <div class="addCustomerChooseGender displayNone">
+        <header class="header">
+            <span class="js-addCustomer-chg-ret header-btn header-left-btn icon-left-arrow"></span>
+            <span>设置</span>
+        </header>
+        <div class="content">
+            <ul class="js-check-ul com-check-list-a">
+                <li id="chooseGender-li-first" class="checked js-chooseGenderNone" data-gender="03">
+                    <span class="block-left">
+                        <label>未知</label>
+                    </span>
+                </li>
+                <li data-gender="01" class="js-chooseGenderMale">
+                    <span class="block-left">
+                        <label>男</label>
+                    </span>
+                </li>
+                <li data-gender="02" class="js-chooseGenderFemale">
+                    <span class="block-left">
+                        <label>女</label>
+                    </span>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <!----------------------选择性别页面end------------------------->
+
+    <!----------------------咨询类型选择页面start------------------------->
+
+    <!--<div class="addCustomerChooseConsult displayNone">-->
+        <!--<header class="header">-->
+            <!--<span class="js-addCustomer-chg-ret header-btn header-left-btn icon-left-arrow"></span>-->
+            <!--<span>设置</span>-->
+        <!--</header>-->
+        <!--<div class="content">-->
+            <!--<ul class="js-check-ul com-check-list-a">-->
+                <!--<li id="chooseConsult-li-first" class="checked js-chooseConsultCredit">-->
+                    <!--<span class="block-left">-->
+                        <!--<label>信贷</label>-->
+                    <!--</span>-->
+                <!--</li>-->
+                <!--<li class="js-chooseConsultCar">-->
+                    <!--<span class="block-left">-->
+                        <!--<label>车贷</label>-->
+                    <!--</span>-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+
+    <!--</div>-->
+    <!----------------------咨询类型选择页面end------------------------->
+</body>
+<!--占坑规则闪动js-->
+<script>
+    var flash_flag = localStorage.getItem(addCustomer_flash_flag);
+    if(flash_flag != null && flash_flag.length > 0 && flash_flag  == 1){
+        $("#js-addCustomer-rule-img").removeClass('flash');
+    }else{
+        !function() {
+            $("#js-addCustomer-rule-img").addClass('animated flash');
+        }();
+        localStorage.setItem("addCustomer_flash_flag",1);
+    }
+
+</script>
+</html>

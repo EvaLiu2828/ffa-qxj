@@ -1,0 +1,356 @@
+/*隐藏进度div*/
+#page-progress>div{
+	display: none;
+}
+.progressDisplayBlock{
+	display: block !important;
+}
+
+
+/*隐藏团队经理进度div*/
+.team-manager>div{
+	display: none;
+}
+
+/*进度页面 - BEGIN*/
+.tabBox{
+
+}
+.tab{
+	display: block;
+	width: 50%;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	border-bottom: 2px solid #dddddd;
+
+}
+.tab.actived{
+	border-bottom: 2px solid #018def;
+	color: #018def;
+}
+.orders {
+	/*padding: 1px 0;*/
+	background-color: transparent;
+	text-align: center;
+}
+.order{
+	text-align: left;
+	margin: 15px 10px;
+	border: 1px solid #f0f0f0;
+	background-color: #fff;
+}
+.order-top {
+	font-size: .6rem;
+	color: #4a4a4a;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	position: relative;
+
+}
+.order-top .item{
+	display: block;
+	height: 23px;
+	line-height: 23px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.order .order-top:after {
+	display: block;
+	content: "";
+	clear: both;
+}
+.order-top-left {
+	width: 28px;
+	height: 28px;
+	float: left;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	overflow: hidden;
+	text-align: center;
+	margin-left: 10px;
+	margin-right: 10px;
+	border: 1px solid #f0f0f0;
+}
+.order-top-left .icon{
+	width: 80%;
+}
+.order-top-middle{
+	float: left;
+	width: 35%;
+
+}
+.item.md-item:nth-child(1){
+	font-size: .75rem;
+	color: #000;
+}
+.item.md-item:nth-child(2){
+	color: #000;
+}
+.team-manager .item.md-item:nth-child(2){
+	color: #4a4a4a;
+}
+
+.item.md-item:nth-child(3){
+	font-size: .5rem;
+	color: #ababab;
+}
+
+.account-manager .order-top-right{
+	float: right;
+	text-align: left;
+	margin-right: 1%;
+	width: 46%;
+}
+
+.team-manager .order-top-right{
+	text-align: right;
+	width: 48%;
+	position:absolute;
+	right: 10px;
+}
+
+.item.rt-item:nth-child(1){
+	font-size: .6rem;
+	color: #000;
+}
+.item.rt-item:nth-child(2){
+	font-size: .6rem;
+	color: #000;
+}
+.team-manager .item.rt-item:nth-child(2){
+	font-size: .6rem;
+	color: #4a4a4a;
+}
+.item.rt-item:nth-child(3){
+	font-size: .5rem;
+	color: #ababab;
+}
+@media only screen and (max-device-width: 320px){
+	.item.md-item:nth-child(2){
+		font-size: .5rem;
+		color: #000;
+	}
+
+	.item.rt-item:nth-child(2){
+		font-size: .5rem;
+		color: #000;
+	}
+}
+
+
+
+.order .order-bottom {
+	position: relative;
+	height: 44px;
+	line-height: 44px;
+	text-align: center;
+	font-size: .75rem;
+	color: #f14f33;
+	border-top: 1px solid #f0f0f0;
+}
+
+.team-manager .order .order-bottom {
+	position: relative;
+	height: 44px;
+	line-height: 44px;
+	text-align: center;
+	font-size: .6rem;
+	color: #6a6a6a;
+	border-top: 1px solid #f0f0f0;
+}
+.order-bottom .call{
+	width: 50px;
+	height: 22px;
+	line-height: 22px;
+	border: 1px solid #ababab;
+	background: #fff;
+	position: absolute;
+	right: 10px;
+	top: 9px;
+	/*font-weight: bold;*/
+	color: #777;
+	font-size: .6rem;
+}
+.order-bottom .order-saler{
+	position: absolute;
+	left: 10px;
+}
+.order-bottom .order-status{
+	position: absolute;
+	right: 10px;
+}
+/*.frame_right_contract {*/
+	/*margin: 10px 10px 10px 0;*/
+/*}*/
+.frame_progress_over{
+	display: none;
+}
+.no_progress{
+	width: 100px;
+	margin-top: 150px;
+}
+.no_content_font{
+	height: 16px;
+	line-height: 16px;
+	font-size: .7rem;
+	color: #a6a6a6;
+	text-align: center;
+}
+/*进度页面 - END*/
+
+
+
+#wrapper_progress {
+	position:absolute; 
+	z-index:1;
+	/*top: 95px;*/
+	/*bottom:50px;*/
+	left:0;
+	width:100%;
+	overflow:auto;
+}
+.ios #wrapper_progress{
+	top: 105px;
+}
+
+.android #wrapper_progress{
+	top: 85px;
+}
+
+#wrapper_progress_team {
+	position:absolute;
+	z-index:1;
+	/*top: 95px;*/
+	bottom:50px;
+	left:0;
+	width:100%;
+	overflow:auto;
+}
+.ios #wrapper_progress_team{
+	top: 65px;
+}
+
+.android #wrapper_progress_team{
+	top: 45px;
+}
+
+#scroller_progress,#scroller_progress_team {
+	position:relative;
+/*	-webkit-touch-callout:none;*/
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+	float:left;
+	width:100%;
+	padding:0;
+}
+
+
+#pullDown_progress,#pullDown_progress_team{
+	padding: 10px 0;
+	color: #888;
+	font-size: 12px;
+	/*margin-left: 35%;*/
+	text-align: center;
+}
+
+#pullUp_progress,#pullUp_progress_team{
+	padding-top: 18px;
+	color: #888;
+	font-size: 12px;
+	text-align: center;
+}
+
+
+#pullDown_progress .pullDownIcon_progress, #pullUp_progress .pullUpIcon_progress,
+#pullDown_progress_team .pullDownIcon_progress, #pullUp_progress_team .pullUpIcon_progress{
+  /*width: 20px;*/
+  /*height: 20px;*/
+  /*background: url(../../../images/pull-icon@2x.png) 0 0 no-repeat;*/
+  /*-webkit-background-size: 20px 40px;*/
+  /*background-size: 20px 40px;*/
+  /*-webkit-transition-property: -webkit-transform;*/
+  /*-webkit-transition-duration: 250ms;*/
+  /*display: inline-block;*/
+  /*vertical-align: middle;*/
+
+    width: 25px;
+    height: 35px;
+    background: url("../../../images/pushLoad-prev.png") no-repeat;
+    background-size: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    
+    
+}
+#pullDown_progress .pullDownLabel_progress, #pullUp_progress .pullUpLabel_progress,
+#pullDown_progress_team .pullDownLabel_progress, #pullUp_progress_team .pullUpLabel_progress{
+    position: relative;
+    top: -4px;
+	vertical-align: bottom;
+
+}
+
+#pullDown_progress .pullDownIcon_progress,
+#pullDown_progress_team .pullDownIcon_progress {
+	/*-webkit-transform:rotate(0deg) translateZ(0);*/
+
+}
+#pullUp_progress .pullUpIcon_progress,
+#pullUp_progress_team .pullUpIcon_progress{
+	/*-webkit-transform:rotate(-180deg) translateZ(0);*/
+}
+
+#pullDown_progress.flip .pullDownIcon_progress,
+#pullDown_progress_team.flip .pullDownIcon_progress {
+	/*-webkit-transform:rotate(-180deg) translateZ(0);*/
+    background: url(../../../images/pushLoad.gif) 0 0 no-repeat;
+    /*-webkit-background-size: 33px 40px;*/
+    background-size: 100%;
+
+}
+
+#pullUp_progress.flip .pullUpIcon_progress,
+#pullUp_progress_team.flip .pullUpIcon_progress{
+	/*-webkit-transform:rotate(0deg) translateZ(0);*/
+    background: url(../../../images/pushLoad.gif) 0 0 no-repeat;
+    /*-webkit-background-size: 33px 40px;*/
+    background-size: 100%;
+}
+/*	-webkit-animation-name:loading; 移除动画效果*/
+#pullDown_progress.loading_progress .pullDownIcon_progress, #pullUp_progress.loading_progress .pullUpIcon_progress,
+#pullDown_progress_team.loading_progress .pullDownIcon_progress, #pullUp_progress_team.loading_progress .pullUpIcon_progress{
+	background-position:0 100%;
+	-webkit-transform:rotate(0deg) translateZ(0);
+	-webkit-transition-duration:0ms;
+	-webkit-animation-duration:2s;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-timing-function:linear;
+}
+#pullDown_progress.loading_progress .pullDownIcon_progress,
+#pullUp_progress.loading_progress .pullUpIcon_progress,
+#pullDown_progress .small-person-icon, #pullUp_progress .small-person-icon,
+#pullDown_progress_team.loading_progress .pullDownIcon_progress,
+#pullUp_progress_team.loading_progress .pullUpIcon_progress,
+#pullDown_progress_team .small-person-icon, #pullUp_progress .small-person-icon{
+    /*width: 40px;*/
+    /*height: 40px;*/
+    width: 25px;
+    height: 35px;
+    background: url(../../../images/pushLoad.gif) 0 0 no-repeat;
+    /*-webkit-background-size: 33px 40px;*/
+    background-size: 100%;
+}
+@-webkit-keyframes loading {
+	from { -webkit-transform:rotate(0deg) translateZ(0); }
+	to { -webkit-transform:rotate(360deg) translateZ(0); }
+}
+/* ����ˢ����COPY��Щ��ʽ�����ҳ�� - END*/
+
+/*团队经理销售列表*/
+.sales-list{
+	margin-top: 20px;
+}
+.sales-list li:before{
+	z-index: 1;
+}

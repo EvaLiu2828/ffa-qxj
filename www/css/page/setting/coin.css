@@ -1,0 +1,178 @@
+/*指尖币*/
+/*隐藏div*/
+.coin>div{
+    display: none;
+}
+.coinDisplayBlock{
+    display: block !important;
+}
+
+/*指尖币首页start*/
+.coin-top{
+    background-color: #fff;
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 18px 0;
+}
+.coin-title{
+    display: inline-block;
+    font-size: .7rem;
+    margin-bottom: 10px;
+    color: #666;
+    height: 22px;
+    line-height: 22px;
+}
+.question{
+    display: inline-block;
+    width: 12px;
+    vertical-align: middle;
+    /*margin-left: 4px;*/
+}
+.question img{
+    width: 100%;
+}
+.coin-sum{
+    font-size: 1.5rem;
+    color: #4591ff;
+    line-height: 1.5rem;
+}
+.daily-tasks{
+    margin-bottom: 10px;
+}
+.daily-tasks li, .customer-tasks li, .daily-tasks li .block-right, .customer-tasks li .block-right{
+    height: 58px;
+    line-height: 58px;
+}
+.daily-tasks li:active, .customer-tasks li:active{
+    background-color: #fff;
+}
+.left-text{
+    display: inline-block;
+}
+.item-name{
+    line-height: 20px;
+    margin-top: 12px;
+}
+.item-info{
+    line-height: 16px;
+    font-size: .6rem;
+    color: #ababab;
+}
+.coin-stamp{
+    width: 48px;
+    height: 48px;
+    line-height: 50px;
+    margin-top: 5px;
+    background-image: url(../../../images/coin-stamp1.png);
+    background-size: 100%;
+    font-size: .6rem;
+    font-weight: bold;
+    color: #f14f33;
+    text-align: center;
+    white-space: nowrap;
+}
+.coin-stamp1{
+    width: 48px;
+    height: 52px;
+    line-height: 52px;
+    margin-top: 4px;
+    background-image: url(../../../images/coin-stamp2.png);
+    background-size: 100%;
+    font-size: .6rem;
+    font-weight: bold;
+    color: #f14f33;
+    text-align: center;
+    white-space: nowrap;
+}
+.right-num{
+    width: 48px;
+    text-align: center;
+}
+.daily-tasks li .block-right, .customer-tasks li .block-right{
+    display: none;
+}
+.daily-tasks li .rightDisplayBlock, .customer-tasks li .rightDisplayBlock{
+    display: block;
+}
+/*指尖币首页end*/
+
+/*指尖币交易明细start*/
+.coin-detail .com-tab-btn{
+    width: 50%;
+    color: #777;
+}
+/*滑动页面的样式START*/
+.swipe {
+    overflow: hidden;
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    top: 85px;
+    bottom: 0;
+    /*z-index: -9;*/
+}
+.ios .swipe{
+    top: 105px;
+}
+.swipe-wrap {
+    position: absolute;
+    height: 100%;
+    overflow-y: hidden;
+}
+.swipe-wrap > div {
+    float: left;
+    width: 100%;
+    position: relative;
+    height: 100%;
+    overflow-y: auto;
+}
+/*滑动页面的样式END*/
+.coin-detail .com-list-a:before{
+    border: 0;
+}
+.coin-detail .com-list-a:after{
+    width: 97%;
+    margin-left: 3%;
+}
+.coin-detail .item{
+    height: 66px;
+}
+.coin-detail .left-text{
+    color: #666;
+}
+.coin-detail .item-name{
+    font-size: .7rem;
+    margin-top: 15px;
+}
+.coin-detail .item-info{
+    font-size: .6rem;
+    color: #666;
+}
+.coin-detail li .block-right{
+    height: 66px;
+    line-height: 66px;
+}
+.coinIncome .block-right{
+    color: #4591ff;
+}
+
+.coinConsume .block-right{
+    color: #f14f33;
+}
+.coinConsume li:active, .coinIncome li:active{
+    background-color: #fff;
+}
+/*指尖币交易明细end*/
+
+/*指尖币说明start*/
+.coin-instruction{
+    padding: 1.45rem 0.625rem;
+}
+.coin-instruction ul{
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+}
+.coin-instruction span{
+    font-weight: bold;
+}
+/*指尖币说明end*/

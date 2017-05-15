@@ -1,0 +1,205 @@
+﻿.pos-abs {
+    position: absolute;
+}
+.displayNone{
+    display: none;
+}
+.com-small-btn-a{
+    position: absolute;
+    right: 10px;
+    bottom: 12px;
+}
+.com-list-a{
+    width: 100%;
+}
+.com-list-a li:before {
+    width: 95%;
+    margin-left: 5%;
+}
+.com-list-a li{
+    padding-left: 5%;
+    padding-right: 0;
+}
+.com-list-a li .block-right{
+    padding-right: 10px;
+    color: #666;
+    font-size: .75rem;
+}
+.com-list-a .icon {
+    font-size: .7rem;
+    color: #c7c7cc;
+    vertical-align: middle;
+}
+.addCustomerP{
+    color: #666;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    background: #f8f8f8;
+    margin-left: 3%;
+}
+.addCustomerP img{
+    /*width: 2%;*/
+    vertical-align: middle;
+}
+#addCustomer-name,#addCustomer-phone,#addCustomer-consult{
+    padding-left: 0;
+}
+#addCustomer-name img,#addCustomer-phone img,#addCustomer-consult img{
+    width: 2%;
+    float: left;
+    margin: 18px 1px 0 3%;
+}
+.addCustomer-rule-div-l{
+    position: relative;
+    float: left;
+    width: 47%;
+}
+.addCustomer-rule-div-r{
+    position: relative;
+    float: right;
+    width: 53%;
+}
+.addCustomer-input,.addCustomer-input2{
+    display: inline-block;
+    margin-top: 2px;
+    width: 81%;
+    height: 38px;
+    padding-left: 5px;
+    font-size: 0.72rem;
+}
+.addCustomer-input2{
+    width: 86% !important;
+}
+.addCustomer-inputId{
+    width: 48%;
+    display: inline-block;
+    margin-top: 2px;
+    height: 38px;
+    font-size: 0.7rem;
+}
+.addCustomer-del{
+    position: absolute;
+    right: 0;
+    width: 42px;
+    height: 42px;
+    background:transparent;
+}
+.addCustomer-del-img{
+    position: absolute;
+    right: 10px;
+    background: url(../../../images/delete.png) right no-repeat;
+    background-size: 17px 17px;
+}
+.addCustomer-rule{
+    margin: 0;
+    font-size: 0.69rem;
+    color: #ababab;
+    position: relative;
+}
+.addCustomer-rule-img{
+    position: relative;
+    margin-left: 2px;
+    margin-right: 1px;
+    top: 2px;
+    width: 13px;
+    height: 13px;
+}
+.chooseGender-bg {
+    width: 100%;
+    height: auto;
+    margin-top: 135px;
+    background-color: #f8f8f8;
+}
+.addCustomer-alt1{
+	top: 0;
+    width: 100%;
+    height: 100%;
+    background: #444;
+    opacity: 0.65;
+    z-index: 99;
+}
+.addCustomer-alt-div{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+#chooseGender-li-first:before{
+    border-bottom: 0;
+}
+.error-info{
+    width: 100%;
+    padding-left: 5%;
+    padding-top: 10px;
+    position: relative;
+}
+.error-info p{
+    font-size: .6rem;
+    color: #f14f33;
+}
+.com-check-list-a{
+    margin-top: 20px;
+}
+.com-list-a li:active {
+    background-color: #fff;
+}
+#addCustomer-consult .block-left{
+    /*width: 25%;*/
+}
+#addCustomer-rule-alert-id{
+    top: 40%;
+    height: auto;
+}
+#addCustomer-rule-alert-id > div{
+    position: relative;
+    margin-bottom: 14px;
+}
+#addCustomer-rule-alert-id > button{
+    position: relative;
+    bottom: 10px;
+}
+.addCustomer-rule-head{
+    display: block !important;
+    margin-top: 12px;
+    margin-bottom: 8px;
+    color: #444;
+}
+.addCustomer-rule-p{
+    display: block !important;
+    font-size: .65rem !important;
+    text-align: left !important;
+    line-height: 21px;
+}
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+@-webkit-keyframes flash {
+     50%, from, to {
+         opacity: 1
+     }
+     25%, 75% {
+         opacity: 0
+     }
+ }
+@keyframes flash {
+    50%, from, to {
+        opacity: 1
+    }
+    25%, 75% {
+        opacity: 0
+    }
+}
+.flash {
+    -webkit-animation-name: flash;
+    animation-name: flash
+}
+.addCustomer-rule-img{
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-iteration-count: 2;
+    animation-iteration-count: 2;
+}

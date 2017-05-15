@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+
+    <title>荣誉排行</title>
+    <script src="../../js/common/FFA.js"></script>
+    <script src="../../js/common/initRootFontSize.js"></script>
+    <script src="../../js/external/modernizr-min.js"></script>
+    <link rel="stylesheet" href="../../css/base/base.css" />
+    <link rel="stylesheet" href="../../css/component/component.css" />
+    <link rel="stylesheet" href="../../css/page/exhibit/honor_rank.css"/>
+    <link rel="stylesheet" href="../../css/base/helper.css"/>
+
+</head>
+
+<body>
+<header class="header">
+    <span class="header-btn header-left-btn icon-left-arrow" onclick="history.back();"></span>
+    <span class="header-title">周荣誉排行榜</span>
+</header>
+
+<div class="content">
+<div id="screen">
+    <header id="nav" class="cate_top">
+        <ul class="cate_top_ul">
+            <li><a  id="customer_tab" class="active" href="javascript:" title="获客" rel="0" onClick="goToPage(0)">获客</a>
+            </li>
+
+            <li> <a  id="share_tab" href="javascript:" title="分享" rel="1" onClick="goToPage(1)">分享</a>
+            </li>
+        </ul>
+    </header>
+</div>
+
+    <div id="pagewrapper">
+        <div id="pageflip">
+            <div class="scrollerwrapper">
+                <div class="scroller" id="apply_col">
+                    <ul id="applyResult" class="honor_apply com-list-a  bottom-border top-border click-disabled" >
+                    </ul>
+                </div>
+            </div>
+
+            <div class="scrollerwrapper">
+                <div class="scroller" id="share_col">
+                    <ul id="shareResult" class="honor_share com-list-a  bottom-border top-border click-disabled" >
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../../cordova.js"></script>
+<script src="../../js/external/jquery-1.7.2.min.js"></script>
+<script src="../../js/external/zepto.min.js"></script>
+<script src="../../js/common/exit_system.js"></script>
+<script src="../../js/common/constant.js"></script>
+<script src="../../js/core/detect.js"></script>
+<script src="../../js/external/underscore-min.js"></script>
+<script src="../../js/external/swipe.js"></script>
+<script src="../../js/external/indexeddbshim.min.js"></script>
+<script src="../../js/external/iscroll.js"></script>
+<script src="../../js/external/fastclick.js"></script>
+<script src="../../js/external/polyfill.js"></script>
+<script src="../../js/common/strings.js"></script>
+<script src="../../js/common/http_response.js"></script>
+<script src="../../js/common/ajax_common.js"></script>
+<script src="../../js/common/utils.js"></script>
+<script src="../../js/common/json_conversion.js"></script>
+<script src="../../js/common/hashmap.js"></script>
+<script src="../../js/common/local_storage_utils.js"></script>
+<script src="../../js/common/toast_utils.js"></script>
+<script src="../../js/common/config.js"></script>
+<script src="../../js/common/component/popup.js"></script>
+<script src="../../js/page/exhibit/exh_honor.js"></script>
+</body>
+</html>

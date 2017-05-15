@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<title>指尖金融家-引导页</title>
+	<link rel="stylesheet" href="../css/page/homelogo/homelogo.css"/>
+	<script src="../js/common/FFA.js"></script>
+	<script src="../js/common/initRootFontSize.js"></script>
+	<script src="../js/external/modernizr-min.js"></script>
+	<script type="text/javascript" src="../js/common/constant.js"></script>
+	<script type="text/javascript" src="../js/common/local_storage_utils.js"></script>
+	<script type="text/javascript" src="../js/common/utils.js"></script>
+	<script type="text/javascript" src="../cordova.js"></script>
+	<script src="../js/external/indexeddbshim.min.js"></script>
+</head>
+<body>
+
+
+		<div id='swipe-container' class='swipe'>
+			<div class='swipe-wrap'>
+				<div class="swipe-innerBox">
+					 <img src="../images/homelogo/pic1.png">
+				</div>
+				<div class="swipe-innerBox">
+					 <img src="../images/homelogo/pic2.png">
+				</div>
+				<div class="swipe-innerBox">
+					 <img src="../images/homelogo/pic3.png">
+				</div>
+                <!--new year-->
+               <!--v1.4 <div class="swipe-innerBox">
+                    <img src="../images/homelogo/pic4.png">
+                </div>-->
+			</div>
+			<div class="ull js-controller-show">
+				<ul id="position">
+					<li class="cur"></li>
+					<li class=""></li>
+					<li class=""></li>
+                    <!--new year-->
+					<!--v1.4 <li class=""></li>-->
+				</ul>
+			</div>
+		</div>
+		<div class="js-show bottom-item">
+			<img src="../images/homelogo/button.png" class="bottom-img"/>
+		</div>
+		
+
+<script src="../js/external/zepto.min.js"></script>
+<script src="../js/core/detect.js"></script>
+
+<script src="../js/external/swipe.js"></script>
+
+<script src="../js/common/config.js"></script>
+<script src="../js/common/hashmap.js"></script>
+<script src="../js/common/json_conversion.js"></script>
+<script src="../js/common/ajax_common.js"></script>
+<script src="../js/common/exit_system.js" ></script>
+<script src="../js/common/strings.js" ></script>
+<script src="../js/common/download_pic.js" ></script>
+
+<script>
+var bullets = document.getElementById('position').getElementsByTagName('li');
+var swipe = Swipe(document.getElementById('swipe-container'),{
+		bounce:false,
+		continuous:false,
+		callback: function(index, elem) {
+			var i = bullets.length;
+			while (i--) {
+				bullets[i].className = ' ';
+			}
+			bullets[index].className = 'cur';
+//            v1.4 if(index==3)
+			if(index==2){
+				$(".js-show").show();
+				$(".js-controller-show").hide();
+			}else{
+				$(".js-show").hide();
+				$(".js-controller-show").show();
+			}
+		}
+	});
+
+	Zepto(".bottom-img").bind("touchstart", function() {
+		// 针对了1.5版本的升级bug修复，该版本升级后轮播图有bug,原因是升级时，缓存没有删干净。
+		    var versionInfo = getString("version_info");
+            console.log('versionInfo='+versionInfo);
+
+            // 大于当前版本1.5+，并且12位员工编号没有做处理的，清缓存，不保存uuid     //--by xln 判断user_uuid 12位员变20位  20160831  9.1加的注释--
+            if ((versionInfo >= '1.5') && (get('user_uuid')!= null) &&(get('user_uuid').length == 20)) {
+                console.log('here');
+                new SystemExit().clearCache(true,function(){ 
+                	redirectLogin();
+                	//console.log("delete success");
+                },false,true);//--by xln clearcache最后一个参数false改成true,为版本升级后清缓存但不UserID，为了不重新登录  20160901--
+            }else{
+            	redirectLogin();
+            }
+            
+		})
+	function redirectLogin(){
+		var login_user_id = get(user_uuid);
+			if(!isEmpty(login_user_id) && isInvalidityTime()){//如果30内的登陆那么直接到首页
+				redirect("");
+			} else {
+				window.location.replace('./login/login.html');
+			}
+		}
+
+</script>
+</body>
+</html>

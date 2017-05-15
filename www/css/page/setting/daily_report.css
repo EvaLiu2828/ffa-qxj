@@ -1,0 +1,250 @@
+
+/*没有内容*/
+.no-report{
+    display: none;
+    font-size: 0.7rem;
+    text-align: center;
+    position: relative;
+    margin: 0 auto;
+    top: 100px;
+}
+
+.no-report img{
+    width: 100px;
+}
+
+#no-report-detail{
+    display: block;
+    line-height: 1rem;
+    margin-bottom: 20px;
+    font-weight:700;
+    font-size: 0.8rem;
+}
+#no-report-detail +p{
+    font-size: 0.8rem;
+}
+
+
+#report-whole-wrapper{
+    overflow:auto;
+    position: absolute;
+    left:0;
+    right:0;
+    top:45px;
+    bottom:46px;
+    z-index:1;
+
+}
+
+#report-whole-scroller{
+    position:relative;
+    /*	-webkit-touch-callout:none;*/
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    float:left;
+    width:100%;
+    padding:0;
+}
+
+
+.ios #report-whole-wrapper{
+    top:65px;
+}
+
+
+.report-whole-container{
+  /*  padding-bottom: 50px;*/
+}
+/*一个完整的日报及其回复*/
+.entire-report{
+    margin-top: 10px;
+    border-radius: 5px;
+
+}
+
+/*时间*/
+.report-time{
+    position: relative;
+    font-size: 0.64rem;
+    width: 4rem;
+    margin: 0 auto;
+    text-align:center;
+    background:#cecece ;
+    color: #ffffff;
+    border-radius: 4px;
+    padding: 5px 2px;
+}
+
+
+/*日报框架*/
+.box {
+
+    position: relative;
+    margin-top: 10px;
+}
+
+/*日报左箭头样式*/
+.left-arrow {
+    position: absolute;
+    left: 1.5%;
+    top: 0;
+    width: 6.46%;
+    height: 0.6rem;
+    background: url("../../../images/dailyreport/box-left-arrow.png") no-repeat;
+    background-size: 100%;
+    z-index: 2;
+}
+/*日报右箭头样式*/
+.right-arrow {
+    position: absolute;
+    color: #4591ff;
+    right: 8px;
+    top: -4px;
+    z-index: 2;
+
+}
+
+/*日报文本框*/
+.box .box-con {
+    position: relative;
+
+}
+/*日报文本框-日报版本*/
+.report .box-con{
+
+    width: 89.06%;
+    left: 4.68%;
+    color: #000000;
+    border-radius: 6px;
+
+
+}
+/*日报文本框-回复版本*/
+.reply .box-con{
+
+    width: 89.06%;
+    left: 6.25%;
+    color: white;
+    text-align: right;
+
+}
+
+.box .box-con p {
+    padding: 10px;
+    word-break:break-all;
+    border-radius: 6px;
+    font-size: .8rem;
+    line-height: 1rem;
+    /*box-shadow: 0px 1px 1px rgba(0,0,0,.3);*/
+    display:inline-block;
+}
+
+.reportContent{
+    border: 1px solid #d6d6d6;
+    background: #fff;
+}
+
+/*回复文字*/
+.replyText{
+    text-align: left;
+    background:#4591ff;
+    border: none;
+}
+
+/*备注内容*/
+.report .Remark{
+    color: #979797;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 0.64rem;
+
+    position: relative;
+    left: 4.68%;
+}
+
+/*点击回复日报按钮*/
+.click-reply{
+    background-color: transparent;
+    border-style :none;
+    font-size: .64rem;
+    position:relative;
+    left: 68%;
+    padding: 10px;
+    text-decoration:underline;
+    color: #72abfd;
+    display: none;
+}
+
+
+
+/*回复编辑框*/
+.reportReplyEdit-wrap{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /*padding-left: 3px;*/
+    display: none;
+    width: 100%;
+    border: 1px solid #ababab;
+    background: #fafafa;
+    z-index: 20;
+
+
+}
+
+/*回复编辑文本*/
+.reportReplyEdit-input {
+    position: relative;
+    left:4.1%;
+    width: 73.4%;
+    max-height: 60px;
+    border-radius: 6px;
+    -webkit-appearance: none;
+    font-size: 0.64rem;
+    vertical-align: middle;
+    resize: none;
+    padding-bottom: 10px;
+    padding-top: 7px;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: #999999;
+    border: 1px solid #d6d6d6;
+
+}
+
+/*回复编辑发送键*/
+.reportReply-send {
+    width: 14%;
+    position: absolute;
+    right: 4%;
+    height: 37px;
+    border-radius: 6px;
+    /*    margin-left: 5px;
+        margin-bottom: 5px;*/
+    background: #018def;
+    vertical-align: middle;
+    line-height: 31px;
+    color: #ffffff;
+    font-size: 0.8rem;
+}
+
+.notAllow{
+    background: #d4d4d4;
+}
+
+.editShow {
+    display: block;
+}
+
+/*编辑时候的蒙层*/
+.com-popup-mask-c {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 19;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(44, 44, 44, 0.65);
+}
+

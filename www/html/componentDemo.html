@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+
+    <title>指尖金融家组件DEMO</title>
+    <script src="../js/common/FFA.js"></script>
+    <script src="../js/common/initRootFontSize.js"></script>
+    <link rel="stylesheet" href="../css/base/base.css"/>
+    <link rel="stylesheet" href="../css/component/component.css"/>
+    <style>
+        h1 {
+            font-size: 1.5rem;
+            text-align: center;
+            color: #00caf2;
+        }
+
+        h2 {
+            font-size: 1rem;
+        }
+
+        
+        .popup-btn {
+            width: 80px;
+            height: 40px;
+            background-color: #018def;
+            margin: 10px;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        ul{
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .popup-btn:active {
+            background-color: #007cde;
+        }
+
+        .com-checkbox-group, .com-radio-group {
+            margin: 10px;
+        }
+
+    </style>
+</head>
+<body>
+<!--header-->
+<header class="js-header header">
+    <span class="header-btn header-left-btn icon-left-arrow" onclick="history.back()"></span>
+    <span class="header-title">页头</span>
+    <span class="header-btn header-right-btn icon-left-arrow"></span>
+</header>
+
+
+<!--footer-->
+<footer class="js-footer frame-footer">
+    <div class="js-footer-tab footer-tab exhibition" data-page="exhibition">
+        <!--<div class="frame-footer-icon"></div>-->
+        <span class="footer-icon icon-zhanye"></span>
+        <p class="tab-name">展业</p>
+    </div>
+    <div class="js-footer-tab footer-tab customer" data-page="customer">
+        <!--<div class="frame-footer-icon"></div>-->
+        <span class="footer-icon icon-kehu"></span>
+        <div id="customer-remind-circle">
+            <p id="js-customer-remind-num"></p>
+        </div>
+        <p class="tab-name">客户</p>
+    </div>
+    <div class="js-footer-tab footer-tab plus" data-page="plus">
+        <!--<div class="footer-middle-icon"></div>-->
+        <div class="footer-middle-icon icon-plus"></div>
+    </div>
+    <div class="js-footer-tab footer-tab progress" data-page="progress">
+        <!--<div class="frame-footer-icon"></div>-->
+        <span class="footer-icon icon-jindu"></span>
+        <p class="tab-name">进度</p>
+    </div>
+    <div class="js-footer-tab footer-tab mine" data-page="mine">
+        <!--<div class="frame-footer-icon"></div>-->
+        <span class="footer-icon icon-wode"></span>
+        <p class="tab-name">我的</p>
+    </div>
+</footer>
+
+
+<div class="content">
+
+    <h1>组件样式demo</h1>
+    <hr>
+
+
+    <h2>input</h2>
+    <section>
+
+        <!-- 输入框-->
+        <div class="js-emptiableinput-wrapper com-emptiableinput-wrapper empty">
+            <input type="text" placeholder="带删除功能的输入框">
+            <span></span>
+        </div>
+        <br/>
+
+        <div class="js-emptiableinput-wrapper input-wrapper empty">
+            <input class="across-input" type="text" placeholder="带删除功能的输入框">
+            <span class="icon-del"></span>
+        </div>
+        <br/>
+
+        <div class="js-emptiableinput-wrapper input-wrapper empty">
+            <input class="normal-input" type="text" placeholder="带删除功能的输入框">
+            <span class="icon-del"></span>
+        </div>
+        <br/>
+
+        <div class="input-wrapper">
+            <input class="across-input" type="text" placeholder="带验证码的输入框">
+            <div class="verification-code-wrap">
+                <span class="verification-code">获取验证码</span>
+            </div>
+
+        </div>
+        <br/>
+
+        <div class="input-wrapper">
+            <input class="normal-input" type="text" placeholder="带验证码的输入框">
+            <div class="verification-code-wrap">
+                <span class="verification-code">获取验证码</span>
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <hr>
+
+
+    <h2>button</h2>
+    <section>
+        <button class="com-small-btn-a">按钮</button>
+        <br>
+        <button class="com-small-btn-a" disabled>按钮</button>
+        <br><br>
+
+
+        <button class="com-middle-btn-a">按钮</button>
+        <br>
+        <button class="com-middle-btn-a" disabled>按钮</button>
+        <br><br>
+
+
+        <button class="com-middle-btn-b">按钮</button>
+        <br>
+        <button class="com-middle-btn-b" disabled>按钮</button>
+        <br><br>
+
+
+        <button class="com-middle-btn-c">按钮</button>
+        <br>
+        <button class="com-middle-btn-c" disabled>按钮</button>
+        <br><br>
+        <a class="com-middle-btn-d">按钮</a>
+        <br>
+        <a class="com-middle-btn-d active">按钮</a>
+        <br>
+        <a class="com-middle-btn-d disabled">按钮</a>
+        <br/><br/>
+
+        <!--<button class="com-middle-btn-d">按钮</button>-->
+        <!--<br>-->
+        <!--<button class="com-middle-btn-d active">按钮</button>-->
+        <!--<br>-->
+        <!--<button class="com-middle-btn-d" disabled>按钮</button>-->
+
+        <br>
+
+    </section>
+
+
+    <hr>
+
+
+    <h2>list</h2>
+    <section>
+    <ul class="com-list-a">
+        <li>
+        <span class="block-left">
+            <label>label1</label>
+        </span>
+
+        <span class="block-right">
+            <span>content1</span>
+        </span>
+        </li>
+
+        <li>
+        <span class="block-left">
+            <label>label2</label>
+        </span>
+        <span class="block-right">
+           <span>content2</span>
+        </span>
+        </li>
+        <li>
+        <span class="block-left">
+            <label>label3</label>
+        </span>
+        <span class="block-right">
+           <span>content3</span>
+        </span>
+        </li>
+    </ul>
+    </section>
+
+
+    <hr>
+
+
+    <section>
+    <h2>check list</h2>
+    <ul class="com-check-list-a">
+        <li class="checked" data-gender="03">
+                <span class="block-left">
+                    <label>未知</label>
+                </span>
+        </li>
+        <li data-gender="01">
+                <span class="block-left">
+                    <label>男</label>
+                </span>
+
+        </li>
+        <li data-gender="02">
+                <span class="block-left">
+                    <label>女</label>
+                </span>
+        </li>
+    </ul>
+    </section>
+
+
+    <hr>
+
+
+    <h2>popup</h2>
+    <section>
+        <button id="loading-a" class="popup-btn">loading-a</button>
+        <button id="h-loading-a" class="popup-btn">hide-loading</button>
+        <button id="loading-c" class="popup-btn">loading-c</button>
+        <hr>
+        <button id="alert-a" class="popup-btn">alert-a</button>
+        <button id="alert-b" class="popup-btn">alert-b</button>
+        <button id="alert-c" class="popup-btn">alert-c</button>
+        <hr>
+        <button id="confirm-a" class="popup-btn">confirm-a</button>
+        <button id="confirm-b" class="popup-btn">confirm-b</button>
+        <button id="confirm-c" class="popup-btn">confirm-c</button>
+        <hr>
+        <button id="toast-a" class="popup-btn">toast-a</button>
+        <button id="toast-b" class="popup-btn">toast-b</button>
+    </section>
+
+
+    <hr>
+
+
+    <h2>radio</h2>
+    <section>
+        <div class="com-radio-group">
+            <div class="com-checkbox-con">
+                <label>
+                    <input class="com-checkbox com-checkbox-anim" name="radio-a" type="radio">默认未选中</label>
+            </div>
+            <div class="com-checkbox-con">
+                <label>
+                    <input class="com-checkbox" name="radio-a" type="radio" checked>默认选中</label>
+            </div>
+            <div class="com-checkbox-con">
+                <label>
+                    <input class="com-checkbox" name="radio-a" type="radio">默认选中</label>
+            </div>
+            <div class="com-checkbox-con">
+                <label>
+                    <input class="com-checkbox" name="radio-a" type="radio">默认选中</label>
+            </div>
+            <div class="com-checkbox-con">
+                <label>
+                    <input class="com-checkbox" name="radio-a" type="radio" disabled>禁用</label>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <!--<div class="com-checkbox-con">-->
+            <!--<input class="com-checkbox com-checkbox-anim" id="delReason1" name="deleteReason" type="radio" checked value="号码不通">-->
+            <!--<label class="js-deleteCustomerLabel" for="delReason1">号码不通</label>-->
+        <!--</div>-->
+        <!--<div class="com-checkbox-con" >-->
+            <!--<input class="com-checkbox com-checkbox-anim" id="delReason2" name="deleteReason" type="radio" value="外地客户">-->
+            <!--<label class="js-deleteCustomerLabel" for="delReason2">外地客户</label>-->
+        <!--</div>-->
+        <!--<div class="com-checkbox-con">-->
+            <!--<input class="com-checkbox com-checkbox-anim" id="delReason3" name="deleteReason" type="radio" value="无贷款需求">-->
+            <!--<label class="js-deleteCustomerLabel" for="delReason3">无贷款需求</label>-->
+        <!--</div>-->
+        <!--<div class="com-checkbox-con">-->
+            <!--<input class="com-checkbox com-checkbox-anim" id="delReason4" name="deleteReason" type="radio" value="other">-->
+            <!--<label class="js-deleteCustomerLabel" for="delReason4">其他原因</label>-->
+        <!--</div>-->
+    </section>
+
+    <hr>
+
+
+    <h2>checkbox</h2>
+    <section>
+        <div class="com-checkbox-group">
+            <div class="com-checkbox-con">
+                <label>
+                    <input class="com-checkbox com-checkbox-anim" name="checkbox-a" type="checkbox">默认未选中</label>
+            </div>
+            <div class="com-checkbox-con">
+                <label>
+                    <input class="com-checkbox" name="checkbox-a" type="checkbox">默认选中</label>
+            </div>
+            <div class="com-checkbox-con">
+                <label>
+                    <input class="com-checkbox" name="checkbox-a" type="checkbox">橘黄色 checkbox-orange</label>
+            </div>
+            <div class="com-checkbox-con">
+                <label>
+                    <input class="com-checkbox" name="checkbox-a" type="checkbox">绿色 checkbox-green</label>
+            </div>
+            <div class="com-checkbox-con">
+                <label>
+                    <input class="com-checkbox" name="checkbox-a" type="checkbox" disabled>禁用</label>
+            </div>
+        </div>
+    </section>
+
+
+    <hr>
+    <h2>tab button</h2>
+    <section>
+
+        <!-- 废弃？-->
+        <nav class="com-tab-group-b">
+            <a class="com-tab-btn js-tab-btn actived">客户状态</a>
+            <a class="com-tab-btn js-tab-btn"><span>历史进件</span></a>
+        </nav>
+
+        <div class="com-tab-btn-group-a">
+            <input class="com-tab-left-input" type="radio" id="tabBtnLeft" name="tabBtn" checked>
+            <label class="com-tab-left-label" for="tabBtnLeft">css实现</label>
+            <input class="com-tab-right-input" type="radio" id="tabBtnRight" name="tabBtn">
+            <label class="com-tab-right-label" for="tabBtnRight">css实现</label>
+        </div>
+
+        <div class="com-tab-btn-group-c">
+            <a class="com-tab-btn js-tab-btn actived">基本资料</a>
+            <a class="com-tab-btn js-tab-btn"><span>详细资料</span></a>
+            <a class="com-tab-btn js-tab-btn"><span>跟进记录</span></a>
+        </div>
+
+    </section>
+
+
+    <hr>
+    <h2>Font icon</h2>
+    <section>
+
+        	<span class="icon-spinner">
+
+				</span>
+
+				<span class="icon-spinner2">
+
+				</span>
+
+				<span class="icon-qrcode">
+
+				</span>
+
+				<span class="icon-spinner3">
+
+				</span>
+
+				<span class="icon-arrow-up2">
+
+				</span>
+
+				<span class="icon-plus">
+
+				</span>
+
+				<span class="icon-left-arrow">
+
+				</span>
+
+				<span class="icon-X">
+
+				</span>
+
+				<span class="icon-people">
+
+				</span>
+
+				<span class="icon-tel">
+
+				</span>
+
+				<span class="icon-location">
+
+				</span>
+
+				<span class="icon-explore">
+
+				</span>
+
+				<span class="icon-jinjian">
+
+				</span>
+
+				<span class="icon-qiang">
+
+				</span>
+
+				<span class="icon-fangzi">
+
+				</span>
+
+				<span class="icon-qiandai">
+
+				</span>
+
+				<span class="icon-icon1">
+
+				</span>
+
+				<span class="icon-arrow">
+
+				</span>
+
+				<span class="icon-bullhorn">
+
+				</span>
+
+				<span class="icon-car">
+
+				</span>
+
+				<span class="icon-gift">
+
+				</span>
+
+				<span class="icon-house">
+
+				</span>
+
+				<span class="icon-people2">
+
+				</span>
+
+				<span class="icon-product">
+
+				</span>
+				<span class="icon-store">
+
+				</span>
+        <span class="icon-zhanye">
+
+				</span>
+        <span class="icon-kehu">
+
+				</span>
+        <span class="icon-jindu">
+
+				</span>
+        <span class="icon-wode">
+
+				</span>
+        <span class="icon-cup">
+
+				</span>
+        <span class="icon-home">
+
+				</span>
+        <span class="icon-camera">
+
+				</span>
+        <span class="icon-Duib">
+
+				</span>
+        <span class="icon-activity">
+
+				</span>
+        <span class="icon-brand">
+
+				</span>
+        <span class="icon-building">
+
+				</span>
+        <span class="icon-layout">
+
+				</span>
+        <span class="icon-learn">
+
+				</span>
+        <span class="icon-microShop">
+
+				</span>
+        <span class="icon-pattern1">
+
+				</span>
+        <span class="icon-pattern2">
+
+				</span>
+        <span class="icon-pattern3">
+
+				</span>
+        <span class="icon-voice">
+
+				</span>
+        <span class="icon-sms">
+
+				</span>
+        <span class="icon-tel1">
+
+				</span>
+        <span class="icon-report-arrow1">
+
+				</span>
+        <span class="icon-trademark">
+
+				</span>
+        <span class="icon-rank">
+
+                </span>
+    </section>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</div>
+
+
+<script src="../js/external/zepto.min.js"></script>
+<script src="../js/core/detect.js"></script>
+
+<!--弹窗类-->
+<script src="../js/common/component/popup.js"></script>
+<script src="../js/common/component/input.js"></script>
+
+
+<!--<script src="../js/common/component.js"></script>-->
+
+<script>
+
+    $(function () {
+        var Components = FFA.namespace('Components');
+
+        var confirm, alert, loading;
+
+        /* input组件初始化 */
+        Components.emptiableInput.init(function () {
+            console.log("执行回调")
+        });
+
+        // 弹出框组件
+        $('.popup-btn').on('tap', function () {
+            switch (this.id) {
+                case 'loading-a':
+                    loading = Components.Popup.Loading('A', {
+//                        withMask: 'A'   //蒙层类型       A半透明 B透明 缺省没有蒙层
+                    });
+                    break;
+                case 'h-loading-a':
+                    loading.remove();
+                    break;
+                case 'alert-a':
+                    alert = Components.Popup.Alert('A', {
+                        content: '显示内容',  //显示内容
+                        button: 'Confirm',   //按钮内容
+                        withMask: 'A'   //蒙层类型
+                    }, function () {
+                        console.log('按钮回调');
+                    });
+                    break;
+                case 'confirm-a':
+                    confirm = Components.Popup.Confirm('A', {
+                        content: '22',  //显示内容
+                        leftButton: '33',   //左按钮内容
+                        rightButton: '44',  //右按钮内容
+                        withMask: 'A'   //蒙层类型
+                    }, function () {
+                        console.log('左按钮回调');
+                    }, function () {
+                        console.log('右按钮回调');
+                    });
+                    break;
+                case 'confirm-b':
+
+                    confirm = Components.Popup.Confirm('B', {
+                        content: '22',  //显示内容
+                        leftButton: '33',   //左按钮内容
+                        rightButton: '44',  //右按钮内容
+                        withMask: 'A'   //蒙层类型
+                    }, function () {
+                        console.log('左按钮回调');
+                    }, function () {
+                        console.log('右按钮回调');
+                    });
+
+
+                    break;
+                case 'toast-a':
+                    Components.Popup.Toast('A', {
+                        content: '消息消息'
+                    });
+                    break;
+                case 'toast-b':
+                    Components.Popup.Toast('B', {
+                        content: '自定义宽度,延迟时间',
+                        width: 220,
+                        duration: 2000
+                    });
+                    break;
+                case 1:
+                    break;
+
+            }
+
+        });
+    });
+</script>
+</body>
+</html>

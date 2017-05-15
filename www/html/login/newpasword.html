@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>指尖金融家-设置新密码</title>
+
+    <script src="../../js/common/FFA.js"></script>
+    <script src="../../js/common/initRootFontSize.js"></script>
+    <script src="../../js/external/modernizr-min.js"></script>
+
+    <link rel="stylesheet" href="../../css/base/base.css"/>
+    <link rel="stylesheet" href="../../css/main.css"/>
+    <link rel="stylesheet" href="../../css/component/component.css"/>
+
+
+</head>
+<body>
+
+
+<header class="header">
+    <span class="header-btn header-left-btn icon-left-arrow" onclick="history.back()"></span>
+    <span class="header-title">设置新密码</span>
+    <!--<button class="com-small-btn-a share">转发</button>-->
+</header>
+
+<div class="content">
+    <div class="pas-ipt marAuto">
+
+        <div class="js-emptiableinput-wrapper input-wrapper empty">
+            <input class="fpas-one set_new_pwd across-input" type="password" maxlength="20" placeholder="新密码（8-20个字符）">
+            <span class="icon-del"></span>
+        </div>
+        <div class="js-emptiableinput-wrapper input-wrapper empty">
+            <input class="fpas-two set_cofim_pwd across-input" type="password" maxlength="20" placeholder="确认新密码（8-20个字符）">
+            <span class="icon-del"></span>
+        </div>
+
+
+        <!--<input class="fpas-one set_new_pwd" type="password" maxlength="12" placeholder="新密码（8-12个字符）">-->
+        <!--<input class="fpas-two set_cofim_pwd" type="password" maxlength="12" placeholder="确认新密码（8-12个字符）">-->
+    </div>
+    <p class="error pas-err">
+        <span class="pas-sp1">两次输入的密码不一致，请重新输入</span>
+        <span class="pas-sp2">密码位数不足八位</span>
+    </p>
+    <!--<a id="np-next" class="nnpas-next marAuto a3 ah pass-nextstyle">下一步</a>-->
+    <a id="np-next" class="nnpas-next marAuto a3 ah pass-nextstyle com-middle-btn-d">下一步</a>
+
+</div>
+
+<!--弹出框 页面加载-->
+<!--<div>-->
+    <!--<div class="alt pasOut" style="background:transparent">-->
+        <!--<div></div>-->
+    <!--</div>-->
+    <!--<div class="altW pasInner">-->
+        <!--<img src="../../images/load.gif">-->
+    <!--</div>-->
+<!--</div>-->
+<!--弹出框  后台密码强度不够返回信息-->
+
+<div class="chg-alt1 ndis pas-fail" style="top:0;">
+</div>
+<div class="chg-alt2 ndis pas-fail">
+
+    <h2 style="margin-top: 20%;" class="pas-fail-words">哈哈哈</h2>
+    <p class="chg-sure marAuto pas-fail-sure">确定</p>
+
+</div>
+<script type="text/javascript" src="../../cordova.js"></script>
+<script type="text/javascript" src="../../js/external/zepto.min.js"></script>
+<script type="text/javascript" src="../../js/core/detect.js"></script>
+<script type="text/javascript" src="../../js/callback/http/new_pwd_callback.js"></script>
+<script type="text/javascript" src="../../js/common/hashmap.js"></script>
+<script type="text/javascript" src="../../js/common/constant.js"></script>
+<script type="text/javascript" src="../../js/external/fastclick.js"></script>
+<script type="text/javascript" src="../../js/common/http_response.js"></script>
+<script type="text/javascript" src="../../js/common/ajax_common.js"></script>
+<script type="text/javascript" src="../../js/common/utils.js"></script>
+<script type="text/javascript" src="../../js/common/json_conversion.js"></script>
+<script type="text/javascript" src="../../js/common/main.js"></script>
+<script type="text/javascript" src="../../js/callback/http/check_version_callback.js"></script>
+<script src="../../js/common/local_storage_utils.js"></script>
+<script type="text/javascript" src="../../js/common/offline.js"></script>
+<script type="text/javascript" src="../../js/common/component/popup.js"></script>
+<script src="../../js/common/component/input.js"></script>
+<script type="text/javascript" src="../../js/page/login/login_new_password.js"></script>
+<!--2015-7-7 wangjunbao-->
+<script src="../../js/common/exit_system.js"></script>
+<script src="../../js/external/indexeddbshim.min.js"></script>
+<script src="../../js/common/config.js"></script>
+<script src="../../js/callback/http/exit_callback.js"></script>
+<!--2015-7-7 wangjunbao-->
+
+<script>
+    $(".fpas-two").keyup(function () {
+        var m = $(".fpas-one").val();
+        var n = $(".fpas-two").val();
+        if (m != n) {
+            $(".pas-err").css("visibility", "visible");
+            $(".pas-sp1").show();
+        } else {
+            $(".pas-err").css("visibility", "hidden");
+            $(".pas-sp1").hide();
+        }
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+/*客户详情页面*/
+li.checked {
+    background-image: url(../../../images/check.png);
+    background-repeat: no-repeat;
+    background-position: 95% 50%;
+    background-size: 20px;
+}
+.customerDetailFrame>div{
+    display: none;
+}
+.customerDetailFrame .modify{
+     display: block; !important;
+ }
+#customerInfo-name{
+    width: 160px !important;
+}
+#customerInfo-remark{
+    width: 145px !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.com-list-a, .del-btn  {
+    margin-top: 20px;
+    margin-bottom: 35px;
+}
+
+.com-list-a {
+    overflow: hidden;
+}
+.com-check-list-a {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.com-list-a li:active {
+    background-color: rgba(0,0,0,0);
+}
+.com-list-a li label{
+    font-size: .8rem;
+}
+.com-list-a .block-left-width{
+    width: 90px !important;
+}
+.com-list-a .block-left-width2 {
+    width: 140px !important;
+}
+.com-list-a .block-right {
+    color: #666;
+    font-size: .75rem;
+    text-align: right;
+    overflow: hidden;
+}
+.com-list-a .float-middle{
+    float: left !important;
+    text-align: left !important;
+}
+.com-list-a .icon {
+    font-size: .7rem;
+    color: #c7c7cc;
+    vertical-align: middle;
+}
+.phone-item .callbtn{
+    margin-right: 10px;
+}
+.phone-item .callbtn span{
+    padding-right: 5px;
+}
+.com-emptiableinput-wrapper{
+    margin-top: 20px;
+}
+.icon-arrow{
+    float: right;
+    line-height: 42px;
+    margin-left: 5px;
+}
+.customerInfo .callbtn {
+    color: #666;
+    float: right;
+}
+.customerInfo .rephone {
+    width: auto;
+}
+.customerInfo-tip {
+    margin: 10px 10px;
+    font-size: 12px;
+    color: #a6a6a6;
+    line-height: 19px;
+    margin-left: 4.6875%;
+}
+.customerInfo-tip.red {
+    color: #f14f33;
+}
+.com-middle-btn-a{
+    margin-top: 10px;
+}
+.other-reason-input {
+    border: 1px solid #c8c7cc;
+    border-radius: 5px;
+    height: 1rem;
+    width: 50%;
+    vertical-align: bottom;
+}
+/*#customer-li-second:before{*/
+    /*width: 100%;*/
+    /*margin-left: 0;*/
+/*}*/
+.displayNone{
+    display: none;
+}
+/*客户详情页面 - END*/
+
+/*滑动页面的样式START*/
+.swipe {
+    overflow: hidden;
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    top: 85px;
+    bottom: 0;
+    z-index: -9;
+}
+.ios .swipe{
+    top: 105px;
+}
+.swipe-wrap {
+    position: absolute;
+    height: 100%;
+    overflow-y: hidden;
+}
+.swipe-wrap > div {
+    float: left;
+    width: 100%;
+    position: relative;
+    height: 100%;
+    overflow-y: auto;
+}
+/*滑动页面的样式END*/
+
+/*跟踪记录*/
+.com-list-a .block-right img{
+    width: 10px;
+}
+.com-list-a #record-add{
+    color: #0070dc;
+}
+.com-list-a li:before {
+    /*border-bottom: none;*/
+}
+.record-circle{
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    vertical-align: middle;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50%;
+}
+.record-circle span{
+    color: #fff;
+}
+.record-circle .icon-tel1 {
+    vertical-align: middle;
+}
+.phone-circle{
+    background: #91c487;
+}
+.phone-circle .icon-tel, .phone-circle .icon-tel1{
+    display: inline-block;
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+.cup-circle{
+    background: #85cff9;
+}
+.home-circle{
+    background: #f87984 ;
+}
+.com-list-a .record{
+    height: 62px;
+    line-height: 62px;
+    width: 100%;
+    float: left;
+}
+.record .recordInfo{
+    display: block;
+    margin-left: 48px;
+}
+.record .recordInfo .record-time{
+    height: 31px;
+    line-height: 38px;
+    color: #000;
+}
+.record .recordInfo .record-remark{
+    height: 31px;
+    line-height: 24px;;
+    color: #666;
+    font-size: .65rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.spanRight .block-right{
+    width: 80px;
+}
+.spanDetailRight .block-right{
+    width: 80px !important;
+}
+.com-emptiableinput-wrapper > input{
+    width: 90% !important;
+}
+#occupy_tag, #cus_state{
+    width: 69%;
+}
+
+
+.marT10 {
+    margin-top: 0.5rem; /*20/40*/
+}
+
+
+

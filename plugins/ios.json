@@ -1,0 +1,104 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "ShenYunData": {
+            "PACKAGE_NAME": "com.creditease.zjjrj"
+        },
+        "TalkingData": {
+            "PACKAGE_NAME": "com.creditease.zjjrj"
+        },
+        "cn.jpush.phonegap.JPushPlugin": {
+            "PACKAGE_NAME": "com.creditease.zjjrj"
+        },
+        "com.creditease.ffa.extrainfo": {
+            "PACKAGE_NAME": "com.creditease.zjjrj"
+        },
+        "com.creditease.ffa.strongservice": {
+            "PACKAGE_NAME": "com.creditease.zjjrj"
+        },
+        "com.verso.cordova.clipboard": {
+            "PACKAGE_NAME": "com.creditease.zjjrj"
+        },
+        "cordova-plugin-battery-status": {
+            "PACKAGE_NAME": "com.creditease.zjjrj"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.creditease.zjjrj"
+        },
+        "cordova-plugin-contacts": {
+            "PACKAGE_NAME": "com.creditease.zjjrj"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.creditease.zjjrj"
+        },
+        "cordova-plugin-device-motion": {
+            "PACKAGE_NAME": "com.creditease.zjjrj"
+        },
+        "cordova-plugin-device-orientation": {
+            "PACKAGE_NAME": "com.creditease.zjjrj"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "com.creditease.zjjrj"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.creditease.zjjrj"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.creditease.zjjrj"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "com.creditease.zjjrj"
+        },
+        "cordova-plugin-globalization": {
+            "PACKAGE_NAME": "com.creditease.zjjrj"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.creditease.zjjrj"
+        },
+        "cordova-plugin-media": {
+            "PACKAGE_NAME": "com.creditease.zjjrj"
+        },
+        "cordova-plugin-media-capture": {
+            "PACKAGE_NAME": "com.creditease.zjjrj"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.creditease.zjjrj"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.creditease.zjjrj"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.creditease.zjjrj"
+        },
+        "cordova-plugin-vibration": {
+            "PACKAGE_NAME": "com.creditease.zjjrj"
+        },
+        "cordova-plugin-weibosdk": {
+            "WEIBO_APP_ID": "2249761449",
+            "PACKAGE_NAME": "com.creditease.zjjrj"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.creditease.zjjrj"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.creditease.zjjrj"
+        },
+        "org.devgeeks.Canvas2ImagePlugin": {
+            "PACKAGE_NAME": "com.creditease.zjjrj"
+        },
+        "org.zy.yuancheng.qq": {
+            "QQ_APP_ID": "1104704271",
+            "PACKAGE_NAME": "com.creditease.zjjrj"
+        },
+        "xu.li.cordova.wechat": {
+            "PACKAGE_NAME": "com.creditease.zjjrj"
+        }
+    },
+    "dependent_plugins": {}
+}

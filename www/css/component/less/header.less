@@ -1,0 +1,74 @@
+@import "variable.less";
+@import "mixin.less";
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: @header-height;
+  background-color: @header-color;
+  font-size: @header-font-size;
+  color: #fff;
+  text-align: center;
+  line-height: @header-height;
+  z-index: 99;
+  overflow: hidden;
+
+  .header-title{
+    display: inline-block;
+    width: 50%;
+    font-size: .8rem;
+    font-weight: normal;
+    //文本截断mixin
+    .text-overflow();
+  }
+  .header-btn{
+    position: absolute;
+    bottom: 0;
+    height: @header-height;
+    min-width: @header-height;
+    color: #fff;
+    line-height: @header-height;
+    font-size: 1rem;
+    background-color: transparent;
+    &:active{
+      background-color: darken(@header-color, 5%)
+    }
+  }
+  .header-left-btn {
+    left: 0;
+  }
+
+  .header-right-btn {
+    font-size: .75rem;
+    right: 12px;
+  }
+
+  &~.content{
+    padding-top: @header-height;
+  }
+}
+.android .header {
+  height: 45px;
+  line-height: 45px;
+  &~.content{
+    padding-top: 45px;
+  }
+  &~.topPadding {
+    padding-top: 0;
+  }
+
+}
+.ios .header {
+  height: 65px;
+  line-height: 85px;
+  &~.content{
+    padding-top: 65px;
+  }
+  &~.topPadding {
+    padding-top: 0;
+  }
+}
+
+
+

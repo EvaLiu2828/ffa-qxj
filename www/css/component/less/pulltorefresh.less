@@ -1,0 +1,104 @@
+@import "variable.less";
+@import "mixin.less";
+
+#pullDown, #pullUp {
+    color: #888;
+	font-size: 12px;
+	text-align: center;
+	width: 100%;
+//  	height: 40px;
+//  	line-height: 40px;
+}
+#pullDown{
+  position: absolute;
+  top: 0;
+}
+
+#pullDown .pullDownIcon, #pullUp .pullUpIcon  {
+//	width: 20px;
+//	height: 20px;
+//	background: url(../../images/pull-icon@2x.png) 0 0 no-repeat;
+//	-webkit-background-size: 20px 40px;
+//	background-size: 20px 40px;
+//	-webkit-transition-property: -webkit-transform;
+//	-webkit-transition-duration: 250ms;
+//	display: inline-block;
+//	vertical-align: middle;
+
+  width: 25px;
+  height: 35px;
+  background: url("../../images/pushLoad-prev.png") no-repeat;
+  background-size: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+#pullDown .pullDownLabel, #pullUp .pullUpLabel{
+//	vertical-align: middle;
+  vertical-align: bottom;
+  position: relative;
+  top: -4px
+}
+
+//#pullDown .pullDownIcon {
+//	-webkit-transform:rotate(0deg) translateZ(0);
+//			transform: rotate(0deg) translateZ(0);
+//
+//
+//}
+//#pullUp .pullUpIcon  {
+//	-webkit-transform:rotate(-180deg) translateZ(0);
+//			transform:rotate(-180deg) translateZ(0);
+//}
+#pullDown.flip .pullDownIcon {
+//	-webkit-transform:rotate(-180deg) translateZ(0);
+//			transform:rotate(-180deg) translateZ(0);
+
+  background: url(../../images/pushLoad.gif) 0 0 no-repeat;
+  background-size: 100%;
+}
+
+#pullUp.flip .pullUpIcon {
+//	-webkit-transform:rotate(0deg) translateZ(0);
+//			transform:rotate(0deg) translateZ(0);
+  background: url(../../images/pushLoad.gif) 0 0 no-repeat;
+  background-size: 100%;
+}
+/*-webkit-animation-name:loading;
+ animation-name:loading;*/
+//#pullDown.loading .pullDownIcon, #pullUp.loading .pullUpIcon {
+//	background-position:0 100%;
+//	-webkit-transform:rotate(0deg) translateZ(0);
+//			transform:rotate(0deg) translateZ(0);
+//	-webkit-transition-duration:0ms;
+//			transition-duration:0ms;
+//	-webkit-animation-duration:2s;
+//			animation-duration:2s;
+//	-webkit-animation-iteration-count:infinite;
+//			animation-iteration-count:infinite;
+//	-webkit-animation-timing-function:linear;
+//			animation-timing-function:linear;
+//}
+#pullDown.loading .pullDownIcon,
+#pullUp.loading .pullUpIcon,
+#pullDown .small-person-icon-gif,
+#pullUp .small-person-icon-gif{
+//  width: 40px;
+//  height: 40px;
+//  background: url(../../images/pushLoad.gif) 0 0 no-repeat;
+//  -webkit-background-size: 33px 40px;
+//  background-size: 33px 40px;
+
+  width: 25px;
+  height: 35px;
+  background: url(../../images/pushLoad.gif) 0 0 no-repeat;
+  background-size: 100%;
+}
+@-webkit-keyframes loading {
+	from { -webkit-transform:rotate(0deg) translateZ(0); }
+	to { -webkit-transform:rotate(360deg) translateZ(0); }
+}
+@keyframes loading {
+	from { transform:rotate(0deg) translateZ(0); }
+	to { transform:rotate(360deg) translateZ(0); }
+}
+

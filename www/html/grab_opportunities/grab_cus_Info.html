@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+
+    <title>抢小姨客户详情</title>
+
+    <!-- 样式相关 不要移动到css之下-->
+    <script src="../../js/common/FFA.js"></script>
+    <script src="../../js/common/initRootFontSize.js"></script>
+    <script src="../../js/external/zepto.min.js"></script>
+    <script src="../../js/core/detect.js"></script>
+    <link rel="stylesheet" href="../../css/base/base.css"/>
+    <link rel="stylesheet" href="../../css/component/component.css"/>
+    <link rel="stylesheet" href="../../css/page/grab_opportunities/grab_cus_info.css"/>
+</head>
+<body>
+    <!-- body元素上设备标识class加入 写前边避免页面重绘-->
+    <!--<script src="../../js/page/frame/frame_UIInit.js"></script>-->
+
+    <!-- header-->
+    <header class="header">
+        <span class="header-btn header-left-btn icon-left-arrow js-back-btn"></span>
+        <h1 class="header-title js-header-title" id="title">抢小姨客户详情</h1>
+    </header>
+    <!--content-->
+    <div class="content" id="page-customer">
+        <!--客户简介-->
+        <div id="customerInfoContainer" class="cus-info">
+        </div>
+        <script type="text/template" id="customerInfoContent">
+            <div class="cus-info-con">
+                <div class="cus-info-top">
+                    <%if(cusApply.customerGender == '0'){
+                    %>
+                    <span class="label-left customer-image customer_sex1"></span>
+                    <%}%>
+                    <%if(cusApply.customerGender == '1'){
+                    %>
+                    <span class="label-left customer-image customer_sex0"></span>
+                    <%}%>
+                    <%if(cusApply.customerGender == '2'){
+                    %>
+                    <span class="label-left customer-image customer_sex2"></span>
+                    <%}%>
+                    <span class="label-right customer-content">
+                        <div class="label-right-top">
+                            <span class="label-left">
+                                <span class="customer_name"><%=cusApply.customerName%></span>
+                                <%if(cusApply.preheatTime != '0'){
+                                %>
+                                <span class="icon-sale_type01 sale-type"></span>
+                                <%}%>
+                                <%if(cusApply.discount == '1'|| cusApply.discount == '2'|| cusApply.discount == '3'|| cusApply.discount == '4'|| cusApply.discount == '5'|| cusApply.discount == '6'|| cusApply.discount == '7'|| cusApply.discount == '8' || cusApply.discount == '9'){%>
+                                <span class="icon-discount discount"></span>
+                                <%}%>
+                            </span>
+                            <span class="block-right">
+                                <%if(cusApply.discount == '1'|| cusApply.discount == '2'|| cusApply.discount == '3'|| cusApply.discount == '4'|| cusApply.discount == '5'|| cusApply.discount == '6'|| cusApply.discount == '7'|| cusApply.discount == '8' || cusApply.discount == '9'){%>
+                                <span class="business-num2"><span class="current-price"><%= cusApply.currentPrice%></span>币</span><span class="business-num1 noslae"><%= cusApply.price%>币</span>
+                                <%} else {%>
+                                <span class="business-num2"><span class="current-price"><%= cusApply.price%></span>币</span>
+                                <%}%>
+                            </span>
+                        </div>
+                        <div class="customer-info">
+                            <%if(cusApply.profession == null){
+                            %>
+                                <span class="business-num1">未知</span>
+                            <%}
+                            else {
+                            %>
+                                <%if(cusApply.loanType == '1'){
+                                %>
+                                <span class="customer-type icon-load_type02"></span>
+                                <%}%>
+                                <%if(cusApply.loanType == '2'){
+                                %>
+                                <span class="customer-type icon-load_type01"></span>
+                                <%}%>
+                                <%if(cusApply.loanType == '5'){
+                                %>
+                                <span class="customer-type icon-load_type3"></span>
+                                <%}%>
+                                <%if(cusApply.loanType == null){
+                                %>
+                                <span class="customer-type customer-type3">未知</span>
+                                <%}%>
+                                <%if(cusApply.amountExpected == null){
+                                %>
+                                <span class="business-discount">未知</span>
+                                <%}
+                                else {
+                                %>
+                                <span class="business-discount"><b class="sum-num">贷款<%=cusApply.amountExpected%></b>万元</span>
+                                <%}%>
+                                <span class="customer-position"><%= cusApply.profession %></span>
+                            <%}%>
+                        </div>
+                    </span>
+                </div>
+                <button class="btn-desabled"><h3></h3>抢</button>
+            </div>
+        </script>
+        <!--客户基本信息-->
+        <div id="cus_info_swipe-container" class="cus_info_swipe">
+            <div id="cusInfoList" class="cus-info-list">
+                <div class="content-lists">
+                    <div class="content-list base_info">
+                        <h2 class="list-h2 contentlist-type1"><span class="con-icon-type2 icon-cus_list_type01"></span>客户基本信息</h2>
+                        <ul class="com-list-a" id="customer-base-info">
+                        </ul>
+                        <script type="text/template" id="customerBaseInfo">
+                            <li>
+                                <span class="block-left">
+                                    <label><%= CustomerBaseInfo.name %></label>
+                                </span>
+                                <span class="block-right">
+                                    <%if(CustomerBaseInfo.value == null){%>
+                                    <span>未知</span>
+                                    <%} else {%>
+                                    <span><%= CustomerBaseInfo.value %></span>
+                                    <%}%>
+                                </span>
+                            </li>
+                        </script>
+                    </div>
+                    <!--信贷资质-->
+                    <div class="content-list certificate">
+                        <h2 class="list-h2 contentlist-type2"><span class="con-icon-type1 icon-cus_list_type02"></span>信贷资质</h2>
+                        <ul class="com-list-a" id="credit-certificate">
+                        </ul>
+                        <script type="text/template" id="creditCertificate">
+                            <li>
+                                <span class="block-left">
+                                    <label><%= CreditCertificate.name%></label>
+                                </span>
+                                <span class="block-right">
+                                    <%if(CreditCertificate.value == null || CreditCertificate.value == '2'){%>
+                                    <span>未知</span>
+                                    <%} else if(CreditCertificate.value == 0){%>
+                                    <span>否</span>
+                                    <%} else if(CreditCertificate.value == 1){%>
+                                    <span>是</span>
+                                    <%} else {%>
+                                    <span><%= CreditCertificate.value %></span>
+                                    <%}%>
+                                </span>
+                            </li>
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../../js/external/zepto.min.js"></script>
+<script src="../../js/external/underscore-min.js"></script>
+<script src="../../js/external/swipe.js"></script>
+<script src="../../js/external/indexeddbshim.min.js"></script>
+<script src="../../js/external/iscroll.js"></script>
+<script src="../../js/external/fastclick.js"></script>
+<script src="../../js/external/polyfill.js"></script>
+<script src="../../js/common/strings.js"></script>
+<script src="../../js/common/http_response.js"></script>
+<script src="../../js/common/ajax_common.js"></script>
+<script src="../../js/common/utils.js"></script>
+<script src="../../js/common/json_conversion.js"></script>
+
+<script src="../../js/common/hashmap.js"></script>
+<script src="../../js/common/exitapp.js"></script>
+<script src="../../js/common/local_storage_utils.js"></script>
+
+<script src="../../js/callback/http/mine_micro_shop_callback.js"></script>
+<script src="../../js/common/download_pic.js"></script>
+<script src="../../js/common/component/popup.js"></script>
+<script src="../../js/common/toast_utils.js"></script>
+<script src="../../js/common/config.js"></script>
+
+
+<!--客户页面js-->
+<script src="../../js/common/indexedDBDAO.js"></script>
+<script src="../../js/callback/http/mine_callback.js"></script>
+<script src="../../js/callback/http/mine_rate_callback.js"></script>
+<script src="../../js/common/constant.js"></script>
+<script src="../../js/callback/http/exit_callback.js"></script>
+<script src="../../js/callback/http/hot_spot_query_callback.js"></script>
+<script src="../../js/common/exit_system.js"></script>
+<script src="../../js/callback/http/check_version_callback.js"></script>
+<script src="../../js/common/offline.js"></script>
+<script src="../../js/common/pause.js"></script>
+<script src="../../js/common/resume.js"></script>
+<script src="../../js/common/cell_info_dao.js"></script>
+<script src="../../js/common/statistics_utils.js"></script>
+<script src="../../js/common/date_utils.js"></script>
+<script src="../../js/common/template_list_utils.js"></script>
+<script src="../../js/callback/http/frame_no_read_templete_callback.js"></script>
+<script src="../../js/page/grab_opportunities/qiang_servies.js"></script>
+
+<script src="../../js/page/grab_opportunities/grab_timetab.js"></script>
+<script src="../../js/page/grab_opportunities/grab_cus_info.js"></script>
+
+</html>

@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>指尖金融家-客户详情</title>
+    <script src="../../js/common/FFA.js"></script>
+    <script src="../../js/common/initRootFontSize.js"></script>
+    <script src="../../js/external/zepto.min.js"></script>
+    <script src="../../js/core/detect.js"></script>
+    <link rel="stylesheet" href="../../css/base/base.css"/>
+    <link rel="stylesheet" href="../../css/component/component.css"/>
+    <link rel="stylesheet" href="../../css/page/customer/customerInfo.css"/>
+</head>
+<body>
+<header class="js-header header">
+    <span class="header-btn header-left-btn icon-left-arrow js-back-saler"></span>
+    <span class="header-title" id="title"></span>
+</header>
+
+
+<div class="content customerDetailFrame">
+    <!--详情-->
+    <div class="js-customerInfo modify">
+        <div class="com-tab-btn-group-c">
+            <a class="com-tab-btn js-tab-btn">基本资料</a>
+            <a class="com-tab-btn js-tab-btn"><span>详细资料</span></a>
+            <a class="com-tab-btn js-tab-btn"><span>跟进记录</span></a>
+        </div>
+
+        <div id="swipe-container" class='swipe'>
+            <div class='swipe-wrap'>
+                <div class="swipe-innerBox" style="width: 100%;">
+                    <!--基本资料-->
+                    <div class="">
+                        <div id="customerInfoContainer">
+
+                        </div>
+                        <script type="text/template" id="customerInfoContent">
+                            <% var Utils = FFA.namespace("Utils"); %>
+                            <div class="customerInfo">
+                                <ul class="js-customerInfo-container com-list-a">
+                                    <li id="reName" class="js-modifiable spanRight">
+                                        <span class="block-left block-left-width">
+                                            <label>姓名</label>
+                                        </span>
+                                        <span class="block-right float-middle" id="customerInfo-name">
+                                            <span id="cusName"><%= customerData.cusName %></span>
+                                        </span>
+                                    </li>
+                                    <li id="reRemarks" class="js-modifiable spanRight">
+                                        <span class="block-left block-left-width">
+                                            <label>备注</label>
+                                        </span>
+                                        <span class="block-right float-middle" id="customerInfo-remark">
+                                            <span id="remarks"><%= customerData.remarks %></span>
+                                        </span>
+                                    </li>
+                                    <li id="position" class="js-modifiable spanDetailRight">
+                                        <span class="block-left block-left-width"><label>城市</label></span>
+
+                                            <span class="block-right float-middle">
+                                                <%if(customerData.position === '' || customerData.position == null || customerData.position == "null"){
+                                                    customerData.position = '未知';
+                                                }%>
+                                                <span><%= customerData.position%></span>
+                                            </span>
+                                    </li>
+
+
+                                    <li id="reOccupy" class="spanRight">
+                                        <span class="block-left block-left-width">
+                                            <label>占坑状态</label>
+                                        </span>
+                                        <span id="occupy_tag" class="block-right float-middle">
+                                            <%if(customerData.occupy === '01'){
+                                                customerData.occupy = '占坑中';
+                                            }else if(customerData.occupy === '02'){
+                                                customerData.occupy = '未占坑';
+                                            }else if(customerData.occupy === '03'){
+                                                customerData.occupy = '占坑失败';
+                                            }else if(customerData.occupy === '04'){
+                                                customerData.occupy = '占坑已过保护期';
+                                            }%>
+                                            <span id="occupy"><%= customerData.occupy %></span>
+                                        </span>
+                                    </li>
+                                    <li id="reCusState" class="spanRight">
+                                        <span class="block-left block-left-width">
+                                            <label>客户状态</label>
+                                        </span>
+                                        <span id="cus_state" class="block-right float-middle">
+                                            <span id="cusState"><%= customerData.cusState %></span>
+                                        </span>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </script>
+                    </div>
+                </div>
+                <div class="swipe-innerBox " style="width: 100%;" >
+                    <!--详细资料-->
+                    <div class="">
+                        <div id="customerDetailInfoContainer">
+
+                        </div>
+                        <script type="text/template" id="customerDetailInfoContent">
+                            <% var Utils = FFA.namespace("Utils"); %>
+                            <div class="js-customer-detail-info">
+                                <ul class="js-customerDetailInfo-container com-list-a">
+                                    <li class="spanDetailRight">
+                                        <span class="block-left block-left-width2"><label>客户来源</label></span>
+                                            <span class="block-right float-middle">
+                                                <% var cusSourceNew = ""; %>
+                                                <%if(customerDetailData.cusSource === '01'){
+                                                    cusSourceNew = '手动录入';
+                                                }else if(customerDetailData.cusSource === '02'){
+                                                    cusSourceNew = '网上展业';
+                                                }else if(customerDetailData.cusSource === '03'
+                                                || customerDetailData.cusSource === '13'
+                                                || customerDetailData.cusSource === '23'
+                                                || customerDetailData.cusSource === '43'
+                                                || customerDetailData.cusSource === '53'){
+                                                    cusSourceNew = '抢小姨';
+                                                }else if(customerDetailData.cusSource === '04'){
+                                                    cusSourceNew = '我的微店';
+                                                }else if(customerDetailData.cusSource === '05'){
+                                                    cusSourceNew = '安布雷拉';
+                                                }else if(customerDetailData.cusSource === '06'){
+                                                    cusSourceNew = '其它';
+                                                }else if(customerDetailData.cusSource === '07'
+                                                || customerDetailData.cusSource === '09'){
+                                                    cusSourceNew = '微信';
+                                                }else if(customerDetailData.cusSource === '08'){
+                                                    cusSourceNew = '我的名片';
+                                                }%>
+                                                <span><%= cusSourceNew %></span>
+                                            </span>
+                                    </li>
+                                    <li id="reGender" class="js-modifiable spanRight">
+                                        <span class="block-left block-left-width2">
+                                            <label>性别</label>
+                                        </span>
+                                        <%if(customerDetailData.gender === '01'){
+                                            customerDetailData.gender = '男';
+                                        }else if(customerDetailData.gender === '02'){
+                                            customerDetailData.gender = '女';
+                                        }else{
+                                            customerDetailData.gender = '未知';
+                                        }%>
+                                        <span class="block-right float-middle">
+                                            <span id="gender"><%= customerDetailData.gender%></span>
+                                        </span>
+                                    </li>
+                                    <li id="fundDemand" class="js-modifiable spanDetailRight">
+                                        <span class="block-left block-left-width2"><label>资金需求</label></span>
+
+                                            <span class="block-right float-middle">
+                                                <span><%= customerDetailData.fundDemand %>
+                                                    <%if(customerDetailData.fundDemand){%>
+                                                        万元
+                                                    <%}%>
+                                                </span>
+                                            </span>
+                                    </li>
+                                    <li id="carHouseGarage" class="js-modifiable spanDetailRight">
+                                        <span class="block-left block-left-width2"><label>车房情况</label></span>
+
+                                            <span class="block-right float-middle">
+                                                <%if(customerDetailData.carGarage === '01' && customerDetailData.houseGarage === '01'){
+                                                    customerDetailData.houseGarage = '有车有房';
+                                                }else if(customerDetailData.carGarage === '01'&& (customerDetailData.houseGarage === '02'
+                                                || customerDetailData.houseGarage === '' || customerDetailData.houseGarage == null || customerDetailData.houseGarage == "null")){
+                                                    customerDetailData.houseGarage = '有车';
+                                                }else if((customerDetailData.carGarage === '02' || customerDetailData.carGarage === ''
+                                                || customerDetailData.carGarage == null || customerDetailData.carGarage == "null") && customerDetailData.houseGarage === '01'){
+                                                    customerDetailData.houseGarage = '有房';
+                                                }else if(customerDetailData.carGarage === '02'&& customerDetailData.houseGarage === '02'){
+                                                    customerDetailData.houseGarage = '无房无车';
+                                                }else{
+                                                    customerDetailData.houseGarage = '未知';
+                                                }%>
+                                                <span><%= customerDetailData.houseGarage%></span>
+                                            </span>
+                                    </li>
+                                    <%if(customerDetailData.houseGarage === '有车有房' || customerDetailData.houseGarage === '有车' ){%>
+                                        <li id="carAppraisal" class="js-modifiable displayNone spanDetailRight">
+                                            <span class="block-left block-left-width2"><label>车辆自估价</label></span>
+
+                                                <span class="block-right float-middle">
+                                                    <span><%= customerDetailData.carAppraisal %></span>
+                                                    <%if(customerDetailData.carAppraisal){%>
+                                                        万元
+                                                    <%}%>
+                                                </span>
+                                        </li>
+                                        <li id="isMortgageCar" class="js-modifiable displayNone spanDetailRight">
+                                            <span class="block-left block-left-width2"><label>是否接受押车</label></span>
+
+                                            <span class="block-right float-middle">
+                                                <%if(customerDetailData.isMortgageCar === '01'){
+                                                    customerDetailData.isMortgageCar = '是';
+                                                }else if(customerDetailData.isMortgageCar === '02'){
+                                                    customerDetailData.isMortgageCar = '否';
+                                                }else if(customerDetailData.isMortgageCar === '03'){
+                                                    customerDetailData.isMortgageCar = '未知';
+                                                }%>
+                                                <span><%= customerDetailData.isMortgageCar %></span>
+                                            </span>
+                                        </li>
+                                    <%}%>
+                                    <%if(customerDetailData.houseGarage === '有车有房' || customerDetailData.houseGarage === '有房' ){%>
+                                        <li id="houseAppraisal" class="js-modifiable displayNone spanDetailRight">
+                                            <span class="block-left block-left-width2"><label>房屋自估价</label></span>
+
+                                                <span class="block-right float-middle">
+                                                    <span><%= customerDetailData.houseAppraisal %></span>
+                                                    <%if(customerDetailData.houseAppraisal){%>
+                                                        万元
+                                                    <%}%>
+                                                </span>
+                                        </li>
+                                        <li id="houseMortgage" class="js-modifiable displayNone spanDetailRight">
+                                            <span class="block-left block-left-width2"><label>房屋抵押情况</label></span>
+
+                                                <span class="block-right float-middle">
+                                                    <%if(customerDetailData.houseMortgage === '01'){
+                                                        customerDetailData.houseMortgage = '一抵';
+                                                    }else if(customerDetailData.houseMortgage === '02'){
+                                                        customerDetailData.houseMortgage = '二抵';
+                                                    }else{
+                                                        customerDetailData.houseMortgage = '未知';
+                                                    }%>
+                                                    <span><%= customerDetailData.houseMortgage %></span>
+                                                </span>
+                                        </li>
+                                        <%if(customerDetailData.houseMortgage === '二抵'){%>
+                                        <li id="firstLoanAmount" class="js-modifiable displayNone spanDetailRight">
+                                            <span class="block-left block-left-width2"><label>一抵贷款金额</label></span>
+
+                                            <span class="block-right float-middle">
+                                                <span><%= customerDetailData.firstLoanAmount %></span>
+                                                    <%if(customerDetailData.firstLoanAmount){%>
+                                                    万元
+                                                    <%}%>
+                                                </span>
+                                        </li>
+                                        <%}%>
+                                    <%}%>
+                                    <li id="jobType" class="js-modifiable spanDetailRight">
+                                        <span class="block-left block-left-width2"><label>职业类型</label></span>
+
+                                            <span class="block-right float-middle">
+                                                <%if(customerDetailData.jobType === '01'){
+                                                    customerDetailData.jobType = '上班族';
+                                                }else if(customerDetailData.jobType === '02'){
+                                                    customerDetailData.jobType = '生意人';
+                                                }else if(customerDetailData.jobType === '03'){
+                                                    customerDetailData.jobType = '其它';
+                                                }else{
+                                                    customerDetailData.jobType = '未知';
+                                                }%>
+                                                <span><%= customerDetailData.jobType %></span>
+                                            </span>
+                                    </li>
+                                    <li id="payrollInfo" class="js-modifiable spanDetailRight">
+                                        <span class="block-left block-left-width2"><label>工资发放形式</label></span>
+
+                                            <span class="block-right float-middle">
+                                                <%if(customerDetailData.payrollInfo === '01'){
+                                                    customerDetailData.payrollInfo = '打卡工资';
+                                                }else if(customerDetailData.payrollInfo === '02'){
+                                                    customerDetailData.payrollInfo = '现金发薪';
+                                                }else if(customerDetailData.payrollInfo === '03'){
+                                                    customerDetailData.payrollInfo = '其它';
+                                                }else{
+                                                    customerDetailData.payrollInfo = '未知';
+                                                }%>
+                                                <span><%= customerDetailData.payrollInfo %></span>
+                                            </span>
+                                    </li>
+                                    <li id="intentProduct" class="js-modifiable spanDetailRight">
+                                        <span class="block-left block-left-width2"><label>意向产品</label></span>
+
+                                            <span class="block-right float-middle">
+                                                <%if(customerDetailData.intentProduct === '01'){
+                                                    customerDetailData.intentProduct = '信贷';
+                                                }else if(customerDetailData.intentProduct === '02'){
+                                                    customerDetailData.intentProduct = '车贷';
+                                                }else if(customerDetailData.intentProduct === '03'){
+                                                    customerDetailData.intentProduct = '房贷';
+                                                }else{
+                                                    customerDetailData.intentProduct = '未知';
+                                                }%>
+                                                <span><%= customerDetailData.intentProduct %></span>
+                                            </span>
+                                    </li>
+                                    <li id="paymentTime" class="js-modifiable spanDetailRight">
+                                        <span class="block-left block-left-width2"><label>用款时间</label></span>
+
+                                            <span class="block-right float-middle">
+                                                <%if(customerDetailData.paymentTime === '01'){
+                                                    customerDetailData.paymentTime = '3个月';
+                                                }else if(customerDetailData.paymentTime === '02'){
+                                                    customerDetailData.paymentTime = '6个月';
+                                                }else if(customerDetailData.paymentTime === '03'){
+                                                    customerDetailData.paymentTime = '9个月';
+                                                }else if(customerDetailData.paymentTime === '04'){
+                                                    customerDetailData.paymentTime = '12个月';
+                                                }else if(customerDetailData.paymentTime === '05'){
+                                                    customerDetailData.paymentTime = '24个月';
+                                                }else if(customerDetailData.paymentTime === '06'){
+                                                    customerDetailData.paymentTime = '36个月';
+                                                }else{
+                                                    customerDetailData.paymentTime = '未知';
+                                                }%>
+                                                <span><%= customerDetailData.paymentTime %></span>
+                                            </span>
+                                    </li>
+                                    <li id="isLoans" class="js-modifiable spanDetailRight">
+                                        <span class="block-left block-left-width2"><label>是否办理过贷款</label></span>
+
+                                            <span class="block-right float-middle">
+                                                <%if(customerDetailData.isLoans === '01'){
+                                                    customerDetailData.isLoans = '无';
+                                                }else if(customerDetailData.isLoans === '02'){
+                                                    customerDetailData.isLoans = '有，已还清';
+                                                }else if(customerDetailData.isLoans === '03'){
+                                                    customerDetailData.isLoans = '有，未还清';
+                                                }else if(customerDetailData.isLoans === '04'){
+                                                    customerDetailData.isLoans = '其它';
+                                                }else{
+                                                    customerDetailData.isLoans = '未知';
+                                                }%>
+                                                <span><%= customerDetailData.isLoans %></span>
+                                            </span>
+                                    </li>
+                                    <li id="isCreditCard" class="js-modifiable spanDetailRight">
+                                        <span class="block-left block-left-width2"><label>是否有信用卡</label></span>
+
+                                            <span class="block-right float-middle">
+                                                <%if(customerDetailData.isCreditCard === '01'){
+                                                    customerDetailData.isCreditCard = '有';
+                                                }else if(customerDetailData.isCreditCard === '02'){
+                                                    customerDetailData.isCreditCard = '无';
+                                                }else{
+                                                    customerDetailData.isCreditCard = '未知';
+                                                }%>
+                                                <span><%= customerDetailData.isCreditCard %></span>
+                                            </span>
+                                    </li>
+                                    <%if(customerDetailData.isCreditCard === '有'){%>
+                                        <li id="creditCardLimit" class="js-modifiable displayNone spanDetailRight">
+                                            <span class="block-left block-left-width2"><label>信用卡额度</label></span>
+
+                                                <span class="block-right float-middle">
+                                                    <span><%= customerDetailData.creditCardLimit %></span>
+                                                    <%if(customerDetailData.creditCardLimit){%>
+                                                    元
+                                                    <%}%>
+                                                </span>
+                                        </li>
+                                    <%}%>
+                                    <li id="isMarried" class="js-modifiable displayNone spanDetailRight">
+                                        <span class="block-left block-left-width2"><label>是否已婚</label></span>
+
+                                            <span class="block-right float-middle">
+                                                <%if(customerDetailData.isMarried === '01'){
+                                                    customerDetailData.isMarried = '已婚';
+                                                }else if(customerDetailData.isMarried === '02'){
+                                                    customerDetailData.isMarried = '未婚';
+                                                }else if(customerDetailData.isMarried === '03'){
+                                                    customerDetailData.isMarried = '离异';
+                                                }else if(customerDetailData.isMarried === '04'){
+                                                    customerDetailData.isMarried = '丧偶';
+                                                }else{
+                                                    customerDetailData.isMarried  = '未知';
+                                                }%>
+                                                <span><%= customerDetailData.isMarried %></span>
+                                            </span>
+                                    </li>
+                                    <%if(customerDetailData.isMarried === '已婚' || customerDetailData.isMarried === '离异' || customerDetailData.isMarried === '丧偶'){%>
+                                        <li id="isHaveChildren" class="js-modifiable displayNone spanDetailRight">
+                                            <span class="block-left block-left-width2"><label>是否有孩子</label></span>
+
+                                                <span class="block-right float-middle">
+                                                    <%if(customerDetailData.isHaveChildren === '01'){
+                                                        customerDetailData.isHaveChildren = '有';
+                                                    }else if(customerDetailData.isHaveChildren === '02'){
+                                                        customerDetailData.isHaveChildren = '无';
+                                                    }else{
+                                                        customerDetailData.isHaveChildren = '未知';
+                                                    }%>
+                                                    <span><%= customerDetailData.isHaveChildren %></span>
+                                                </span>
+                                        </li>
+                                    <%}%>
+                                    <li id="cusAge" class="js-modifiable displayNone spanDetailRight">
+                                        <span class="block-left block-left-width2"><label>年龄</label></span>
+
+                                            <span class="block-right float-middle">
+                                                <span><%= customerDetailData.cusAge %></span>
+                                                <%if(customerDetailData.cusAge){%>
+                                                岁
+                                                <%}%>
+                                            </span>
+                                    </li>
+                                    <li id="annualIncome" class="js-modifiable displayNone spanDetailRight">
+                                        <span class="block-left block-left-width2"><label>年收入</label></span>
+
+                                            <span class="block-right float-middle">
+                                                <span><%= customerDetailData.annualIncome %></span>
+                                                <%if(customerDetailData.annualIncome){%>
+                                                万元
+                                                <%}%>
+                                            </span>
+                                    </li>
+                                    <li id="acptMonPayment" class="js-modifiable displayNone spanDetailRight">
+                                        <span class="block-left block-left-width2"><label>可接受月还款</label></span>
+
+                                            <span class="block-right float-middle">
+                                                <span><%= customerDetailData.acptMonPayment %></span>
+                                                <%if(customerDetailData.acptMonPayment){%>
+                                                元
+                                                <%}%>
+                                            </span>
+                                    </li>
+                                    <li id="cusEducation" class="js-modifiable displayNone spanDetailRight">
+                                        <span class="block-left block-left-width2"><label>学历</label></span>
+
+                                            <span class="block-right float-middle">
+                                                <%if(customerDetailData.cusEducation === '01'){
+                                                    customerDetailData.cusEducation = '初中及以下';
+                                                }else if(customerDetailData.cusEducation === '02'){
+                                                    customerDetailData.cusEducation = '高中及中专';
+                                                }else if(customerDetailData.cusEducation === '03'){
+                                                    customerDetailData.cusEducation = '大专';
+                                                }else if(customerDetailData.cusEducation === '04'){
+                                                    customerDetailData.cusEducation = '本科';
+                                                }else if(customerDetailData.cusEducation === '05'){
+                                                    customerDetailData.cusEducation = '硕士';
+                                                }else if(customerDetailData.cusEducation === '06'){
+                                                    customerDetailData.cusEducation = '博士';
+                                                }else{
+                                                    customerDetailData.cusEducation = '未知';
+                                                }%>
+                                                <span><%= customerDetailData.cusEducation %></span>
+                                            </span>
+                                    </li>
+
+                                    <li id="cusCreateTime" class="displayNone">
+                                        <span class="block-left block-left-width2">
+                                            <label>创建时间</label>
+                                        </span>
+                                        <% if(customerDetailData.createTime){
+                                            customerDetailData.createTime = Utils.formatDate(customerDetailData.createTime, '/');
+                                        }else{
+                                            customerDetailData.createTime = '无';
+                                        }%>
+                                        <span class="block-right float-middle">
+                                            <span id="createTime"><%= customerDetailData.createTime %></span>
+                                        </span>
+                                    </li>
+                                    <li id="cusCommtionTime" class="displayNone">
+                                        <span class="block-left block-left-width2">
+                                            <label>最近沟通</label>
+                                        </span>
+                                        <% if(customerDetailData.commtionTime){
+                                            customerDetailData.commtionTime = Utils.formatDate(customerDetailData.commtionTime, '/');
+                                        }else{
+                                            customerDetailData.commtionTime = '无';
+                                        }%>
+                                        <span class="block-right float-middle">
+                                           <span id="commtionTime"><%= customerDetailData.commtionTime %></span>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <button class="com-middle-btn-b js-more-btn">查看更多</button>
+                        </script>
+                    </div>
+                </div>
+                <div class="swipe-innerBox" style="width: 100%;">
+                    <!--跟进记录-->
+
+                    <div class="">
+                        <!--<ul class="com-list-a">-->
+                            <!--<li>-->
+                                    <!--<span class="block-left">-->
+                                        <!--<label>跟进记录</label>-->
+                                    <!--</span>-->
+                                    <!--<span id="record-add" class="block-right">-->
+                                        <!--<span class="icon-plus">-->
+                                            <!--&lt;!&ndash;<img src="../../images/add.png"> v1.4 new year&ndash;&gt;-->
+                                        <!--</span>-->
+                                        <!--<span>添加</span>-->
+                                    <!--</span>-->
+                            <!--</li>-->
+                        <!--</ul>-->
+
+                        <ul id="customerRecordUl" class="com-list-a displayNone">
+                            <!--<li id="customerRecordContainer" class="record">
+
+                            </li>-->
+                            <!--跟进记录模板-->
+                            <script type="text/template" id="customerRecordContent">
+                                <% var Utils = FFA.namespace("Utils");
+                                %>
+                                <li class="record js-record" data-phonenumber="<%= customerRecordData.phonenumber %>" data-createtime = "<%=customerRecordData.createTime%>" data-content ="<%=customerRecordData.content%>" data-inputtime ="<%=customerRecordData.inputTime%>" data-category = "<%=customerRecordData.category%>" >
+                                    <span class="block-left js-info record-circle <%= customerRecordData.category === '01'? 'phone-circle': customerRecordData.category==='02'? 'cup-circle':'home-circle'%>">
+                                            <span class="avatar <%= customerRecordData.category === '01'? 'icon-tel1': customerRecordData.category==='02'? 'icon-cup':'icon-home'%>"></span>
+                                     </span>
+                                    <span class="recordInfo">
+                                             <div class="record-time">
+                                                 <span><%= Utils.formatDate(Utils.getMillisecond(customerRecordData.inputTime),"/",2) %></span>
+                                                 <span><%= Utils.formatTime(Utils.getMillisecond(customerRecordData.inputTime),":",2) %></span>
+                                             </div>
+                                            <div class="record-remark"><%= customerRecordData.content%></div>
+                                    </span>
+                                </li>
+                            </script>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--跳转页面输入框模板-->
+    <div id="inputInfoContainer">
+
+    </div>
+    <script type="text/template" id="inputTemplate">
+        <div class="js-emptiableinput-wrapper com-emptiableinput-wrapper empty">
+            <input id="id-input" class="<%= data.inputClass%>" type="text" maxlength="<%= data.maxLength%>" value="<%= data.value%>">
+            <span></span>
+        </div>
+        <p class="js-cdetail-tip-id customerInfo-tip"><%= data.tip%></p>
+        <button class="js-customer-sub-btn com-middle-btn-a"><%= data.button%></button>
+        <% if(data.customerInfoMore){ %>
+        <p class="customerInfo-tip">
+            <span><%= data.customerInfoMore.title%></span><br/>
+            <%for(var i=0; i < data.customerInfoMore.list.length; i++){%>
+                <%= i+1%>、<%= data.customerInfoMore.list[i] %><br>
+            <%}%>
+            <%= data.customerInfoMore.refer%>
+        </p>
+        <%}%>
+    </script>
+
+    <!--跳转页面选择框模板-->
+    <div id="chooseInfoContainer">
+
+    </div>
+    <script type="text/template" id="chooseInfoTemplate">
+        <ul class="js-check-ul com-check-list-a">
+            <li data-gender="<%= chooseData.number%>">
+                <span class="block-left">
+                    <label><%= chooseData.list[0]%></label>
+                </span>
+            </li>
+            <% for(var i=0; i < chooseData.list.length-1; i++){%>
+                <li data-gender="0<%= i+1%>">
+                    <span class="block-left">
+                        <label><%= chooseData.list[i+1]%></label>
+                    </span>
+                </li>
+            <%}%>
+        </ul>
+    </script>
+</div>
+
+<!--删除客户弹出框模板-->
+<script type="text/template" id="deleteCustomerPopupContent">
+    <form name="deleteCustomerForm">
+        <div class="com-checkbox-con">
+            <input class="com-checkbox com-checkbox-anim" id="delReason1" name="deleteReason" type="radio" checked value="号码不通">
+            <label class="js-deleteCustomerLabel" for="delReason1">号码不通</label>
+        </div>
+        <div class="com-checkbox-con" >
+            <input class="com-checkbox com-checkbox-anim" id="delReason2" name="deleteReason" type="radio" value="外地客户">
+            <label class="js-deleteCustomerLabel" for="delReason2">外地客户</label>
+        </div>
+        <div class="com-checkbox-con">
+            <input class="com-checkbox com-checkbox-anim" id="delReason3" name="deleteReason" type="radio" value="无贷款需求">
+            <label class="js-deleteCustomerLabel" for="delReason3">无贷款需求</label>
+        </div>
+        <div class="com-checkbox-con">
+            <input class="com-checkbox com-checkbox-anim" id="delReason4" name="deleteReason" type="radio" value="other">
+            <label class="js-deleteCustomerLabel" for="delReason4">其他原因</label>
+            <input class="other-reason-input js-otherReasonInput" name="otherReason" type="text">
+        </div>
+    </form>
+</script>
+
+<script src="../../cordova.js"></script>
+<script src="../../js/external/fastclick.js"></script>
+<script src="../../js/external/underscore-min.js"></script>
+<script src="../../js/external/indexeddbshim.min.js"></script>
+<script src="../../js/external/swipe.js"></script>
+
+<script src="../../js/common/constant.js"></script>
+<script src="../../js/common/config.js"></script>
+<script src="../../js/common/utils.js"></script>
+<script src="../../js/common/indexedDBDAO.js"></script>
+<script src="../../js/common/strings.js"></script>
+<script src="../../js/common/exit_system.js"></script>
+<script src="../../js/callback/http/check_version_callback.js"></script>
+<script src="../../js/common/http_response.js"></script>
+<script src="../../js/common/ajax_common.js"></script>
+<script src="../../js/common/json_conversion.js"></script>
+<script src="../../js/common/local_storage_utils.js"></script>
+<script src="../../js/common/offline.js"></script>
+<script src="../../js/common/pause.js"></script>
+<script src="../../js/common/resume.js"></script>
+
+<!--弹窗类-->
+<script src="../../js/common/component/popup.js"></script>
+<script src="../../js/common/component/input.js"></script>
+
+<script src="../../js/page/saler/saler_cus_service.js"></script>
+<script src="../../js/page/saler/saler_cus_model.js"></script>
+<script src="../../js/page/saler/saler_cus_controller.js"></script>
+
+<script src="../../js/page/team/model.js"></script>
+
+
+<script src="../../js/page/saler/saler_cus_detail_ctrl.js"></script>
+<script src="../../js/page/saler/saler_cus_detail.js"></script>
+<!--2015-7-7 wangjunbao-->
+<script src="../../js/callback/http/exit_callback.js"></script>
+<script src="../../js/common/hashmap.js"></script>
+<!--2015-7-7 wangjunbao-->
+
+</body>
+</html>

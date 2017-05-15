@@ -1,0 +1,265 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>我的名片</title>
+
+
+    <script src="../../js/common/FFA.js"></script>
+    <script src="../../js/common/initRootFontSize.js"></script>
+    <script src="../../js/external/modernizr-min.js"></script>
+
+    <link rel="stylesheet" href="../../css/base/base.css"/>
+    <link rel="stylesheet" href="../../css/component/component.css"/>
+    <link rel="stylesheet" href="../../css/page/exhibit/share.css"/>
+    <script type="text/javascript" src="../../js/common/toast_utils.js"></script>
+    <script type="text/javascript" src="../../cordova.js"></script>
+    <script type="text/javascript" src="../../js/page/exhibit/exh_share.js"></script>
+    <script src="../../js/common/config.js"></script>
+    <script type="text/javascript" src="../../js/page/exhibit/exh_qq_share.js"></script>
+    <script type="text/javascript" src="../../js/page/exhibit/exh_weiBo.js"></script>
+    <script type="text/javascript" src="../../js/common/strings.js"></script>
+    <script type="text/javascript" src="../../js/external/fastclick.js"></script>
+    <script type="text/javascript" src="../../js/external/zepto.min.js"></script>
+    <script type="text/javascript" src="../../js/core/detect.js"></script>
+    <script type="text/javascript" src="../../js/common/main.js"></script>
+    <script type="text/javascript" src="../../js/common/parse_url.js"></script>
+    <script type="text/javascript" src="../../js/common/utils.js"></script>
+    <script src="../../js/common/exit_system.js"></script>
+    <script type="text/javascript" src="../../js/callback/http/check_version_callback.js"></script>
+    <script type="text/javascript" src="../../js/common/ajax_common.js"></script>
+    <script type="text/javascript" src="../../js/common/hashmap.js"></script>
+    <script type="text/javascript" src="../../js/callback/http/statistics_callback.js"></script>
+    <script type="text/javascript" src="../../js/common/http_response.js"></script>
+    <script type="text/javascript" src="../../js/external/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../../js/common/local_storage_utils.js"></script>
+    <script type="text/javascript" src="../../js/page/exhibit/exh_share.js"></script>
+    <script type="text/javascript" src="../../js/common/constant.js"></script>
+    <script type="text/javascript" src="../../js/common/json_conversion.js"></script>
+    <script type="text/javascript" src="../../js/common/offline.js"></script>
+    <script type="text/javascript" src="../../js/common/pause.js"></script>
+    <script type="text/javascript" src="../../js/common/resume.js"></script>
+    <script type="text/javascript" src="../../js/external/indexeddbshim.min.js"></script>
+    <script type="text/javascript" src="../../js/common/component/popup.js"></script>
+    <script type="text/javascript" src="../../js/external/jquery.qrcode.js"></script>
+    <script type="text/javascript" src="../../js/external/qrcode.js"></script>
+
+    <!--2015-7-7 wangjunbao-->
+    <script src="../../js/callback/http/exit_callback.js"></script>
+    <script src="../../js/common/statistics_utils.js"></script>
+    <script src="../../js/common/date_utils.js"></script>
+    <script src="../../js/common/local_storage_utils.js"></script>
+    <!--2015-7-7 wangjunbao-->
+
+    <script type="text/javascript">
+        ;(function(FFA){
+
+
+        $(document).ready(function () {
+
+            var Components = FFA.namespace("Components");
+            var loading = FFA.Components.Popup.Loading('A', {
+                //withMask: 'A'   //蒙层类型
+            });
+
+            var share;
+            var parseUrl;
+            var statistics;
+            var dateUtils;
+            document.addEventListener("deviceready", function () {
+                var url = get(me_micro_shop);
+                share = new Share();
+                parseUrl = new ParseUrl();
+                var urlLink = parseUrl.spliteUrlLink(url);
+                var map = parseUrl.spliteURL(url);
+                var html_height = document.body.scrollHeight - 45;
+                var iframe = "<iframe id=\"content_url\" style=\"position: absolute;right:0px;left: 0px;\"src=\"" + url + "\" width=\"100%\"  height=\"" + html_height + "px\"></iframe>";
+                $(".js-content").html(iframe);
+
+
+                var ifrObj = document.getElementById("content_url");
+                if (ifrObj.attachEvent) {
+                    ifrObj.attachEvent("onload", function() {
+                        //以下操作必须在iframe加载完后才可进行
+                        loading.remove();
+                    });
+                } else {
+                    ifrObj.onload = function() {
+                        //以下操作必须在iframe加载完后才可进行
+                        loading.remove();
+                    };
+                }
+
+                var share_url = url;
+                var share_title = "";
+                var share_thumb = "";
+                var weiboShareUrl="";
+                statistics = new Statistics();
+                dateUtils = new DateUtils();
+                function initShareParams() {
+                    var content = window.document.getElementById("content_url");
+                    var href = content.contentWindow.location.href;
+                    var map = parseUrl.spliteURL(href);
+                    var unDecodeParams =parseUrl.unDecodeUriParams(href,false);
+                    share_url = href;
+                    share_title = map.get('title');
+                    share_thumb = map.get('imageURL');
+                    
+                    share_url=parseUrl.spliteUrlLink(href)+"?userUUID="+ map.get('userUUID')+"&productID="+map.get('productID');
+//                    share_url=parseUrl.spliteUrlLink(href)+"?userUUID="+ map.get('userUUID')+"&productID="+map.get('productID')+"&title="+unDecodeParams.get('title')+"&imageURL="+share_thumb;
+                    console.log(share_url);
+                    weiboShareUrl=parseUrl.spliteUrlLink(href)+"?userUUID="+ map.get('userUUID')+"&productID="+map.get('productID');
+                }
+
+                /**发送给好友**/
+                Zepto(".shareSession").click(function () {
+                    initShareParams();
+                    statistics.shopStatistics('1',get(user_uuid));
+                    statistics.microShopStatistics(getStatisticsData(get(user_uuid), "微信好友"));
+                    share.wxShare(Wechat.Scene.SESSION, share_url, share_title, share_thumb);
+                });
+                /**发送在朋友圈*/
+                Zepto(".shareTimeLine").click(function () {
+                    initShareParams();
+                    statistics.shopStatistics('1',get(user_uuid));
+                    statistics.microShopStatistics(getStatisticsData(get(user_uuid), "微信朋友圈"));
+                    share.wxShare(Wechat.Scene.TIMELINE, share_url, share_title, share_thumb);
+                });
+                /**复制链接*/
+                Zepto(".copy_link").click(function () {
+                    share.hideShareDialog();
+                    initShareParams();
+                    statistics.microShopStatistics(getStatisticsData(get(user_uuid), "复制链接"));
+                    cordova.plugins.clipboard.copy(share_url);
+                    var toast = new ToastUtils();
+                    toast.showToast('链接复制成功', 3000);
+                });
+                /*分享到qq好友*/
+                Zepto(".qq_friends").click(function () {
+                    initShareParams();
+                    statistics.shopStatistics('2',get(user_uuid));
+                    statistics.microShopStatistics(getStatisticsData(get(user_uuid), "QQ好友"));
+                    share.shareToQQ(share_url, share_title, share_thumb);
+                });
+                /**分享到空间*/
+                Zepto(".qq_friends_line").click(function () {
+                    initShareParams();
+                    statistics.shopStatistics('2',get(user_uuid));
+                    statistics.microShopStatistics(getStatisticsData(get(user_uuid), "QQ空间"));
+                     share.shareToQzone(share_url, share_title, share_thumb);
+                });
+                /*分享到微博*/
+                Zepto(".sina_weiBo").click(function () {
+                    initShareParams();
+                    statistics.shopStatistics('2',get(user_uuid));
+                    statistics.microShopStatistics(getStatisticsData(get(user_uuid), "微博"));
+                    share.shareToWeibo(weiboShareUrl, share_title, share_thumb);
+                });
+                /**生成二维码*/
+                Zepto(".qr_code").click(function () {
+                    initShareParams();
+                    jQuery('#qrcodeCanvas').qrcode({
+                        text: weiboShareUrl
+                    });
+                    popup.showQrcode();
+                });
+            }, true);
+            function getStatisticsData(userId, shareChannel) {
+                var data = {
+                    id: dateUtils.getTime(),
+                    time: dateUtils.getYMD(),
+                    share_channel: shareChannel,
+                    user_id: userId
+                };
+                return data;
+            }
+        });
+        })(FFA);
+    </script>
+</head>
+<body>
+
+<!--<div class="pas-head marAuto share_title" style="position: fixed; top: 0px;">-->
+<!--<a href="javascript:history.back()">-->
+<!--<img src="../../images/back.png">-->
+<!--</a>-->
+<!--<span class="title" style="width: 53%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; display: block; height: 100%; margin: 0 auto;">我的微店</span>-->
+<!--<p class="share">转发</p>-->
+<!--</div>-->
+
+
+<header class="header js-header">
+    <span class="header-btn header-left-btn icon-left-arrow" onclick="history.back()"></span>
+    <span class="header-title">我的名片</span>
+    <button class="header-btn header-right-btn share">转发</button>
+</header>
+<div class="content js-content">
+
+
+</div>
+
+
+<div class="share-alt share-opt">
+</div>
+<div class="share-alt ">
+    <div class="share-response js-hide-share"></div>
+    <div class="share-con marAuto">
+        <div class="flt">
+            <ul>
+                <li class="shareSession">
+                    <img class="marAuto" src="../../images/wx.png">
+                    <p>微信好友</p>
+                </li>
+                <li class="shareTimeLine">
+                    <img class="marAuto" src="../../images/cmt.png">
+                    <p> 朋友圈</p>
+                </li>
+                <li class="qq_friends">
+                    <img class="marAuto" src="../../images/share/share-qq.png">
+                    <p>QQ好友</p>
+                </li>
+                <li class="qq_friends_line">
+                    <img class="marAuto" src="../../images/share/share-qqkongjian.png">
+                    <p> QQ空间</p>
+                </li>
+            </ul>
+        </div>
+        <div class="flt">
+            <ul>
+                <li class="sina_weiBo">
+                    <img class="marAuto" src="../../images/share/share-weibo.png">
+                    <p>微博</p>
+                </li>
+                <li class="copy_link">
+                    <img class="marAuto" src="../../images/share/share-fuzhi.png">
+                    <p>链接</p>
+                </li>
+                <li class="qr_code">
+                    <img class="marAuto" src="../../images/share/share-erweima.png">
+                    <p>二维码</p>
+                </li>
+                <li class="">
+                    <img class="marAuto" src="">
+                    <p></p>
+                </li>
+            </ul>
+        </div>
+        <div class="flt">
+            <p class="share-qx"> 取消</p>
+        </div>
+    </div>
+</div>
+
+<!--遮罩层-->
+<div class="js-popup-mask com-popup-mask-a ndis"></div>
+
+<div class="js-popup-qrcode com-popup-qrcode ndis">
+    <div id="qrcodeCanvas" style="margin:0px auto; text-align:center; padding-bottom: 0px">
+    </div>
+</div>
+</body>
+</html>

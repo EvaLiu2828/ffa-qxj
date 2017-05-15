@@ -1,0 +1,97 @@
+[
+  {
+    "//": "0修改姓名",
+    "maxLength": 10,
+    "tip": "不要超过10个汉字",
+    "button": "保存"
+  },
+  {
+    "//": "1修改备注",
+    "maxLength": 20,
+    "tip": "不要超过20个汉字",
+    "button": "保存"
+  },
+  {
+    "//": "2添加手机号",
+    "maxLength": 11,
+    "button": "保存"
+  },
+  {
+    "//": "3身份证占坑页面",
+    "maxLength": 18,
+    "value": "",
+    "tip": "输入客户身份证号就能占坑啦",
+    "button": "占坑",
+    "customerInfoMore": {
+      "title": "占坑规则:",
+      "list": [
+        "当身份证成功提交后开始计算占坑时间，占坑保护期至第二个工作日18:00",
+          "在占坑2天保护期内，无论任何人进件，佣金归占坑人所有。2天保护期外，佣金归关单人所有",
+          "占坑仅针对同城市客户，占坑人需到所属营业部为客户进件。",
+          "每一个客户仅可占坑一次，不可重复占坑，系统内已有历史客户无法占坑。"
+      ],
+      "refer": "举例：周五下午3点钟占坑成功，则在下周二下午18:00前完成进件独享佣金。"
+    }
+  },
+  {
+    "//": "4资金需求",
+    "maxLength": 4,
+    "inputClass": "js-fundDemandClass",
+    "tip": "输入值范围：1~9999，单位：万元",
+    "button": "保存"
+  },
+  {
+    "//": "5车辆自估价",
+    "maxLength": 6,
+    "inputClass": "js-carAppraisalClass",
+    "tip": "输入值范围：1~9999，单位：万元",
+    "button": "保存"
+  },
+  {
+    "//": "6房屋自估价",
+    "maxLength": 7,
+    "inputClass": "js-houseAppraisalClass",
+    "tip": "输入值范围：1~99999，单位：万元",
+    "button": "保存"
+  },
+  {
+    "//": "7一抵贷款金额",
+    "maxLength": 7,
+    "inputClass": "js-firstLoanAmountClass",
+    "tip": "输入值范围：1~99999，单位：万元",
+    "button": "保存"
+  },
+  {
+    "//": "8信用卡额度",
+    "maxLength": 5,
+    "inputClass": "js-creditCardLimitClass",
+    "tip": "输入值范围：1~99999，单位：元",
+    "button": "保存"
+  },
+  {
+    "//": "9年龄",
+    "maxLength": 2,
+    "inputClass": "js-cusAgeClass",
+    "tip": "输入值范围：1~99，单位：岁",
+    "button": "保存"
+  },
+  {
+    "//": "10年收入",
+    "maxLength": 4,
+    "inputClass": "js-annualIncomeClass",
+    "tip": "输入值范围：1~9999，单位：万元",
+    "button": "保存"
+  },
+  {
+    "//": "11可接受月还款",
+    "maxLength": 5,
+    "inputClass": "js-acptMonPaymentClass",
+    "tip": "输入值范围：1~99999，单位：元",
+    "button": "保存"
+  },
+  {
+    "//": "12城市",
+    "maxLength": 11,
+    "button": "保存"
+  }
+]

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>指尖金融家-客户</title>
+    <script src="../../js/common/FFA.js"></script>
+    <script src="../../js/common/initRootFontSize.js"></script>
+    <script src="../../js/external/zepto.min.js"></script>
+    <script src="../../js/core/detect.js"></script>
+    <link rel="stylesheet" href="../../css/base/base.css"/>
+    <link rel="stylesheet" href="../../css/component/component.css"/>
+    <link rel="stylesheet" href="../../css/page/frame/customer.css"/>
+</head>
+<body>
+<header class="js-header header">
+    <span class="header-btn header-left-btn icon-left-arrow js-back-btn"></span>
+    <span class="header-title" id="title">我的客户</span>
+    <span class="header-btn header-right-btn icon-qiang2" style="font-size: 1rem;"></span>
+</header>
+
+<!-- 我的客户 页面  start -->
+<div id="page-customer" class="page my-customer">
+    <div class="search-input-wrap">
+        <input id="searchInput" maxlength="10" class="search_person rm-input" type="text" placeholder=""/>
+        <span class="js-rm-del rm-del"></span>
+        <span class="js-search-cancel search-cancel">取消</span>
+    </div>
+    <nav class="com-tab-group-b">
+        <a class="com-tab-btn js-tab-btn actived" id="customerTabBtnLeft">获取时间</a>
+        <a class="com-tab-btn js-tab-btn" id="customerTabBtnRight"><span>最近沟通</span></a>
+    </nav>
+
+    <!-- 客户列表-->
+    <div id="customers-wrapper" class="customer-list page-list">
+        <div id="scroller">
+
+            <ul class="contacters-container" id="contacters-container"></ul>
+            <div id="pullDown" class='loading'>
+                <span class="pullDownIcon small-person-icon-gif"></span>
+                <!--<span class="pullDownLabel">努力加载中...</span>-->
+            </div>
+            <div id="pullUp" style="display: none">
+                <span class="pullUpIcon"></span>
+                <!--<span class="pullUpLabel">上拉即可刷新</span>-->
+            </div>
+
+        </div>
+    </div>
+    <!-- 搜索结果-->
+    <div class="search-list" id="search-wrapper">
+        <ul class="contacters" id='search-container'></ul>
+    </div>
+    <!-- 搜索结果 - END-->
+</div>
+<!-- 我的客户 页面  end -->
+
+<!-- 客户 联系人item模板 -->
+<script type="text/template" id="customerItemTmpl">
+    <% var Utils = FFA.namespace("Utils"); %>
+    <li class="contacter top-border customer-item" data-phonenumber="<%= data.phonenumber %>" data-name="<%= data.cusName %>">
+        <!--<span class="js-query icon icon-explore"></span>-->
+        <span class="js-message icon icon-sms"></span>
+        <span class="js-call icon icon-tel1 <%= data.nocontact?'dot':'' %>"></span>
+        <span class="time"><%= Utils.formatTime(data.sortTime,":",2) %></span>
+        <div class="contacter-info js-contacter-info">
+            <span class="avatar <%= data.gender == 1? 'male': parseInt(data.gender) == 2?'female':'unknow' %>"></span>
+            <span class="name"><%- data.cusName %></span>
+            <%= data.cusSource == 2 || data.cusSource == 4 || data.cusSource == 5 || data.cusSource == 8?'<span class="from-icon">网</span>':''%>
+            <%= data.cusSource == 3 || data.cusSource == 13?'<span class="yi-icon">姨</span>':''%>
+            <%= data.cusSource == 23 || data.cusSource == 43 || data.cusSource == 53 ?'<span class="from-icon">网</span><span class="yi-icon">姨</span>':''%>
+            <%= data.cusSource == 7 || data.cusSource == 9?'<span class="wei-icon">微</span>':''%>
+            <br>
+            <span class="remarks"><%- data.remarks %></span>
+        </div>
+    </li>
+</script>
+
+
+<script src="../../cordova.js"></script>
+<script src="../../js/external/fastclick.js"></script>
+<script src="../../js/external/underscore-min.js"></script>
+<script src="../../js/external/indexeddbshim.min.js"></script>
+<script src="../../js/external/swipe.js"></script>
+<script src="../../js/external/iscroll.js"></script>
+
+<script src="../../js/common/constant.js"></script>
+<script src="../../js/common/config.js"></script>
+<script src="../../js/common/utils.js"></script>
+<script src="../../js/common/indexedDBDAO.js"></script>
+<script src="../../js/common/strings.js"></script>
+<script src="../../js/common/exit_system.js"></script>
+<script src="../../js/callback/http/check_version_callback.js"></script>
+<script src="../../js/common/http_response.js"></script>
+<script src="../../js/common/ajax_common.js"></script>
+<script src="../../js/common/json_conversion.js"></script>
+<script src="../../js/common/local_storage_utils.js"></script>
+<script src="../../js/common/offline.js"></script>
+<script src="../../js/common/pause.js"></script>
+<script src="../../js/common/hashmap.js"></script>
+<script src="../../js/common/resume.js"></script>
+<script src="../../js/common/component/popup.js"></script>
+
+<script src="../../js/page/team/team_customer_dao.js"></script>
+<script src="../../js/page/team/model.js"></script>
+<script src="../../js/page/team/controller.js"></script>
+
+<!--客户页面js-->
+<script src="../../js/common/indexedDBDAO.js"></script>
+<script src="../../js/page/frame/frame_cus_no_contact.js"></script>
+<script src="../../js/page/customer/cus_service.js"></script>
+<script src="../../js/page/customer/cus_model.js"></script>
+<script src="../../js/page/frame/frame_cus_search_model.js"></script>
+<script src="../../js/page/customer/cus_controller.js"></script>
+<script src="../../js/common/pull2refresh.js"></script>
+<script src="../../js/page/frame/frame_customer.js"></script>
+<script src="../../js/page/team/cus_info.js"></script>
+<!--客户页面js - END-->
+
+</body>
+</html>

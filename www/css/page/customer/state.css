@@ -1,0 +1,71 @@
+.page-customer-state .sub-title {
+    font-weight: normal;
+    font-size: .8rem;
+    padding-left: 3%;
+}
+
+.page-customer-state .state-list {
+    font-size: .8rem;
+    margin: 15px 0;
+}
+
+.page-customer-state .state-list li:active {
+    background-color: inherit;
+}
+
+.page-customer-state .state-list .state-content {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: auto;
+    line-height: 1.2rem;
+}
+
+.page-customer-state .state-time {
+    color: #aeaeae;
+}
+
+.page-customer-state .swipe {
+    overflow: hidden;
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    top: 85px;
+    bottom: 0;
+    z-index: -9;
+}
+
+.ios .page-customer-state .swipe {
+    top: 105px;
+}
+
+.page-customer-state .swipe-wrap {
+
+    position: absolute;
+    height: 100%;
+    overflow-y: hidden;
+}
+
+.page-customer-state .swipe-wrap > div {
+    float: left;
+    width: 100%;
+    position: relative;
+    height: 100%;
+    overflow-y: auto;
+}
+
+/*没有内容的提示*/
+.no-content-wrapper{
+    margin-top: 40%;
+    width: 100%;
+    text-align: center;
+}
+.no-content{
+    width: 30%;
+}
+.no_content_font{
+    height: 16px;
+    font-size: .7rem;
+    line-height: 1.4;
+    color: #a6a6a6;
+    text-align: center;
+}

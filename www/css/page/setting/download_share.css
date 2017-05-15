@@ -1,0 +1,8 @@
+.download-share-area{
+    height: 23%;
+}
+.share-con ul li {
+    width: 33.3%;
+    float: left;
+    text-align: center;
+}

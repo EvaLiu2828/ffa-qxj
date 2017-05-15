@@ -1,0 +1,268 @@
+@import "../frame/exhibition.css";
+/*@import "../frame/customer.css";*/
+/*@import "../frame/plus.css";*/
+/*@import "../frame/progress.css";*/
+/*@import "../frame/mine.css";*/
+
+
+
+.body{
+    background-color: #eee;
+}
+.page {
+    display: none;
+}
+.page.actived{
+    display: block;
+}
+body{
+    font-size: 16px;
+}
+.cus-info {
+    position: fixed;
+    z-index: 11;
+    text-align: center;
+    border-radius: 5px;
+    width: 100%;
+    margin: .5rem auto 0 auto;
+    padding-bottom: .5rem;
+    background: #f8f8f8;
+}
+.cus-info-con {
+    background: #fff;
+    padding-bottom: .5rem;
+    width: 94%;
+    margin: 0 auto;
+    border-radius: 5px;
+}
+.cus-info-top {
+    padding: .7rem;
+}
+.cus-info-bottom {
+    padding: 3% 5%;
+}
+.cus-info-top, .cus-info-bottom, .block-left label {
+    clear: both;
+    overflow: auto;
+}
+.cus-info .block-left, .cus-info .label-left, .cus-info .label-right {
+    float:left;
+}
+.cus-info .block-left {
+    width: 70%;
+    line-height: 1rem;
+}
+.cus-info .block-right {
+    float:right;
+    width: 40%;
+    text-align: right;
+    color: #666666;
+}
+.cus-info-top .block-right {
+    line-height: 1rem;
+}
+.cus-info-bottom .block-right {
+    line-height: 2.2rem;
+}
+.customer-image {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    /*background: url("../../../images/grab_opportunities/cus-sex-icon_03.png") no-repeat;*/
+    background-size: 100%;
+    margin-right: 3%;
+}
+.customer-image.customer_sex0 {
+    background: url("../../../images/grab_opportunities/cus-sex-icon_06.png") no-repeat;
+    background-size: 100%;
+}
+.customer-image.customer_sex1 {
+    background: url("../../../images/grab_opportunities/cus-sex-icon_03.png") no-repeat;
+    background-size: 100%;
+}
+.customer-image.customer_sex2 {
+    background: url("../../../images/grab_opportunities/cus-sex-icon_08.png") no-repeat;
+    background-size: 100%;
+}
+.customer-content {
+    font-size: .6rem;
+    width: 75%;
+}
+.label-right-top {
+    height: 1.2rem;
+    margin-top: .3rem;
+}
+.customer_name {
+    font-size: .9rem;
+    float: left;
+}
+.xian {
+    float: left;
+    font-size: 2rem;
+    margin-left: .3rem;
+    line-height: 1rem;
+}
+.customer-info {
+    line-height: 1rem;
+    color: #666666;
+    clear: both;
+    overflow: hidden;
+}
+.customer-info span {
+    float: left;
+    /*line-height: 1.5rem;*/
+}
+.sale-type {
+    float: left;
+    font-size: 1.8rem;
+    line-height: 1rem;
+    color: #ff9a16;
+    margin-left: .3rem;
+    margin-right: .3rem;
+}
+.discount {
+    float: left;
+    font-size: .7rem;
+    line-height: 1rem;
+    color: #fc4243;
+}
+.customer-type {
+    line-height: 1rem;
+    color: #5ebdfe;
+}
+.customer-type3 {
+    width: 1.3rem;
+}
+.business-num1 {
+    font-size: .6rem;
+    margin-left: .5rem;
+}
+.noslae {
+    text-decoration: line-through;
+}
+.cus-info-bottom .customer-info-right {
+    display: inline-block;
+    padding :2%;
+    background: #5c5c5c;
+    color: #fff;
+    border-radius: 3px;
+}
+.cus-info-top .business-discount {
+    margin:0 2%;
+}
+.cus-info-top .business-num1 {
+    margin:0 2%;
+}
+.cus-info-top .business-num2 {
+    font-size: .9rem;
+    color: #fc4243;
+}
+.cus-info-bottom .label-right {
+    width: 100%;
+}
+.cus-info button {
+    width: 90%;
+    font-size: .7rem;
+    padding: .2rem;
+    border-radius: .3rem;
+    line-height: 1.5rem;
+    background: #fff;
+}
+.cus-info .btn-desabled {
+    background: #fc4243;
+    color: #fff;
+}
+.cus-info .btn-nodesabled {
+    border: 1px solid #fc4243;
+    color: #fc4243;
+}
+#cus_info_swipe-container.cus_info_swipe {
+    visibility: visible;
+}
+.cus_info_swipe {
+    margin-top: 7rem;
+    overflow: hidden;
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    top: 50px;
+    bottom: 0;
+    overflow-y: auto;
+}
+.ios .cus_info_swipe {
+    top: 70px;
+}
+
+.cus-info-list {
+    display: block;
+    position: absolute;
+    height: 100%;
+    overflow-y: hidden;
+    width: 100%;
+}
+.content-lists{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+.content-list {
+    background: #fff;
+}
+.list-h2 {
+    font-size: .8rem;
+    padding: .7rem;
+    border-bottom: 1px solid #c8c7cc;
+}
+.content-list ul {
+    font-size: .6rem;
+    padding:0 .4rem;
+    margin-top: -1px;
+    margin-bottom: .7rem;
+    color: #666666;
+}
+.com-list-a:after {
+    border-bottom: none;
+}
+.com-list-a li:active {
+    background-color: #fff;
+}
+.seccessTab p {
+    background: url("../../../images/suc_bg.png") no-repeat;
+    background-size: 100%;
+    padding-top: 6.2rem;
+}
+.seccessTab {
+    height: 220px;
+    margin-top: -110px;
+}
+.errTab p {
+    background: url("../../../images/err-bg.png") no-repeat;
+    background-size: 100%;
+    padding-top: 6.2rem;
+}
+.errTab {
+    height: 220px;
+    margin-top: -110px;
+}
+.errTab button {
+    width: 100%;
+    left: 0;
+    background-color: #fff;
+    color: #4591ff ;
+    border-top: 1px solid #d6d6d6;
+    border-radius: 0;
+}
+.contentlist-type1 {
+    color: #7abc6d;
+    line-height: 1rem;
+}
+.contentlist-type2 {
+    color: #5ebcfe;
+    line-height: 1rem;
+}
+.con-icon-type1,.con-icon-type2 {
+    float: left;
+    font-size: 1rem;
+    padding-right: .3rem;
+}

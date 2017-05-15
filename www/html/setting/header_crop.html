@@ -1,0 +1,200 @@
+<!doctype html>
+<html>
+<head>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>指尖金融家-上传头像</title>
+    <script src="../../cordova.js"></script>
+
+	<script src="../../js/common/FFA.js"></script>
+	<script src="../../js/common/initRootFontSize.js"></script>
+	<script src="../../js/external/modernizr-min.js"></script>
+
+	<link rel="stylesheet" href="../../css/base/base.css" />
+	<link rel="stylesheet" href="../../css/component/component.css" />
+	<link rel="stylesheet" href="../../css/main.css" />
+    <link type="text/css" rel="stylesheet" href="../../css/base/vendor/jquery-ui-1.10.3.custom.min.css"/>
+    <link type="text/css" rel="stylesheet" href="../../css/base/vendor/jquery.cropzoom.css"/>
+    <script src="../../js/external/crop_header/jquery-1.9.1.min.js"></script>
+    <script src="../../js/external/dist/lrz.all.bundle.js"></script>
+    <script src="../../js/external/indexeddbshim.min.js" ></script>
+    <script src="../../js/common/config.js"></script>
+    <script src="../../js/callback/http/header_crop_callback.js"></script>
+    <script src="../../js/external/crop_header/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="../../js/external/crop_header/jquery.cropzoom.js"></script>
+    <script src="../../js/external/crop_header/script.js"></script>
+    <script src="../../js/common/strings.js"></script>
+    <script src="../../js/common/local_storage_utils.js"></script>
+    <script src="../../js/common/download_pic.js"></script>
+     <script src="../../js/common/hashmap.js"></script>
+	<script src="../../js/common/component/popup.js"></script>
+     <script src="../../js/page/setting/set_head_crop_upload.js"></script>
+    <script src="../../js/common/json_conversion.js"></script>
+    <script src="../../js/common/constant.js"></script>
+    <script type="text/javascript" src="../../js/callback/http/check_version_callback.js"></script>
+    <script src="../../js/common/ajax_common.js"></script>
+    <script src="../../js/common/json_conversion.js"></script>
+    <script src="../../js/common/utils.js"></script>
+    <script src="../../js/common/exit_system.js"></script>
+    <script src="../../js/common/http_response.js"></script>
+    <script type="text/javascript" src="../../js/common/offline.js"></script>
+    <script type="text/javascript" src="../../js/common/pause.js"></script>
+    <script type="text/javascript" src="../../js/common/resume.js"></script>
+    <script type="text/javascript" src="../../js/common/download_pic.js"></script>
+    <script src="../../js/common/cell_info_dao.js"></script>
+    <!--2015-7-7 wangjunbao-->
+    <style type="text/css">
+    	.head_cotroller{
+            font-family:Arial,'Microsoft YaHei',SimHei,sans-serif;
+			width:46%;
+			height:100%;
+			color:#FFF;
+			font-size:100%;
+			
+		}
+		.head_confirm{
+			text-align:left; 
+			float:left;	
+		}
+		.head_cancel{
+			text-decoration: none;
+			text-align:right;
+			float:left;
+		}
+		.contain_bottom{
+			position:absolute;
+			bottom:0px;
+			width:100%;
+			height:13%;
+			display:block;
+			padding-left:4%;
+			padding-right:4%;
+			background-color:#000;
+		}
+    </style>
+	<script type="text/javascript">
+	$(document).ready(function() {
+			var screen_width= document.body.scrollWidth-4;
+			var cropzoom ;
+			var screent_height1=document.body.scrollHeight*0.85;
+			var screent_bottom2=document.body.scrollHeight*0.13;
+			var headUploadUtils=new HeadCropUpload();
+			$(".head_confirm").css("line-height",screent_bottom2+'px');
+			$(".head_cancel").css("line-height",screent_bottom2+'px');
+			var screen_height =document.body.scrollHeight;
+			var headerImage=get("header_local_url");
+			//var headerImage='../../images/del-ban1.jpg';
+			var imageBase64=null;
+			headUploadUtils.showDialog();
+			headUploadUtils.zipPhoto(headerImage,screen_width,function(){
+				headUploadUtils.hideDialog();
+			},function(base64){
+				
+				imageBase64=base64;
+				showZipDonePhoto(base64,screen_width, screent_height1);
+			}); 
+	 function showZipDonePhoto(imageBase64, screen_width, screent_height1) {
+		var photo_size = new Image();
+		var crop_width = 300;
+		var crop_height = 300;
+		photo_size.src = imageBase64;
+		photo_size.onload = function() {
+			var data = headUploadUtils.drawImage(photo_size, screen_width, screent_height1);
+			screen_width = data[0];
+			screen_height = data[1];
+			if (screen_width < 300) {
+				if (screen_height > screen_width) {
+					crop_width = screen_width;
+					crop_height = screen_width;
+				} else {
+					crop_width = screen_height;
+					crop_height = screen_height;
+				}
+			}
+			if (screen_height < 300) {
+				if (screen_height > screen_width) {
+					crop_width = screen_width;
+					crop_height = screen_width;
+				} else {
+					crop_width = screen_height;
+					crop_height = screen_height;
+				}
+			}
+	
+			$("#crop_container").css("margin-top", (screent_height1 - screen_height) / 2);
+			var marginTop = (screent_height1 - screen_height) / 2;
+			var fff = screent_height1 - marginTop;
+			$(".header_contain_crop").css('height', fff);
+			cropzoom = $('#crop_container').cropzoom({
+				width: screen_width,
+				height: screen_height,
+				bgColor: '#CCC',
+				enableRotation: false,
+				enableZoom: false,
+				zoomSteps: 10,
+				rotationSteps: 10,
+				selector: {
+					x: 0,
+					y: 0,
+					w: crop_width,
+					h: crop_height,
+					maxHeight: crop_height,
+					maxWidth: crop_width,
+					centered: true,
+					startWithOverlay: true,
+					borderColor: 'blue',
+					borderColorHover: 'red'
+				},
+				image: {
+					source: imageBase64,
+					width: screen_width,
+					height: screen_height,
+					minZoom: 10,
+					maxZoom: 150
+				}
+				});
+			 }
+		}
+				//var headerImage='../../images/del-ban1.jpg';
+                //cropzoom.setSelector(0, 0, 100, 100, true);
+               $('#crop').click(function() {
+				   	console.log("imageBase64"+imageBase64);
+					headUploadUtils.photoUpload(cropzoom,imageBase64,screen_width,screen_height)
+				});
+            })
+		
+	</script>
+</head>
+
+<body style="margin:0px ; background-color:#eee">
+    <div class="header_contain_crop" style="text-align:center ; width:100%; height:85%">
+  		  <div id="crop_container" style="position:absolute; margin:0 auto"></div>
+    </div>
+    <div>
+		<!--v1.4 start-->
+		<!--<div class="alt pasOut" style="background:transparent;">-->
+			<!--<div></div>-->
+		<!--</div>-->
+		<!--<div class="altW pasInner">-->
+			<!--<img src="../../images/load.gif">-->
+		<!--</div>-->
+		<!--v1.4 end-->
+		<!--new year start-->
+		<!--<div class="altW pasInner">-->
+			<!--<img src="../../images/load.gif" style="width: 65px;height: 65px;margin-top: 78%;">-->
+		<!--</div>-->
+		<!--new year end-->
+	</div>
+	<div class="contain_bottom">
+    	<span  id="crop" class="head_cotroller head_confirm" >使用照片</span>
+        <a id="restore" class="head_cotroller head_cancel" href="javascript:history.back(-1)">取消</a>
+    </div>
+    <div style="visibility:hidden; display:none; position:absolute">
+    	    <canvas id="myCanvas"></canvas>
+    </div>
+    
+</body>
+</html>

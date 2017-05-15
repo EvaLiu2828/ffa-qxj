@@ -1,0 +1,175 @@
+/*隐藏div*/
+.smsTempContent>div{
+    display: none;
+}
+.smsDisplayBlock{
+    display: block !important;
+}
+
+/*没有短信模板*/
+.no-temp-img{
+    margin:0 auto;
+    margin-top:23%;
+    margin-bottom: 5%;
+    width: 36%;
+}
+.no-temp-img img{
+    width: 100%;
+
+}
+.no-temp p{
+    font-size: 0.6rem;
+    text-align: center;
+    color: #aaa;
+}
+.custom-sms{
+    position: fixed;
+    width: 100%;
+    left:0;
+    bottom:0;
+    z-index: 9;
+    border-radius: 0;
+    background-color: #29a3f8;
+    height:46px;
+}
+/*有短信模板*/
+#sms-wrapper{
+    overflow: hidden;
+    position: absolute;
+    left:0;
+    right:0;
+    top:45px;
+    bottom:46px;
+}
+.ios #sms-wrapper{
+    top:65px;
+}
+#sms-scroller{
+    position:relative;
+    /*	-webkit-touch-callout:none;*/
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    float:left;
+    width:100%;
+    padding:0;
+}
+
+#smsInfoContainer{
+    overflow: auto;
+}
+.item{
+    position: relative;
+
+}
+.touch-item {
+    position: relative;
+    width: 100%;
+    z-index: 9;
+    background: #fff;
+}
+.touch-item.active {
+    background: #e0e0e0;
+}
+.touch-item p {
+    font-size: 0.7rem;
+
+    color:#2d2d2d;
+    /*margin:15px 0;*/
+    padding:15px 18px;
+    /*border-top: 1px solid #e0e0e0;*/
+    /*border-bottom: 1px solid #e0e0e0;*/
+    word-break:break-all;
+    word-wrap: break-word;
+    line-height: 1rem;
+
+}
+
+.item-edit-btn{
+    position: absolute;
+    top: 0;
+    right: 60px;
+    height: 100%;
+    width: 60px;
+    text-align: center;
+    background-color:#d4d4d4;
+    color: #666;
+    z-index: 0;
+    font-size: 0.6rem;
+}
+.item-del-btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 60px;
+    text-align: center;
+    background-color:#f7342e;
+    color: #fff;
+    z-index: 0;
+    font-size: 0.6rem;
+}
+/*新建短信模板*/
+.new-temp-header .header-left-btn{
+    font-size: .75rem;
+    left: 12px;
+}
+
+.new-temp{
+    margin:1rem 0.425rem;
+    height: 6rem;
+
+}
+.temp-textarea{
+    width: 100%;
+    height: 100%;
+    border: 1px solid #e0e0e0;
+    font-size: 0.7rem;
+    color: #c3c3d1;
+    line-height: 1rem;
+    padding: 0.5rem;
+    resize: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+/*编辑短信模板*/
+.edit-temp{
+    margin:1rem 0.425rem;
+    height: 6rem;
+}
+.edit-temp-header .header-left-btn{
+    font-size: .75rem;
+    left: 12px;
+}
+/*删除短信模板按钮*/
+.del-btn{
+    /*display: none;*/
+    height: 114px;
+    width: 100%;
+    position: fixed;
+    bottom:0;
+    left: 0;
+    z-index: 999;
+}
+.del-btn button{
+    margin-bottom: 10px;
+    width:88%;
+    border-radius: 6px;
+}
+.not-del-temp{
+    color: #007aff;
+}
+.del-temp-btn:before{
+    border:0;
+}
+.del-temp-btn:after{
+    border:0;
+}
+.not-del-temp:before{
+    border:0;
+}
+.not-del-temp:after{
+    border:0;
+}
+
+.touch-item.bottom-border:after {
+    left: 3%;
+}

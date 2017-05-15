@@ -1,0 +1,584 @@
+﻿<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+
+    <title>指尖金融家</title>
+    <!-- 样式相关 不要移动到css之下-->
+    <script src="../js/common/FFA.js"></script>
+    <script src="../js/common/initRootFontSize.js"></script>
+    <script src="../js/core/UIUtils.js"></script>
+    <link rel="stylesheet" href="../css/base/base.css"/>
+    <link rel="stylesheet" href="../css/component/component.css"/>
+    <link rel="stylesheet" href="../css/page/frame/frame.css"/>
+
+</head>
+<body>
+    <!-- body元素上设备标识class加入 写前边避免页面重绘-->
+    <script src="../js/page/frame/frame_UIInit.js"></script>
+
+    <!-- header-->
+    <header class="header">
+        <span class="js-header-left-btn header-btn header-left-btn icon-left-arrow"></span>
+        <h1 class="header-title js-header-title"></h1>
+        <span class="header-btn header-right-btn js-header-right-btn"></span>
+        <a id="honor_rank" style="display: none" class="header-btn header-right-btn icon-rank"  href="./exhibit/honor_rank.html"></a>
+        <a id="grab_bussince" style="display: none; font-size: 1rem;" class="header-btn header-right-btn icon-qiang2"  href="./grab_opportunities/grab_opportunities.html"></a>
+    </header>
+
+
+    <!--footer-->
+    <footer class="js-footer frame-footer">
+        <div class="js-footer-tab footer-tab exhibition" data-page="exhibition">
+            <!--<div class="frame-footer-icon"></div>-->
+            <span class="footer-icon icon-zhanye"></span>
+            <p class="tab-name">展业</p>
+        </div>
+        <div class="js-footer-tab footer-tab customer" data-page="customer" id="js-level-control">
+            <!--<div class="frame-footer-icon"></div>-->
+            <span class="footer-icon icon-kehu"></span>
+            <div id="customer-remind-circle">
+                <p id="js-customer-remind-num"></p>
+            </div>
+            <p class="tab-name"></p>
+        </div>
+        <div class="js-footer-tab footer-tab plus" data-page="plus">
+            <div class="footer-middle-icon icon-plus"></div>
+        </div>
+        <div class="js-footer-tab footer-tab progress" data-page="progress">
+            <!--<div class="frame-footer-icon"></div>-->
+            <span class="footer-icon icon-jindu"></span>
+            <p class="tab-name">进度</p>
+        </div>
+        <div class="js-footer-tab footer-tab mine" data-page="mine">
+            <!--<div class="frame-footer-icon"></div>-->
+            <span class="footer-icon icon-wode"></span>
+            <p class="tab-name">我的</p>
+        </div>
+    </footer>
+    <script>
+
+    </script>
+
+<!--content-->
+<div class="content" id="content">
+    <!--展业-->
+    <div id="page-exhibition" class="page">
+        <div class="InnerDiv">
+            <div class="addWrap">
+                <div class="js-banner swipe" id="mySwipe">
+                    <div class="swipe-wrap">
+                        <div>
+                            <a class="figure fixedratio js-photo-touched" id="swipe0"></a>
+                        </div>
+                        <div>
+                            <a class="figure fixedratio js-photo-touched" id="swipe1"></a>
+                        </div>
+                        <div>
+                            <a class="figure fixedratio js-photo-touched" id="swipe2"></a>
+                        </div>
+                        <div>
+                            <a class="figure fixedratio js-photo-touched" id="swipe3"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="ull">
+                    <ul id="position">
+                        <li class="cur"></li>
+                        <li class=""></li>
+                        <li class=""></li>
+                        <li class=""></li>
+                    </ul>
+                </div>
+            </div>
+            <!--banner over-->
+            <!--content-->
+
+            <ul class="js-menu exhibit-ul marAuto zy-font">
+                <li class="exhibit-ul-li-l exhibit-ul-li-bottom js-zy-ul-div" data-url="exhibit/templatelist.html"
+                    data-num="001">
+
+                    <div class="js-circle exhibit-circle-first">
+                        <span id="li-img-plan" class="icon-plan exhibit-icon-size"></span>
+                        <span class="red-circle js-read-circle-001"></span>
+                    </div>
+                    <p class="exhibit-circle-font">特别企划</p>
+                </li>
+                <li class="exhibit-ul-li-m exhibit-ul-li-bottom js-zy-ul-div" data-url="exhibit/templatelist.html"
+                    data-num="007">
+                    <div class="js-circle exhibit-circle-first">
+                        <span id="li-img-log" class="icon-log exhibit-icon-size"></span>
+                        <span class="red-circle js-read-circle-007"></span>
+                    </div>
+                    <p class="exhibit-circle-font">宜信品牌</p>
+                </li>
+                <li class="exhibit-ul-li-r exhibit-ul-li-bottom js-zy-ul-div" data-url="exhibit/templatelist.html"
+                    data-num="034">
+                    <div class="js-circle exhibit-circle-first">
+                        <span id="li-img-products" class="icon-products exhibit-icon-size"></span>
+                        <span class="red-circle js-read-circle-034"></span>
+                    </div>
+                    <p class="exhibit-circle-font">宜信产品</p>
+                </li>
+                <li class="exhibit-ul-li-l exhibit-ul-li-bottom js-zy-ul-div" data-url="exhibit/templatelist.html"
+                    data-num="003">
+                    <div class="js-circle exhibit-circle">
+                        <span id="li-img-people" class="icon-yirendai exhibit-icon-size"></span>
+                        <span class="red-circle js-read-circle-003"></span>
+                    </div>
+                    <p class="exhibit-circle-font">宜人贷</p>
+                </li>
+                <li class="exhibit-ul-li-m exhibit-ul-li-bottom js-zy-ul-div" data-url="micro_shop/micro_shop.html">
+                    <div class="js-circle exhibit-circle-first">
+                        <span id="li-img-shop" class="icon-card exhibit-icon-size" style="font-size: 1.9em;"></span>
+                    </div>
+                    <p class="exhibit-circle-font">我的名片</p>
+                </li>
+                <li class="exhibit-ul-li-r exhibit-ul-li-bottom js-zy-ul-div" data-url="exhibit/templatelist.html"
+                    data-num="033">
+                    <div class="js-circle exhibit-circle-first">
+                        <span id="li-img-wuliao" class="icon-wuliao exhibit-icon-size"></span>
+                        <span class="red-circle js-read-circle-033"></span>
+                    </div>
+                    <p class="exhibit-circle-font">营销物料</p>
+                </li>
+                <li class="exhibit-ul-li-l  js-zy-ul-div" data-url="exhibit/templatelist.html"
+                    data-num="012">
+                    <div class="js-circle exhibit-circle">
+                        <span class="icon-activity exhibit-icon-size"></span>
+                        <span class="red-circle js-read-circle-012"></span>
+                    </div>
+                    <p class="exhibit-circle-font-last">市场活动</p>
+                </li>
+                <li class="exhibit-ul-li-m  js-zy-ul-div" data-url="exhibit/templatelist.html"
+                    data-num="011">
+                    <div class="js-circle exhibit-circle">
+                        <span class="icon-voice exhibit-icon-size"></span>
+                        <span class="red-circle js-read-circle-011"></span>
+                    </div>
+                    <p class="exhibit-circle-font-last">宜信之声</p>
+                </li>
+                <li class="exhibit-ul-li-r js-zy-ul-div" data-url="exhibit/templatelist.html"
+                    data-num="010">
+                    <div class="js-circle exhibit-circle">
+                        <span class="icon-learn exhibit-icon-size"></span>
+                        <span class="red-circle js-read-circle-010"></span>
+                    </div>
+                    <p class="exhibit-circle-font-last">展业秘籍</p>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+    <!--展业over-->
+
+
+    <!--客户start-->
+    <div id="page-customer" class="page">
+        <div class="search-input-wrap">
+            <input id="searchInput" maxlength="10" class="search_person rm-input" type="text" placeholder=""/>
+            <span class="js-rm-del rm-del"></span>
+            <span class="js-search-cancel search-cancel">取消</span>
+        </div>
+        <nav class="com-tab-group-b">
+            <a class="com-tab-btn js-tab-btn actived" id="customerTabBtnLeft">获取时间</a>
+            <a class="com-tab-btn js-tab-btn" id="customerTabBtnRight"><span>最近沟通</span></a>
+        </nav>
+
+        <!-- 客户列表-->
+        <div id="customers-wrapper" class="customer-list">
+            <div id="scroller">
+
+                <ul class="contacters-container" id="contacters-container"></ul>
+                <div id="pullDown" class='loading'>
+                    <span class="pullDownIcon small-person-icon-gif"></span>
+                    <!--<span class="pullDownLabel">努力加载中...</span>-->
+                </div>
+                <div id="pullUp" style="display: none">
+                    <span class="pullUpIcon"></span>
+                    <!--<span class="pullUpLabel">上拉即可刷新</span>-->
+                </div>
+            </div>
+        </div>
+        <!-- 搜索结果-->
+        <div class="search-list" id="search-wrapper">
+            <ul class="contacters" id='search-container'></ul>
+        </div>
+        <!-- 搜索结果 - END-->
+    </div>
+        <!-- 客户经理 页面  end -->
+
+    <!-- 客户 联系人item模板 -->
+    <script type="text/template" id="customerItemTmpl">
+        <% var Utils = FFA.namespace("Utils"); %>
+        <li class="contacter top-border customer-item" data-phonenumber="<%= data.phonenumber %>" data-name="<%= data.cusName %>">
+            <!--<span class="js-query icon icon-explore"></span>-->
+                <span class="js-message icon icon-sms"></span>
+                <span class="js-call icon icon-tel1 <%= data.nocontact?'dot':'' %>"></span>
+            <span class="time"><%= Utils.formatTime(data.sortTime,":",2) %></span>
+            <div class="contacter-info js-contacter-info">
+                <span class="avatar <%= data.gender == 1? 'male': parseInt(data.gender) == 2?'female':'unknow' %>"></span>
+                <span class="name"><%- data.cusName %></span>
+                <%= data.cusSource == 2 || data.cusSource == 4 || data.cusSource == 5 || data.cusSource == 8?'<span class="from-icon">网</span>':''%>
+                <%= data.cusSource == 3 || data.cusSource == 13?'<span class="yi-icon">姨</span>':''%>
+                <%= data.cusSource == 23 || data.cusSource == 43 || data.cusSource == 53 ?'<span class="from-icon">网</span><span class="yi-icon">姨</span>':''%>
+                <%= data.cusSource == 7 || data.cusSource == 9?'<span class="wei-icon">微</span>':''%>
+                <br>
+                <span class="remarks"><%- data.remarks %></span>
+            </div>
+        </li>
+    </script>
+
+    <!--团队 start-->
+    <div id="page-team" class="page">
+        <!-- 团队经理-->
+        <div id="teams-wrapper" class="customer-list team-list team-outer-wrapper">
+            <div id="members-scroller">
+                <!-- 团队经理 start -->
+                <div id="js-manager-wrap-outer">
+                    <!--<div id="js-manager-wrap" class="team-item-box"></div>-->
+                    <!--<div class="members-list-wrap">-->
+                        <!--<ul class="members-container" id="members-container"></ul>-->
+                    <!--</div>-->
+                </div>
+                <!-- 团队经理 end -->
+
+                <div id="members-pullDown" class='loading'>
+                    <span class="pullDownIcon small-person-icon-gif"></span>
+                    <!--<span class="pullDownLabel">努力加载中...</span>-->
+                </div>
+                <div id="members-pullUp"  style="display: none">
+                    <span class="pullUpIcon"></span>
+                    <!--<span class="pullUpLabel">上拉即可刷新</span>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 营业部/团队经理 显示 模板 start-->
+    <script type="text/template" id="managerItemTmpl">
+        <div class="team-item-box js-manager-item customer-item" data-cusCount="<%= data.leaderCusCount %>">
+            <div class="manager-base-info box-top-content">
+                <div class="box-item-left">
+                    <% if (data.leaderHeadPath) { %>
+                        <span class="avatar male" style="background-image: url(<%= data.leaderHeadPath %>);background-size: 100%;"></span>
+                    <% } else { %>
+                        <span class="avatar male"></span>
+                    <% } %>
+                    <span class="name"><%= data.leaderName %></span>
+                    <span class="level-name"><i><%= data.levelName %></i></span>
+                </div>
+                <div class="box-item-right">
+                    <span class="sub-name">我的客户</span>
+                    <span class="sub-num"><%= data.leaderCusCount %></span>
+                    <span class="icon-dot <%= data.leaderRedpt == 1 ? 'red' : ''%>"></span>
+                    <span class="block-right icon-arrow"></span>
+                </div>
+            </div>
+            <div class="manager-data-info box-bottom-content">
+                <span><%= data.month %>月团队</span><span>获客 <i><%= data.teamCusCount %></i></span><span>进件 <i><%= data.teamIntoPiecesCount %></i></span><span>放款 <i><%= data.teamLoanCount %>万</i></span>
+            </div>
+        </div>
+    </script>
+    <!-- 营业部/团队经理 显示 模板 end-->
+
+    <!-- 团队/客户经理列表 显示 模板 start-->
+    <script type="text/template" id="memberItemTmpl">
+        <div class="menber-item team-item-box js-menber-item customer-item" data-cusCount="<%= data.cusCount %>" data-managerId="<%= data.managerId %>" data-userName="<%= data.userName %>">
+            <div class="manager-base-info box-top-content">
+                <div class="box-item-left">
+                    <% if (data.headPath) { %>
+                        <span class="avatar male" style="background-image: url(<%= data.headPath %>);background-size: 100%;"></span>
+                    <% } else { %>
+                        <span class="avatar male"></span>
+                    <% } %>
+                    <span class="name"><%= data.userName %></span>
+                </div>
+                <div class="box-item-right">
+                    <span class="sub-name">客户</span>
+                    <span class="sub-num"><%= data.cusCount %></span>
+                    <span class="icon-dot <%= data.cusRedpt == 1 ? 'red' : ''%>"></span>
+                    <span class="block-right icon-arrow"></span>
+                </div>
+            </div>
+            <div class="menber-data-info box-bottom-content">
+                <span>进件 <i><%= data.intoPiecesCount %></i></span><span>放款 <i><%= data.loanCount %>万</i></span>
+            </div>
+        </div>
+    </script>
+    <!-- 团队/客户经理列表 显示 模板 end-->
+
+    <!--团队 start-->
+
+
+
+    <!--申请start-->
+    <div id="page-progress" class="page">
+
+        <!--客户经理-->
+        <div class="account-manager js-account-manager">
+            <div class="com-tab-btn-group-a js-progress-tab-btns">
+                <input class="com-tab-left-input" type="radio" id="progressTabBtnLeft" name="progressTabBtn" checked>
+                <label class="com-tab-left-label" for="progressTabBtnLeft" id="frame_progress_audit">审核中</label>
+                <input class="com-tab-right-input" type="radio" id="progressTabBtnRight" name="progressTabBtn">
+                <label class="com-tab-right-label" for="progressTabBtnRight" id="frame_progress_yes">已审核</label>
+            </div>
+
+            <!--下拉刷新和滚动翻页结构, 请复制这段代码到你的页面-->
+            <div id="wrapper_progress">
+                <div id="scroller_progress">
+                    <div id="pullDown_progress" class='loading_progress'>
+                        <span class="pullDownIcon_progress small-person-icon"></span>
+                        <!--<span class="pullDownLabel_progress">努力加载中...</span>-->
+                        <br/>
+                    </div>
+                    <!---审核中 start-->
+                    <div id="frame_progress_is" class="orders frame_progress_is">
+
+                    </div>
+                    <!---审核中 end-->
+                    <!---已审核 start-->
+                    <div id="frame_progress_over" class="orders frame_progress_over">
+
+                    </div>
+                    <!---已审核 end-->
+                    <div id="pullUp_progress"  style="display: none">
+                        <span class="pullUpIcon_progress"></span>
+                        <!--<span class="pullUpLabel_progress">上拉即可刷新</span>-->
+                    </div>
+
+                </div>
+            </div>
+            <!--下拉刷新和滚动翻页结构, 请复制这段代码到你的页面 - END-->
+        </div>
+
+        <!--团队经理-->
+        <div class="team-manager js-team-manager progressDisplayBlock">
+            <!--下拉刷新和滚动翻页结构, 请复制这段代码到你的页面-->
+            <div id="wrapper_progress_team" class="js-progress-team progressDisplayBlock">
+                <div id="scroller_progress_team">
+                    <div id="pullDown_progress_team" class='loading_progress'>
+                        <span class="pullDownIcon_progress small-person-icon"></span>
+                        <!--<span class="pullDownLabel_progress">努力加载中...</span>-->
+                        <br/>
+                    </div>
+                    <!---进度信息 start-->
+                    <div id="frame_progress_team" class="orders frame_progress_team">
+                    </div>
+                    <!---进度信息 end-->
+                    <div id="pullUp_progress_team"  style="display: none">
+                        <span class="pullUpIcon_progress"></span>
+                        <!--<span class="pullUpLabel_progress">上拉即可刷新</span>-->
+                    </div>
+
+                </div>
+            </div>
+            <!--下拉刷新和滚动翻页结构, 请复制这段代码到你的页面 - END-->
+
+            <!--团队的销售列表-->
+            <div id="frame_sales_list" class="sales-list js-sales-list">
+                <ul class="com-check-list-a">
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+    <!--申请over-->
+
+
+    <!--我start-->
+    <div id="page-mine" class="page">
+        <div class="sz-con">
+            <div>
+                <div class="mine-top">
+                    <div class="avatar change_header" id="js-header-photo"></div>
+                    <div class="info">
+                        <span class="localStorage-name">name</span>
+                        <br>
+                        <br>
+                        <span class="localStorage-city">location</span>
+                        <span class="localStorage-department">北京-宜信财富-投资理财一部</span>
+                        <!-- start by ly-->
+                        <br>
+                        <br>
+                        <span class="coin js-coin">
+                            <img src="../images/coin.png">
+                            <span class="coin-name">指尖币</span><span class="localStorage-coin">3290</span>
+                        </span>
+                        <!-- end by ly-->
+                    </div>
+                </div>
+
+                <ul class="com-list-a mine-list-nav js-mine-list-nav bottom-border top-border">
+                    <li data-url="./setting/performance.html" class="js_red_dot_wrap_2">
+                        绩效查询
+                        <span class="block-right icon-arrow"></span>
+                        <span class="red-circle"></span>
+                    </li>
+                    <li data-url="./setting/sales_rating.html" class="js_red_dot_wrap_1">
+                        普惠金融师
+                        <span class="block-right icon-arrow"></span>
+                        <span class="block-right right-content js-rate-level"></span>
+                        <span class="red-circle"></span>
+                    </li>
+                    <li data-url="./setting/qrcode.html">
+                        我的二维码<span class="block-right icon-arrow"></span><span class="block-right icon-qrcode"></span>
+                    </li>
+                    <li data-url="./setting/daily_report.html" class="js_red_dot_wrap_3 dailyPaper" style="display: none">
+                        销售日报
+                        <span class="block-right icon-arrow"></span>
+                        <span class="red-circle"></span>
+                    </li>
+                    <li class="top-border" data-url="./setting/download_share.html">
+                        分享指尖金融家<span class="block-right icon-arrow"></span>
+                    </li>
+                    <li class="top-border" data-url="./setting/chgpassword.html">
+                        修改密码<span class="block-right icon-arrow"></span>
+                    </li>
+                    <li class="top-border" data-url="./setting/customerfeedback.html">
+                        用户反馈<span class="block-right icon-arrow"></span>
+                    </li>
+                    <li class="top-border" data-url="./setting/aboutsystem.html">
+                        关于系统<span class="block-right icon-arrow"></span>
+                    </li>
+                </ul>
+
+                <button class="com-middle-btn-b js-exit-btn">
+                    退出登录
+                </button>
+                <div class="trademark-wrapper">
+                    <span class="icon-trademark">
+
+				    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="head_choose_background header_dailog_background js_head_choose_background"></div>
+    <div class="head_choose_contain header_contain_bottom_back js_head_choose_contain">
+        <div class="flt head_choose_confirm">
+            <p class="photo_choose photo_choose_album">从相册选取</p>
+        </div>
+        <div class="flt head_choose_cancel">
+            <p class="photo_choose">取消</p>
+        </div>
+    </div>
+</div>
+<!--我over-->
+
+
+<script src="../cordova.js"></script>
+<script src="../js/external/zepto.min.js"></script>
+<script src="../js/external/underscore-min.js"></script>
+<script src="../js/external/swipe.js"></script>
+<script src="../js/external/indexeddbshim.min.js"></script>
+<script src="../js/external/iscroll.js"></script>
+
+<script src="../js/external/fastclick.js"></script>
+<script src="../js/external/polyfill.js"></script>
+<script src="../js/common/strings.js"></script>
+<script src="../js/common/http_response.js"></script>
+<script src="../js/common/ajax_common.js"></script>
+<script src="../js/common/utils.js"></script>
+<script src="../js/common/json_conversion.js"></script>
+
+<script src="../js/common/hashmap.js"></script>
+<script src="../js/common/exitapp.js"></script>
+<script src="../js/common/local_storage_utils.js"></script>
+
+<script src="../js/callback/http/mine_micro_shop_callback.js"></script>
+<script src="../js/common/download_pic.js"></script>
+<script src="../js/common/component/popup.js"></script>
+<script src="../js/common/toast_utils.js"></script>
+<script src="../js/common/config.js"></script>
+
+
+<!--客户页面js-->
+<script src="../js/common/indexedDBDAO.js"></script>
+<script src="../js/page/frame/frame_cus_no_contact.js"></script>
+<script src="../js/page/customer/cus_service.js"></script>
+<script src="../js/page/customer/cus_model.js"></script>
+<script src="../js/page/frame/frame_cus_search_model.js"></script>
+<script src="../js/page/customer/cus_controller.js"></script>
+<script src="../js/common/pull2refresh.js"></script>
+<script src="../js/page/frame/frame_customer.js"></script>
+<!--客户页面js - END-->
+<script src="../js/common/pull2refresh_progress.js"></script>
+<script src="../js/common/progress_dao.js"></script>
+<script src="../js/page/frame/frame_progress.js"></script>
+<script src="../js/callback/http/mine_callback.js"></script>
+<script src="../js/callback/http/mine_rate_callback.js"></script>
+<script src="../js/common/constant.js"></script>
+<script src="../js/callback/http/exit_callback.js"></script>
+<script src="../js/common/main.js"></script>
+<script src="../js/callback/http/hot_spot_query_callback.js"></script>
+<script src="../js/page/frame/frame_hot_query_dao.js"></script>
+<script src="../js/page/frame/frame_hot_spot_query.js"></script>
+<script src="../js/common/exit_system.js"></script>
+<script src="../js/callback/http/check_version_callback.js"></script>
+<script src="../js/common/offline.js"></script>
+<script src="../js/common/pause.js"></script>
+<script src="../js/common/resume.js"></script>
+<script src="../js/page/frame/frame_detail_header.js"></script>
+<script src="../js/common/header_download.js"></script>
+<script src="../js/common/cell_info_dao.js"></script>
+<script src="../js/common/statistics_utils.js"></script>
+<script src="../js/common/date_utils.js"></script>
+<script src="../js/common/template_list_utils.js"></script>
+<!--轮播-->
+<script src="../js/page/frame/frame_no_read_tepl.js"></script>
+<script src="../js/callback/http/frame_no_read_templete_callback.js"></script>
+<script src="../js/page/frame/frame_no_read_tpl_dao.js"></script>
+
+<!-- 普惠金融师 -->
+<!--<script src="../js/common/rate_info_dao.js"></script>-->
+<!--<script src="../js/callback/http/mine_rate_callback.js"></script>-->
+<!--<script src="../js/page/frame/frame_mine_rate.js"></script>-->
+
+<!--绩效查询-->
+<!--<script src="../js/common/performance_info_dao.js"></script>-->
+<!--<script src="../js/page/frame/frame_mine_perform.js"></script>-->
+
+<!-- 小红点 -->
+<script src="../js/common/red_dot.js"></script>
+
+<script src="../js/page/team/team_customer_dao.js"></script>
+<script src="../js/page/team/model.js"></script>
+<script src="../js/page/team/controller.js"></script>
+<script src="../js/page/team/view.js"></script>
+
+<script src="../js/page/frame/frame.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        document.addEventListener('jpush.openNotification', function (evt) {
+            if (window.plugins.jPushPlugin.isPlatformIOS()) {
+                if (evt != null && evt != "" && typeof evt.key != 'undefined') {
+                    if (evt.key == 0) {
+                        var destPage = FFA.namespace('Frame.CustomerPage');
+                        destPage.init();
+                    }
+                }
+            } else {
+                if (evt != null && evt != "" && typeof evt['cn.jpush.android.EXTRA'].key != 'undefined') {
+                    var value = evt['cn.jpush.android.EXTRA'].key;
+                    if (value == 0) {
+                        var destPage = FFA.namespace('Frame.CustomerPage');
+                        destPage.init();
+                    }
+                }
+            }
+        }, false);
+    });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+html,
+body {
+  min-height: 100%;
+}
+body {
+  background-color: #f8f8f8;
+}
+.state-list {
+  font-size: .8rem;
+  margin: 15px 0;
+}
+
+.com-list-a {
+  margin: 10px 0;
+}

@@ -1,0 +1,264 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>指尖金融家-登陆</title>
+
+    <script src="../../js/common/FFA.js"></script>
+    <script src="../../js/common/initRootFontSize.js"></script>
+    <script src="../../js/external/modernizr-min.js"></script>
+    <link rel="stylesheet" href="../../css/base/base.css"/>
+    <link rel="stylesheet" href="../../css/component/component.css"/>
+    <link rel="stylesheet" href="../../css/page/login/login.css"/>
+    <script type="text/javascript" src="../../cordova.js"></script>
+    <script type="text/javascript" src="../../js/external/zepto.min.js"></script>
+    <script type="text/javascript" src="../../js/core/detect.js"></script>
+    <script type="text/javascript" src="../../js/external/fastclick.js"></script>
+    <script type="text/javascript" src="../../js/common/config.js"></script>
+    <script type="text/javascript" src="../../js/common/hashmap.js"></script>
+    <script type="text/javascript" src="../../js/common/constant.js"></script>
+    <script type="text/javascript" src="../../js/callback/http/verification_callback.js"></script>
+    <script type="text/javascript" src="../../js/callback/http/register_callback.js"></script>
+    <script type="text/javascript" src="../../js/callback/http/login_callback.js"></script>
+    <script type="text/javascript" src="../../js/common/http_response.js"></script>
+    <script type="text/javascript" src="../../js/common/json_conversion.js"></script>
+    <script type="text/javascript" src="../../js/common/local_storage_utils.js"></script>
+    <script type="text/javascript" src="../../js/common/ajax_common.js"></script>
+    <script type="text/javascript" src="../../js/common/utils.js"></script>
+    <script type="text/javascript" src="../../js/common/main.js"></script>
+    <script type="text/javascript" src="../../js/common/strings.js"></script>
+    <script type="text/javascript" src="../../js/common/deviceready.js"></script>
+    <script type="text/javascript" src="../../js/common/offline.js"></script>
+    <script type="text/javascript" src="../../js/common/component/popup.js"></script>
+
+    <script type="text/javascript" src="../../js/page/login/login.js"></script>
+    <script type="text/javascript" src="../../js/common/net_connection.js"></script>
+    <script type="text/javascript" src="../../js/common/exitapp.js"></script>
+    <!--2015-7-7 wangjunbao-->
+    <script type="text/javascript" src="../../js/common/exit_system.js"></script>
+    <script type="text/javascript" src="../../js/external/indexeddbshim.min.js"></script>
+    <script type="text/javascript" src="../../js/common/local_storage_utils.js"></script>
+    <script type="text/javascript" src="../../js/callback/http/exit_callback.js"></script>
+    <!--2015-7-7 wangjunbao-->
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            document.addEventListener("deviceready", function () {
+
+                var strongservice = cordova.require('com.creditease.ffa.strongservice.StrongService');
+                strongservice.startStrongService(function (data) {
+                    console.log("Start FFA service success...");
+                }, function (err) {
+                    console.log("Start FFA service fail...");
+                });
+                console.log("ready");
+            }, false);
+
+            $(".wodL").text(getString(login_wod_left));
+            $(".wodR").text(getString(login_wod_right));
+        });
+    </script>
+</head>
+<body>
+<div class="main">
+    <div class="login-top marAuto ">
+        <p class="img">
+            <span><img src="../../images/zj.png"></span>
+        </p>
+
+        <p class="wod">
+            <a href="javascript:" class="wodL">注册</a>
+            <a href="javascript:" class="wodR">登录</a>
+        </p>
+
+        <div class="tgl">
+            <p>
+                <span class="tgl-zc triangle-down in-sp1"></span>
+            </p>
+
+            <p>
+                <span class="triangle-down sp2"></span>
+            </p>
+        </div>
+    </div>
+    <div class="login content-down marAuto">
+        <p class="bod">
+            <input class="fontF lgNum" type="text" placeholder="手机号">
+            <span class="spn"></span>
+        </p>
+
+        <p class="bod" style="padding-bottom: 30px;">
+            <input class="inpt2 fontF lgPas" type="password" maxlength="20" placeholder="密码">
+            <span class="spn" style="right:24%;"></span>
+            <a href="password.html" style="text-decoration: none;">
+                <span class="fgt fontF" style="width: auto;position: relative;top: 16px;">忘记密码？</span>
+            </a>
+        </p>
+        <!-- log -->
+        <a href="javascript:" class="alogin a2 log" style="margin-top: 10%">登录</a>
+    </div>
+
+    <div class="register content-down marAuto">
+        <p class="bod">
+            <input class="fontF phone" type="text" placeholder="手机号">
+            <span class="login_delete phone_span"></span>
+        </p>
+
+        <p class="bod">
+            <input class="fontF pas1" type="password" maxlength="20" placeholder="密码(8-20字符)">
+            <span class="login_delete phone_password"></span>
+        </p>
+
+        <p class="bod">
+            <input class="fontF pas2" type="password" maxlength="20" placeholder="确认密码(8-20字符)">
+            <span class="spn"></span>
+        </p>
+
+        <p class="getYzm bod ">
+            <input class="fontF verificationCodeValue" type="password" placeholder="短信验证码" style="background: none;">
+            <span class="spn2 verificationCode spn2_hui">获取验证码</span>
+				<span class="pas-spn3">
+				<b class="register_time" style="font-weight:normal">60</b>秒以后重新获取</span>
+        </p>
+
+
+        <p class="error">
+            <!--手机号码提示-->
+            <span class="sp1">手机号码有误，请重新输入</span>
+            <!--密码不足提示-->
+            <span class="sp2">密码位数不足八位</span>
+            <!--密码不一致提示-->
+            <span class="sp3">两次密码输入不一致，请重新输入</span>
+            <!--验证码错误-->
+            <span class="sp4">短信验证码有误，请重新输入</span>
+        </p>
+        <a href="javascript:" class="alogin a2 zc">注册账户</a>
+    </div>
+
+</div>
+
+<!--弹出框 正在加载 登录页面-->
+<div>
+    <!--v 1.4 start-->
+    <!--<div class="alt logOut" style="background:transparent">-->
+        <!--<div></div>-->
+    <!--</div>-->
+    <!--<div class="altW logInner">-->
+        <!--<img style="margin-top: 83%;" src="../../images/load.gif">-->
+        <!--<p class="point">登录中，请稍后...</p>-->
+    <!--</div>-->
+    <!--v 1.4 end-->
+    <!--new year-->
+    <!--<div class="altW logInner">-->
+        <!--<img src="../../images/load.gif">-->
+        <!--&lt;!&ndash;v 1.4&ndash;&gt;-->
+        <!--&lt;!&ndash;<p class="point">登录中，请稍后...</p>&ndash;&gt;-->
+    <!--</div>-->
+</div>
+<!--弹出框-->
+<div style="display:none;">
+    <div class="alt"></div>
+    <div class="altW">
+        <div class="altInner">
+            <div>
+                <p class="pl">员工离职后无法使用</p>
+
+                <a href="javascript:">确定</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--登陆修改密码弹出对话框-->
+<div class="success_notice">
+    <div class="alt"></div>
+    <div class="altW">
+        <div class="altInner">
+            <p class="pl register_success_text">注册成功！</p>
+        </div>
+    </div>
+</div>
+<!--离开登陆的页面-->
+<div class="is_leave">
+    <div class="alt"></div>
+    <div class="altW">
+        <div class="altInner">
+            <div>
+                <p class="pl">该账号已锁定，请十分钟后重试</p>
+
+                <div></div>
+                <a href="javascript:" class="leave_confirm" style="width:45%;background:#CCC">确定</a>
+
+                <a href="javascript:" class="leave_cancel" style="right:0px;width:45%;">取消</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--弹出框 账号或密码错误-->
+<div class="show_password_error">
+    <div class="alt"></div>
+    <div class="altW">
+        <div class="altInner">
+            <div>
+                <p class="pl">账号或密码错误，请重新输入，还有3次重试机会</p>
+
+                <a href="javascript:" class="show_error_password_button">确定</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--弹出框 已登录 您的账号于15:30分在其他设备上登陆，如果这不是你的操作，你的密码可能已经泄露，请尽快重新设置密码。-->
+<div class="show_error_dialog">
+    <div class="alt"></div>
+    <div class="altW">
+        <div class="altInner">
+            <div>
+                <p class="pl"></p>
+
+                <a href="javascript:" class="show_error_confirm_button">确定</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--弹出框 注册密码强度不够-->
+<div class="register_password_fail">
+    <div class="alt"></div>
+    <div class="altW">
+        <div class="altInner">
+            <div>
+                <p class="pl"></p>
+
+                <a href="javascript:" class="register_password_fail_button">确定</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--弹出框 正在加载 注册页面-->
+<!--v 1.4 start-->
+<!--<div>-->
+    <!--<div class="alt regOut" style="background:transparent">-->
+        <!--<div></div>-->
+    <!--</div>-->
+    <!--<div class="altW regInner">-->
+        <!--<img src="../../images/load.gif">-->
+    <!--</div>-->
+<!--</div>-->
+<!--v 1.4 end-->
+<!--new year start-->
+<!--<div>-->
+    <!--<div class="altW regInner">-->
+        <!--<img src="../../images/load.gif">-->
+    <!--</div>-->
+<!--</div>-->
+<!--new year end-->
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+
+    <title>秀出金点子</title>
+    <script src="../../js/common/FFA.js"></script>
+    <script src="../../js/common/initRootFontSize.js"></script>
+    <link rel="stylesheet" href="../../css/base/base.css"/>
+    <link rel="stylesheet" href="../../css/component/component.css"/>
+    <link rel="stylesheet" href="../../css/page/exhibit/newIdea.css"/>
+</head>
+<body>
+<!--header-->
+<header class="js-header header">
+    <span class="header-btn header-left-btn icon-left-arrow" onclick="history.back()" ></span>
+    <span class="header-title">创意收集</span>
+</header>
+
+<div class="content">
+    <p class="ideaPara">你有脑洞大开的活动创意吗？悄悄告诉我们（管理部）吧！让我们帮你实现！</p>
+
+    <!-- 输入框-->
+    <!--<div class="js-emptiableinput-wrapper com-emptiableinput-wrapper empty">-->
+        <!--<input type="text" class="js-input-name" placeholder="活动的名称 必填（20字内）" maxlength="20">-->
+        <!--<span class="js-input-delete"></span>-->
+    <!--</div>-->
+
+    <div class="js-emptiableinput-wrapper empty input-wrapper">
+        <input type="text" class="js-input-name normal-input" placeholder="活动的名称 必填（20字内）" maxlength="20">
+        <span class="js-input-delete icon-del"></span>
+    </div>
+
+    <div class="ideaTextDiv">
+        <textarea class="ideaText js-ideaText" placeholder="活动的具体想法 必填（3000字内）" ></textarea>
+    </div>
+    <!--上传图片-->
+    <div class="ideaPicBox">
+        <ul class="ideaImageUl">
+        </ul>
+    </div>
+    <!--<button class="com-middle-btn-a js-upload-button" style="background-color: #e0e0e0;">上传</button>-->
+    <button class="com-middle-btn-d js-upload-button disabled" >上传</button>
+    <div class="popup_choose_background popup_container_background js_click_mask"></div>
+    <div class="popup_container popup_container_back">
+        <div class="flt item_select_camera">
+            <p class="photo_choose photo_choose_camera">拍照</p>
+        </div>
+        <div class="flt item_select_album">
+            <p class="photo_choose photo_choose_album">从相册选取</p>
+        </div>
+        <div class="flt item_select_cancel">
+            <p class="photo_choose">取消</p>
+        </div>
+    </div>
+</div>
+
+<script src="../../cordova.js"></script>
+<script type="text/javascript" src="../../js/common/toast_utils.js"></script>
+<script src="../../js/external/zepto.min.js"></script>
+<script src="../../js/external/dist/lrz.all.bundle.js"></script>
+<script src="../../js/core/detect.js"></script>
+<script src="../../js/common/constant.js"></script>
+<script src="../../js/common/http_response.js"></script>
+<script src="../../js/common/ajax_common.js"></script>
+<script src="../../js/common/json_conversion.js"></script>
+<script src="../../js/common/hashmap.js"></script>
+<script src="../../js/common/local_storage_utils.js"></script>
+
+<!--弹窗类-->
+<script src="../../js/common/component/popup.js"></script>
+<script src="../../js/common/component/input.js"></script>
+<script src="../../js/common/utils.js"></script>
+
+<script src="../../js/page/exhibit/exh_newIdea.js"></script>
+<script src="../../js/page/exhibit/exh_newIdea_popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>指尖金融家-绩效查询</title>
+
+    <script src="../../js/common/FFA.js"></script>
+    <script src="../../js/common/initRootFontSize.js"></script>
+    <script src="../../js/external/modernizr-min.js"></script>
+    <link rel="stylesheet" href="../../css/base/base.css" />
+    <link rel="stylesheet" href="../../css/component/component.css" />
+    <link rel="stylesheet" href="../../css/page/setting/performance.css" />
+</head>
+<body>
+<div>
+    <header class="header">
+        <span class="header-btn header-left-btn icon-left-arrow js-back"></span>
+        <span class="header-title js-header-title">绩效查询</span>
+    </header>
+    <div class="content js-content">
+        <div class="perform">
+            <div class="js-no-perform no-perform">
+                <div id="noPerformContainer">
+
+                </div>
+                <script type="text/template" id="noPerformContent">
+                    <img src="../../images/noContent.png">
+                    <span class="no-perform-detail"><%= performInfoData.message %></span>
+                </script>
+            </div>
+            <div class="js-perform performDisplayBlock">
+                <div id="performInfoContainer">
+
+                </div>
+                <script type="text/template" id="performInfoContent">
+                    <div class="perform-top bottom-border">
+                        <div class="info">
+                            <div class="perform-title">上月绩效(元)
+                                <span class="question"><img src="../../images/question2.png"></span>
+                            </div>
+                            <span class="perform-pay js-perform-pay"><%= performInfoData.performance %></span>
+                            <span class="perform-info"><%= performInfoData.supportWord %></span>
+                        </div>
+                    </div>
+                    <ul class="com-list-a perform-list-nav js-perform-list-nav bottom-border top-border">
+
+                        <% var list = performInfoData.meritPay;
+                        for(var i=0; i < list.length; i++){
+                            var v = list[i].payValue;
+                            var value = '';
+                            if((v != null) && (v.length > 0)){
+                                var s = v.substr(0,1);
+
+                                if(s == '-'){
+                                    value = v;
+                                }
+                                else {
+                                    value = '+'+v;
+                                }
+                            }
+                        %>
+                        <li class="top-border">
+                            <%= list[i].payName%><span class="block-right"><%= value%></span>
+                        </li>
+                        <%}%>
+                    </ul>
+                    <p class="bottom-text">如对绩效明细有异议，请咨询分中心人事接口人</p>
+                </script>
+            </div>
+            <div class="perform-instructions js-perform-instructions">
+                <div id="instructionsContainer">
+                </div>
+                <script type="text/template" id="instructionsContent">
+                    <p><%= performInfoData.explainWord %></p>
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../../js/external/zepto.min.js"></script>
+<script src="../../js/external/underscore-min.js"></script>
+<script src="../../js/core/detect.js"></script>
+<script src="../../js/common/strings.js"></script>
+<script src="../../js/common/local_storage_utils.js"></script>
+<script src="../../js/common/hashmap.js"></script>
+<script src="../../js/common/constant.js"></script>
+<script src="../../js/common/config.js"></script>
+<script src="../../js/external/fastclick.js"></script>
+<script src="../../js/common/http_response.js"></script>
+<script src="../../js/common/ajax_common.js"></script>
+<script src="../../js/common/utils.js"></script>
+<script src="../../cordova.js"></script>
+<script src="../../js/common/main.js"></script>
+<script src="../../js/common/json_conversion.js"></script>
+<script src="../../js/common/exit_system.js"></script>
+<script type="text/javascript" src="../../js/callback/http/check_version_callback.js"></script>
+<script type="text/javascript" src="../../js/common/offline.js"></script>
+<script type="text/javascript" src="../../js/common/pause.js"></script>
+<script type="text/javascript" src="../../js/common/resume.js"></script>
+<!--2015-7-7 wangjunbao-->
+<script src="../../js/external/indexeddbshim.min.js" ></script>
+<script src="../../js/callback/http/exit_callback.js"></script>
+
+<!--弹窗类-->
+<script src="../../js/common/component/popup.js"></script>
+
+<script src="../../js/common/performance_info_dao.js"></script>
+<script src="../../js/page/setting/set_performance.js"></script>
+
+
+</body>
+</html>

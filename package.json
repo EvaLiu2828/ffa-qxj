@@ -1,0 +1,33 @@
+{
+  "name": "ffa",
+  "version": "1.2.0",
+  "description": "指尖金融家",
+  "main": "frame.html",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.0.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-header": "^1.7.1",
+    "gulp-less": "^3.0.3",
+    "gulp-load-plugins": "^0.10.0",
+    "gulp-minify-css": "^1.2.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-rev": "^6.0.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-streamify": "^1.0.2",
+    "gulp-uglify": "^1.4.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "creditease",
+  "license": "ISC",
+  "ffa-configs": {
+    "directories": {
+      "archive": "archive",
+      "dist": "dist",
+      "src": "www",
+      "test": "test"
+    }
+  }
+}

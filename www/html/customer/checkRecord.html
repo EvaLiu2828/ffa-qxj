@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>指尖金融家-客户详情</title>
+    <script src="../../js/common/FFA.js"></script>
+	<script type="text/javascript" src="../../cordova.js"></script>
+    <script src="../../js/common/initRootFontSize.js"></script>
+    <script src="../../js/external/zepto.min.js"></script>
+
+    <script src="../../js/core/detect.js"></script>
+    <link rel="stylesheet" href="../../css/base/base.css"/>
+    <link rel="stylesheet" href="../../css/component/component.css"/>
+    <link rel="stylesheet" href="../../css/page/customer/nfRecord.css"/>
+
+</head>
+<body>
+<div class="checkRecordPage">
+    <header class="header">
+        <span class="js-back header-btn header-left-btn icon-left-arrow"></span>
+        <span class="header-title">查看记录</span>
+    </header>
+
+    <div class="content">
+        <!--查看记录-->
+        <div class="checkRecord-detail">
+            <ul class="js-nfRecord-container com-list-a">
+                <li id="category" class="js-modifiable">
+                <span class="block-left">
+                    类别
+                </span>
+                <span class="checkCategory js-category"style="padding-left: 3%">到店</span>
+                </li>
+                <li id="time" >
+                <span class="block-left">
+                    <label>时间</label>
+                </span>
+                    <span class="checkTime js-check-day"style="padding-left: 3%"></span>
+                    <span class="js-check-time-hour"></span>
+                </li>
+            </ul>
+            <div class="checkText js-content">内容</div>
+        </div>
+        <br>
+        <button class="com-middle-btn-b js-recordDelete">删除</button>
+
+        <br><br>
+    </div>
+</div>
+<script src="../../js/common/http_response.js"></script>
+<script src="../../js/common/json_conversion.js"></script>
+<script src="../../js/common/local_storage_utils.js"></script>
+<script src="../../js/common/ajax_common.js"></script>
+
+<script src="../../js/common/hashmap.js"></script>
+<script src="../../js/common/constant.js"></script>
+<script src="../../js/common/utils.js"></script>
+    <!--<script src="../../js/checkRecord.js"></script>-->
+<script>
+    $(function(){
+        var Utils = FFA.namespace("Utils");
+        var args = Utils.urlArgs();
+        var category ="";
+        if( args.category=='01'){
+            category = "电话";
+        }else if(args.category=='02'){
+            category = "面谈";
+        }else if(args.category=='03'){
+            category = "到店";
+        }
+        $(".js-category").text(category);
+       // $(".js-content").text(Utils.htmlDecodeByRegExp(args.content));
+        $(".js-content").text(args.content);
+        $(".js-check-day").text(Utils.formatDate(Utils.getMillisecond(args.inputtime),"/",2));
+        $(".js-check-time-hour").text(Utils.formatTime(Utils.getMillisecond(args.inputtime),":",2));
+       //类别
+/*
+        args.phonenumber
+        // content
+        console.log(
+
+        );*/
+    });
+    $(".js-recordDelete").click(function(){
+        var inputTimeValue = 0;
+        var Utils = FFA.namespace("Utils");
+        var args = Utils.urlArgs();
+
+//                $("#result").val();
+        var hashMap = new HashMap();
+        var deviceUUID=getDeviceUUID();
+        var userID=get(user_uuid);
+//        var myPhoneNumber=get(me_phonenumber);
+        hashMap.put(devUUID,deviceUUID);
+        hashMap.put(userUUID,userID);
+        hashMap.put(optFlag,1);
+        hashMap.put(createTime,args.createTime);
+        hashMap.put(phonenumber,args.phonenumber);
+
+        http_post(createFollowRecord_interface,getJsonStr(hashMap),function(){
+            console.log("success");
+            window.history.back();
+        },function(){
+            console.log("fail");
+        });
+    });
+    $(".js-back").click(function(){
+        window.history.back();
+    });
+</script>
+</body>
+</html>

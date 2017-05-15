@@ -1,0 +1,88 @@
+@import "variable.less";
+@import "mixin.less";
+
+//
+.com-tab-group-b {
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  color: #c2c2c2;
+  background-color: #fff;
+  font-size: .8rem;
+
+  .com-tab-btn {
+    width: 50%;
+    height: 40px;
+    display: inline-block;
+    float: left;
+    border-bottom: 2px solid #e0e0e0;
+  }
+
+  .com-tab-btn.actived {
+    color: @base-color;
+    border-bottom: 2px solid @base-color;
+  }
+}
+
+.com-tab-btn-group-a {
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  color: @disabledColor;
+  background-color: #fff;
+  position: relative;
+  font-size: .8rem;
+
+  input {
+    display: none;
+  }
+  label {
+    display: block;
+    width: 50%;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    border-bottom: 2px solid #e0e0e0;
+  }
+  .com-tab-left-label {
+    left: 0;
+  }
+
+  .com-tab-right-label {
+    right: 0;
+  }
+  input {
+    //border-bottom: 2px solid #e0e0e0;
+    &:checked {
+      & + label {
+        color: @base-color;
+        border-bottom: 2px solid @base-color;
+      }
+    }
+  }
+}
+
+.com-tab-btn-group-c {
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  color: #c2c2c2;
+  background-color: #fff;
+  font-size: .8rem;
+
+  .com-tab-btn {
+    width: 33.333%;
+    height: 40px;
+    display: inline-block;
+    float: left;
+    border-bottom: 2px solid #e0e0e0;
+  }
+
+  .com-tab-btn.actived {
+    //color: #018def;
+    //border-bottom: 2px solid #018def;
+    //new year
+    color: @base-color;
+    border-bottom: 2px solid @base-color;
+  }
+}

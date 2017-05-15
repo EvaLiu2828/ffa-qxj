@@ -1,0 +1,110 @@
+/*普惠金融家评级*/
+
+.rate-top {
+    padding: 18px 0;
+    background: #fff;
+    min-height: 150px;
+}
+
+.rate-top > div {
+    display: inline-block;
+}
+/*6张背景图片的样式*/
+.bag0 {
+    width: 43px;
+    height: 57px;
+    background: url(../../../images/rate/icon-rate0.png) top center no-repeat;
+    background-size: 100% ;
+    margin-left: 43.5%;
+}
+.bag1 {
+    width: 65%;
+    padding-bottom: 27.5%;
+    background: url(../../../images/rate/icon-rate1.png) top center no-repeat;
+    background-size: 100%;
+    float:right;
+}
+.rate-top .bag2 {
+    width: 100%;
+    padding-bottom: 27.5%;
+    background: url(../../../images/rate/icon-rate2.png) top center no-repeat;
+    background-size: 100%;
+
+}
+.rate-top .bag3 {
+    width: 100%;
+    padding-bottom: 27.5%;
+    background: url(../../../images/rate/icon-rate3.png) top center no-repeat;
+    background-size: 100%;
+
+}
+.rate-top .bag4 {
+    width: 100%;
+    background: url(../../../images/rate/icon-rate4.png) top center no-repeat;
+    background-size: 100%;
+    padding-bottom: 27.5%;
+}
+.rate-top .bag5 {
+    width: 65%;
+    padding-bottom: 27.5%;
+    background: url(../../../images/rate/icon-rate5.png) top center no-repeat;
+    background-size: 100%;
+
+}
+
+/*提示信息的样式*/
+.rate-top .info {
+    margin: 0 auto;
+    padding: 0 60px;
+    width: 100%;
+    font-size: 0.6rem;
+    color: #bdbdbd;
+    text-align: center;
+}
+
+.rate-list-nav {
+    margin-top: 9px;
+    /*margin-bottom: 10px;*/
+    font: 0.7rem STHeitiSC Light 微软雅黑;
+}
+.rate-list-nav li {
+    /*height: 44px;*/
+    line-height: 44px;
+}
+.localStorage_rate_Level {
+    line-height: 29px;
+    color: #67bbf5;
+    font-size: .60rem;
+}
+.localStorage_rate_info{
+    height: 35px;
+    line-height: 20px;
+}
+.rate-list-nav .block-right {
+    color: #c7c7cc;
+}
+
+.block-right .icon-qrcode {
+    color: #ababab;
+}
+
+.btn-apply {
+    color: #67bbf5;
+    border: 1px solid #d6d6d6;
+    width: 90px;
+    font-size: .8rem;
+    text-decoration: none;
+    text-align: center;
+    height: 25px;
+    line-height: 25px;
+    margin-top: 5px;
+    background: #fff;
+    border-radius: 5px;
+    /*visibility: hidden;*/
+    display:none;
+}
+
+
+
+
+

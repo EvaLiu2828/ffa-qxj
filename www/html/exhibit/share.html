@@ -1,0 +1,217 @@
+<div id="share-page">
+
+    <header class="header js-header">
+        <span class="header-btn header-left-btn icon-left-arrow js-share-back" ></span>
+        <span class="header-title"></span>
+        <button class="header-btn header-right-btn share js-hide-btn">转发</button>
+    </header>
+    <div class="content js-content">
+        <iframe id="my_ifr" src="" width="100%" name="my_ifr"></iframe>
+        <input type="hidden" value="1"  id="zy_detail_flag" />
+    </div>
+    <!-- <iframe src="" width="100%" height="100%"></iframe>-->
+    <!--弹出层-->
+    <div class="share-alt share-opt">
+    </div>
+    <div class="share-alt">
+        <div class="share-response js-hide-share"></div>
+        <div class="share-con marAuto">
+            <div class="flt">
+                <ul>
+                    <li class="shareSession">
+                        <img class="marAuto" src="../../images/wx.png">
+                        <p>微信好友</p>
+                    </li>
+                    <li class="shareTimeLine">
+                        <img class="marAuto" src="../../images/cmt.png">
+                        <p> 朋友圈</p>
+                    </li>
+                    <li class="qq_friends">
+                        <img class="marAuto" src="../../images/share/share-qq.png">
+                        <p>QQ好友</p>
+                    </li>
+                    <li class="qq_friends_line">
+                        <img class="marAuto" src="../../images/share/share-qqkongjian.png">
+                        <p> QQ空间</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="flt">
+                <ul>
+                    <li class="sina_weiBo">
+                        <img class="marAuto" src="../../images/share/share-weibo.png">
+                        <p>微博</p>
+                    </li>
+                    <li class="copy_link">
+                        <img class="marAuto" src="../../images/share/share-fuzhi.png">
+                        <p>链接</p>
+                    </li>
+                    <li class="qr_code">
+                        <img class="marAuto" src="../../images/share/share-erweima.png">
+                        <p>二维码</p>
+                    </li>
+                    <li class="">
+                        <img class="marAuto" src="">
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            <div class="flt">
+                <p class="share-qx"> 取消</p>
+            </div>
+        </div>
+    </div>
+    <!--遮罩层-->
+    <div class="js-popup-mask com-popup-mask-a ndis"></div>
+    <div class="js-popup-qrcode com-popup-qrcode ndis">
+        <div id="qrcodeCanvas" style="margin:0px auto; text-align:center; padding-bottom: 0px">
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var tempListID = get("tempListId");
+        var cus = {
+            url: get("webpageUrl"),
+            title: get("title"),
+            thumbnailUlr: get("thumb"),
+            templateId: get("templateId"),
+            categoryNameId: get("categoryNameId"),
+            forwardFlag:get("forwardFlag"),
+            userId: get(user_uuid)
+        };
+        if(cus.categoryNameId=="010"||cus.categoryNameId=="011"){
+            $(".js-hide-btn").hide();
+        }
+        if(cus.forwardFlag){
+            if(cus.forwardFlag=='2'){
+                $(".js-hide-btn").hide();
+            }
+        }
+        $("#share-page .header-title").text(cus.title);
+        //var url = get("webpageUrl");
+        var html_height = document.body.scrollHeight - 45;
+        // var iframe = "<iframe id=\"my_ifr\" src=\"" + cus.url + "\" width=\"100%\" height=\"" + html_height + "px\"></iframe>";
+
+
+        $("#my_ifr").attr('src', cus.url);
+        $("#my_ifr").attr('height', html_height+'px');
+
+        var share;
+        var statistics = new Statistics();
+        var templateUtils = new TemplateListUtils();
+        var dateUtils = new DateUtils();
+        document.addEventListener("deviceready", function () {
+            share = new Share();
+        }, true);
+        /**发送给好友**/
+        Zepto(".shareSession").click(function () {
+
+            share.statistics(share_one, cus);//转发计数的接口
+            statistics.templateStatistics(statisticsData(cus, "微信好友"));
+            share.wxShare(Wechat.Scene.SESSION, cus.url, cus.title, cus.thumbnailUlr);
+        });
+        /**发送在朋友圈*/
+        Zepto(".shareTimeLine").click(function () {
+            share.statistics(share_one, cus);//转发计数的接口
+            statistics.templateStatistics(statisticsData(cus, "微信朋友圈"));
+            share.wxShare(Wechat.Scene.TIMELINE, cus.url, cus.title, cus.thumbnailUlr);
+        });
+        /**复制链接*/
+        Zepto(".copy_link").click(function () {
+            share.hideShareDialog();
+            share.statistics(share_one, cus);//转发计数的接口
+            statistics.templateStatistics(statisticsData(cus, "复制链接"));
+            cordova.plugins.clipboard.copy(share.removeFlag(cus.url));
+            var toast = new ToastUtils();
+            toast.showToast('链接复制成功', 3000);
+        });
+        /*分享到qq好友*/
+        Zepto(".qq_friends").click(function () {
+            share.statistics(share_one, cus);//转发计数的接口
+            statistics.templateStatistics(statisticsData(cus, "QQ好友"));
+            share.shareToQQ(cus.url, cus.title, cus.thumbnailUlr);
+        });
+        /*分享到qq空间*/
+        Zepto(".qq_friends_line").click(function () {
+            share.statistics(share_one, cus);//转发计数的接口
+            statistics.templateStatistics(statisticsData(cus, "QQ空间"));
+            share.shareToQzone(cus.url, cus.title, cus.thumbnailUlr);
+        });
+        /*分享到微博*/
+        Zepto(".sina_weiBo").click(function () {
+            share.statistics(share_one, cus);//转发计数的接口
+            statistics.templateStatistics(statisticsData(cus, "微博"));
+            share.shareToWeibo(cus.url, cus.title, cus.thumbnailUlr);
+        });
+        /**生成二维码*/
+        Zepto(".qr_code").click(function () {
+            jQuery('#qrcodeCanvas').qrcode({
+                text: share.removeFlag(cus.url)
+            });
+            popup.showQrcode();
+        });
+        Zepto(".js-share-back").click(function () {
+            setTimeout(function(){
+                back_function(cus.url);
+            }, 500);//返回方法执行的太快，加500毫秒延迟
+        });
+
+
+        Zepto(".share").click(function () {
+            $(".share-alt").addClass("show");
+        });
+        Zepto(".share-qx").click(function () {
+            $(".share-alt").removeClass("show");
+        });
+        Zepto(".js-hide-share").click(function(){
+            $(".share-alt").removeClass("show");
+        });
+
+        console.log( $("#gotoWD",window.frames["my_ifr"].document).html());
+        $("#gotoWD",window.frames["my_ifr"].document).live('tap', function(){
+            console.log(" click #gotoWD ");
+            // 设置 是否是详情页面 的标识
+            $('#zy_detail_flag').val(0);
+        });
+
+
+
+        function statisticsData(cus, type) {
+            var share_data = {
+                id: "" + new Date().getTime(),
+                time: dateUtils.getYMD(),
+                category_name: templateUtils.categoryName(cus.categoryNameId),
+                template_id: cus.templateId,
+                template_name: cus.title,
+                share_channel: type,
+                user_id: cus.userId
+            };
+            return share_data;
+        }
+
+
+
+    });
+    function back_function(url) {
+
+        //history.back();
+
+        // zy_detail_flag 标识是否是详情页面 0, 否  1,是；默认 1
+        var zy_detail_flag =  $("#zy_detail_flag").val();
+
+        // 详情页的返回
+        if (zy_detail_flag == '1') {
+
+            console.log('返回到详情列表页面');
+            $("#share-page").hide();
+
+
+        } // 进入“指尖金融家” 里的返回  TODO: 暂时没有实现
+        else {
+            console.log('返回到详情页面');
+            $('iframe').attr('src',url);
+        }
+
+    }
+</script>

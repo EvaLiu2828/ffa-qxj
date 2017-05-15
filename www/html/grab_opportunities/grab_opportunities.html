@@ -1,0 +1,245 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+
+    <title>抢客户</title>
+    <!-- 样式相关 不要移动到css之下-->
+    <script src="../../js/common/FFA.js"></script>
+    <script src="../../js/common/initRootFontSize.js"></script>
+    <script src="../../js/external/zepto.min.js"></script>
+    <script src="../../js/core/detect.js"></script>
+    <link rel="stylesheet" href="../../css/base/base.css"/>
+    <link rel="stylesheet" href="../../css/component/component.css"/>
+    <link rel="stylesheet" href="../../css/page/grab_opportunities/grab_opportunities.css"/>
+
+</head>
+<body>
+<!-- body元素上设备标识class加入 写前边避免页面重绘-->
+<!--<script src="../../js/page/frame/frame_UIInit.js"></script>-->
+
+<!-- header-->
+<header class="header">
+    <span class="header-btn header-left-btn icon-left-arrow js-back-btn"></span>
+    <h1 class="header-title js-header-title">抢客户</h1>
+</header>
+<!--content-->
+<div class="content" id="page-customer">
+    <div class="content-top">
+        <div id="page-exhibition" class="page actived">
+            <!--轮播图 start-->
+            <div class="InnerDiv">
+                <div class="addWrap">
+                    <div class="js-banner swipe" id="mySwipe">
+                        <div class="swipe-wrap">
+                            <div>
+                                <a class="figure fixedratio js-photo-touched" id="swipe0"></a>
+                            </div>
+                            <div>
+                                <a class="figure fixedratio js-photo-touched" id="swipe1"></a>
+                            </div>
+                            <div>
+                                <a class="figure fixedratio js-photo-touched" id="swipe2"></a>
+                            </div>
+                            <div>
+                                <a class="figure fixedratio js-photo-touched" id="swipe3"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ull">
+                        <ul id="position">
+                            <li class="cur"></li>
+                            <li class=""></li>
+                            <li class=""></li>
+                            <li class=""></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--banner over-->
+        <!--content start-->
+        <div class="qiang-mark js-qiang-mark" id="manager-info">
+        </div>
+        <script type="text/template" id="managerInfoTmpl">
+            <% var Utils = FFA.namespace("Utils"); %>
+            <span class="block-left">
+                <label><span class="q-code"><%=qData.coins%></span>指尖币</label>
+            </span>
+            <span class="block-right">
+                <span>获取指尖币</span>
+                <span class="list-btn icon-left-arrow js-back-btn"></span>
+            </span>
+        </script>
+        <!--content over-->
+    </div>
+    <!--客户列表 start-->
+    <div id="customers-wrapper" class="customer-list page-list">
+        <div id="scrollbar">
+            <ul class="contacters-container business-list com-check-list-a" id="contacters-container">
+            </ul>
+            <div id="pullDown" class='loading'>
+                <span class="pullDownIcon small-person-icon-gif"></span>
+                <!--<span class="pullDownLabel">努力加载中...</span>-->
+            </div>
+            <div id="pullUp" style="display: none">
+                <span class="pullUpIcon"></span>
+                <!--<span class="pullUpLabel">上拉即可刷新</span>-->
+            </div>
+        </div>
+    </div>
+    <!-- 客户 联系人item模板 -->
+    <script type="text/template" id="customerItemTmpl">
+        <% var Utils = FFA.namespace("Utils"); %>
+        <li class="contacter js-contacter-info" data-nicheid="<%= QsjData.nicheId %>">
+            <span class="block-left js-cus-info">
+                <label>
+                    <span class="label-right customer-content">
+                        <div class="">
+                            <span class="customer-name"><%= QsjData.customerName%></span>
+                            <%if(QsjData.customerGender == '0'){
+                            %>
+                            <span class="customer_sex">先生</span>
+                            <%}
+                            else if(QsjData.customerGender == '1'){
+                            %>
+                            <span class="customer_sex">女士</span>
+                            <%}
+                            else  if(QsjData.customerGender == '2'){
+                            %>
+                            <span class="customer_sex">先生</span>
+                            <%}%>
+                            <%if(QsjData.preheatTime != '0'){
+                            %>
+                            <span class="icon-sale_type01 sale-type"></span>
+                            <%}%>
+                            <%if(QsjData.discount == '1'|| QsjData.discount == '2'|| QsjData.discount == '3'|| QsjData.discount == '4'|| QsjData.discount == '5'|| QsjData.discount == '6'|| QsjData.discount == '7'|| QsjData.discount == '8' || QsjData.discount == '9'){%>
+                            <span class="icon-discount discount"></span>
+                            <%}%>
+
+                        </div>
+                        <div class="customer-info">
+                            <%if(QsjData.profession == null){
+                            %>
+                                <span class="customer-position" data-cuspos="<%= QsjData.customer_position%>">未知</span>
+                            <%}
+                            else {
+                            %>
+                                <%if(QsjData.loanType == '1'){
+                                %>
+                                <span class="customer-type icon-load_type02"></span>
+                                <%}
+                                else if(QsjData.loanType == '2'){
+                                %>
+                                <span class="customer-type icon-load_type01"></span>
+                                <%}
+                                else  if(QsjData.loanType == '5'){
+                                %>
+                                <span class="customer-type icon-load_type3"></span>
+                                <%}
+                                else  if(QsjData.loanType == null){
+                                %>
+                                <span class="customer-type customer-type3">未知</span>
+                                <%}%>
+                                <%if(QsjData.amountExpected == null){
+                                %>
+                                <span class="business-type"><b class="sum-num" >未知</b></span>
+                                <%} else {%>
+                                <span class="business-type"><b class="sum-num" >贷款<%= QsjData.amountExpected%></b>万元</span>
+                                <%}%>
+                                <span class="customer-position"><%= QsjData.profession %></span>
+                            <%}%>
+                        </div>
+                    </span>
+                </label>
+            </span>
+            <span class="block-right">
+                <label>
+                    <div class="discount-num">
+                        <%if(QsjData.discount == '1'|| QsjData.discount == '2'|| QsjData.discount == '3'|| QsjData.discount == '4'|| QsjData.discount == '5'|| QsjData.discount == '6'|| QsjData.discount == '7'|| QsjData.discount == '8' || QsjData.discount == '9'){%>
+                        <span class="business-num2"><span class="current-price"><%= QsjData.currentPrice%></span>币</span><span class="business-num1 noslae"><%= QsjData.price%>币</span>
+                        <%}
+                        else {%>
+                        <span class="business-num2"><span class="current-price"><%= QsjData.price%></span>币</span>
+                        <%}%>
+                    </div>
+                    <button class="btn-desabled js-qiang-btn">抢</button>
+                </label>
+            </span>
+        </li>
+    </script>
+    <!--客户列表 over-->
+</div>
+<!--我over-->
+
+<script src="../../cordova.js"></script>
+<script src="../../js/external/zepto.min.js"></script>
+<script src="../../js/external/underscore-min.js"></script>
+<script src="../../js/external/swipe.js"></script>
+<script src="../../js/external/indexeddbshim.min.js"></script>
+<script src="../../js/external/iscroll.js"></script>
+
+<script src="../../js/external/fastclick.js"></script>
+<script src="../../js/external/polyfill.js"></script>
+<script src="../../js/common/strings.js"></script>
+<script src="../../js/common/http_response.js"></script>
+<script src="../../js/common/ajax_common.js"></script>
+<script src="../../js/common/utils.js"></script>
+<script src="../../js/common/json_conversion.js"></script>
+
+<script src="../../js/common/hashmap.js"></script>
+<script src="../../js/common/exitapp.js"></script>
+<script src="../../js/common/local_storage_utils.js"></script>
+
+<script src="../../js/callback/http/mine_micro_shop_callback.js"></script>
+<script src="../../js/common/download_pic.js"></script>
+<script src="../../js/common/component/popup.js"></script>
+<script src="../../js/common/component/input.js"></script>
+<script src="../../js/common/toast_utils.js"></script>
+<script src="../../js/common/config.js"></script>
+
+<!--客户页面js-->
+<script src="../../js/common/indexedDBDAO.js"></script>
+<script src="../../js/page/frame/frame_cus_no_contact.js"></script>
+<script src="../../js/common/pull2refresh.js"></script>
+<!--客户页面js - END-->
+<script src="../../js/common/progress_dao.js"></script>
+<!--<script src="../../js/page/frame/frame_progress.js"></script>-->
+<script src="../../js/callback/http/mine_callback.js"></script>
+<script src="../../js/callback/http/mine_rate_callback.js"></script>
+<script src="../../js/common/constant.js"></script>
+<!--轮播 st-->
+<script src="../../js/callback/http/hot_spot_query_callback.js"></script>
+<script src="../../js/page/frame/frame_hot_query_dao.js"></script>
+<script src="../../js/page/frame/frame_hot_spot_query.js"></script>
+<!--轮播 end-->
+<script src="../../js/callback/http/exit_callback.js"></script>
+<script src="../../js/common/exit_system.js"></script>
+<script src="../../js/callback/http/check_version_callback.js"></script>
+<script src="../../js/common/offline.js"></script>
+<script src="../../js/common/pause.js"></script>
+<script src="../../js/common/resume.js"></script>
+<script src="../../js/page/frame/frame_detail_header.js"></script>
+<script src="../../js/common/header_download.js"></script>
+<script src="../../js/common/cell_info_dao.js"></script>
+<script src="../../js/common/statistics_utils.js"></script>
+<script src="../../js/common/date_utils.js"></script>
+<script src="../../js/common/template_list_utils.js"></script>
+<!--轮播-->
+<script src="../../js/page/frame/frame_no_read_tepl.js"></script>
+<script src="../../js/callback/http/frame_no_read_templete_callback.js"></script>
+<script src="../../js/page/frame/frame_no_read_tpl_dao.js"></script>
+
+<script src="../../js/page/grab_opportunities/qiang_servies.js"></script>
+<script src="../../js/page/grab_opportunities/grab_cus_controller.js"></script>
+
+<script src="../../js/page/grab_opportunities/grab_timetab.js"></script>
+<script src="../../js/page/grab_opportunities/grab_cus_model.js"></script>
+<script src="../../js/page/grab_opportunities/grab_opportunities.js"></script>
+
+</body>
+</html>

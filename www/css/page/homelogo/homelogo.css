@@ -1,0 +1,95 @@
+.swipe {
+    overflow: hidden;
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.swipe-wrap {
+    position: absolute;
+    height: 100%;
+    overflow-y: hidden;
+}
+
+.bottom-item {
+    position: fixed;
+    /*height: 5.4%;*/
+    width: 100%;
+    bottom: 7.6%;
+    left:0;
+    display: none
+}
+
+.bottom-img {
+    display: block;
+    width: 53.3%;
+    margin: 0 auto;
+}
+
+.swipe-wrap > div {
+    float: left;
+    width: 100%;
+    position: relative;
+    height: 100%;
+    overflow-y: hidden;
+}
+/*.swipe-wrap :nth-child(1){*/
+    /*background-color: #24dca6;*/
+/*}*/
+/*.swipe-wrap :nth-child(2){*/
+    /*background-color: #f3d948;*/
+/*}*/
+/*.swipe-wrap :nth-child(3){*/
+    /*background-color: #24d6dc;*/
+/*}*/
+@media (device-height:480px) and (-webkit-min-device-pixel-ratio:2){
+    .swipe-wrap > div img {
+        margin-top: -16%;
+    }
+    .bottom-item {
+        bottom: 4.6%;
+    }
+}
+img {
+    width: 100%;
+    /*height: 100%;*/
+}
+#position {
+    position: absolute;
+    /*bottom: 4.2%;*/
+    bottom:8.2%;
+    right: 0;
+    /*padding-right: 8px;*/
+    margin: 0;
+    width: 100%;
+    filter: alpha(opacity=50);
+    text-align: center;
+}
+#position li {
+    width: 8px;
+    height: 8px;
+    margin: 0 5px;
+    display: inline-block;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    background-color: #ababab;
+    vertical-align: middle;
+}
+#position li.cur {
+    width: 20px;
+    height: 4px;
+    /*background-color: rgba(255, 255, 255, 1);*/
+    /*position: relative;*/
+    /*top: 6px;*/
+    /*left: 0px;*/
+    /*width: 21.5px;*/
+    /*height: 21px;*/
+    /*background:url("../../../images/homelogo/curr-dot.png") no-repeat;*/
+    /*background-size: 100%;*/
+    /*background-color: #40c2ff;*/
+
+}

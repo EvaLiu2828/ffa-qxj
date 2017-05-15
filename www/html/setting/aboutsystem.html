@@ -1,0 +1,80 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+
+    <title>关于系统</title>
+    <script src="../../js/common/FFA.js"></script>
+    <script src="../../js/common/initRootFontSize.js"></script>
+    <script src="../../js/external/modernizr-min.js"></script>
+
+    <link rel="stylesheet" href="../../css/base/base.css"/>
+    <link rel="stylesheet" href="../../css/base/helper.css"/>
+    <link rel="stylesheet" href="../../css/component/component.css"/>
+    <link rel="stylesheet" href="../../css/page/setting/aboutsystem.css" />
+
+</head>
+<body>
+
+    <div class="page-aboutsystem">
+
+        <header class="header">
+            <span class="header-btn header-left-btn icon-left-arrow" onclick="history.back()"></span>
+            <span class="header-title">关于系统</span>
+        </header>
+
+        <div class="content">
+        <div class="ab-circle-area">
+            <div class="ab-circle-crop">
+                 <img class="ab-circle" src="../../images/icon4.png">
+             </div>
+        </div>
+
+            <ul class="com-list-a mine-list-nav js-mine-list-nav bottom-border top-border click-disabled" >
+                <li class="top-border">
+                    当前版本号
+                    <span id="ab-current-ver"  class="block-right right-content"></span>
+                </li>
+                <li class="top-border" >
+                    最新版本号
+                    <span id="ab-version-latest" class="block-right right-content">
+                         <button id="ab-icon-update" class="ab-com-middle-btn-c click-able" onclick="checkLatest()">更新</button>
+                    </span>
+                </li>
+            </ul>
+
+            <div class="ab-copyright">版本所有©普信恒业科技发展（北京）有限公司</div>
+        </div>
+    </div>
+
+    <script src="../../cordova.js"></script>
+    <script src="../../js/external/zepto.min.js"></script>
+    <script src="../../js/common/exit_system.js"></script>
+    <script src="../../js/common/constant.js"></script>
+    <script src="../../js/core/detect.js"></script>
+    <script src="../../js/external/underscore-min.js"></script>
+    <script src="../../js/external/swipe.js"></script>
+    <script src="../../js/external/indexeddbshim.min.js"></script>
+    <script src="../../js/external/iscroll.js"></script>
+    <script src="../../js/external/fastclick.js"></script>
+    <script src="../../js/external/polyfill.js"></script>
+    <script src="../../js/common/strings.js"></script>
+    <script src="../../js/common/http_response.js"></script>
+    <script src="../../js/common/ajax_common.js"></script>
+    <script src="../../js/common/utils.js"></script>
+    <script src="../../js/common/json_conversion.js"></script>
+    <script src="../../js/common/hashmap.js"></script>
+    <script src="../../js/common/local_storage_utils.js"></script>
+    <script src="../../js/common/toast_utils.js"></script>
+    <script src="../../js/common/config.js"></script>
+    <script src="../../js/common/component/popup.js"></script>
+
+    <script src="../../js/callback/http/check_version_callback.js"></script>
+    <script src="../../js/page/setting/set_aboutsystem.js"></script>
+
+</body>
+</html>

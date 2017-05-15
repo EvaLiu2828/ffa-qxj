@@ -1,0 +1,35 @@
+{
+  "result": "OK",
+  "codeInfo": 0,
+  "msgInfo": "",
+  "nowTime":"2016-11-02 19:48:32",
+  "data": {
+    "type": "0",
+    "nicheId": "SJ0001",
+    "price": 100,
+    "currentPrice":80,
+    "discount": 1,
+    "loanType": "车贷",
+    "customerName": "王",
+    "customerGender": 1,
+    "profession": "地球修理工",
+    "amountExpected": "10000",
+    "saleaType": "0",
+    "distributeTime": "2016-11-01 17:41:32",
+    "validTime": "30",
+    "preheatTime": "15",
+    "nicheAttr": {
+      "monthlyIncome":1000,
+      "workMonths":12,
+      "payoffType":"月薪",
+      "hasCreditcard":1,
+      "creditLimit":10200,
+      "carHouseStatus":"没车没房苦逼程序员",
+      "laborContract":1,
+      "hasSocialSecurity":1,
+      "hasCpf":1,
+      "repayPeriods":12
+
+    }
+  }
+}

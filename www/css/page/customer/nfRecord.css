@@ -1,0 +1,156 @@
+
+/*新建跟进记录*/
+
+.modify{
+    display: none; !important;
+}
+
+.com-list-a li:active {
+    background-color: rgba(0,0,0,0);
+}
+.com-list-a li label{
+    font-size: .8rem;
+}
+.com-list-a .block-right {
+    color: #666;
+    font-size: .75rem;
+    width: 80%;
+    text-align: right;
+    overflow: hidden;
+}
+
+.com-list-a .icon {
+    font-size: .7rem;
+    color: #c7c7cc;
+    vertical-align: middle;
+}
+.nfRecord-detail{
+    background-color: #fff;
+}
+.nfRecord-detail .header-left-btn{
+    font-size: 0.75rem;
+}
+.nfRecord-detail .icon-arrow{
+    float: right;
+    line-height: 42px;
+    margin-left: 5px;
+}
+
+.nfr-input {
+    padding: 3%;
+    width: 100%;
+    -webkit-appearance: none;
+    font-size: 0.8rem;
+    resize: none;
+    height: 100px;
+}
+.login_delete{
+    text-align: right;
+    color: #aeaeae;
+    font-size: 0.75rem;
+    background-color: #fff;
+    border-bottom: 1px solid #d8d8d9;
+}
+.com-list-a li:before {
+    width: 100%;
+    margin-left: 0;
+}
+/*控制时间控件的显示和消失*/
+.mui-backdrop {
+    position: fixed;
+    z-index: 998;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.3);
+}
+/*客户详情页面 - END*/
+/*跟进记录类别页面*/
+.com-check-list-a {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.com-check-list-a li{
+    float: left;
+    width: 100%;
+}
+.com-check-list-a .icon {
+    font-size: .7rem;
+    color: #c7c7cc;
+    vertical-align: middle;
+}
+.rCategory-detail .icon-arrow{
+    float: right;
+    line-height: 42px;
+    margin-left: 5px;
+}
+
+.com-middle-btn-a{
+    margin-top: 10px;
+}
+.other-reason-input {
+    border: 1px solid #c8c7cc;
+    border-radius: 5px;
+    height: 1rem;
+    width: 50%;
+    vertical-align: bottom;
+}
+.com-check-list-a li{
+    height: 50px !important;
+    line-height: 50px !important;
+}
+.com-check-list-a li span{
+
+    text-align: center;
+    line-height: 36px;
+    margin-top: 7px;
+}
+
+.circle {
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 36px;
+    -webkit-border-radius: 36px;
+
+}
+.green{
+    background: #91c487;
+    color: #fff
+}
+.blue{
+    background: #85cff9;
+}
+.red{
+    background: #f87984;
+}
+
+.flip {
+    -webkit-transform:scale(-1,1);
+}
+.block-left.circle{
+    color: #fff;
+    margin-right: 20px;
+}
+.block-right.circle{
+    color: #fff;
+}
+.com-check-list-a li:before{
+    width: 100%;
+    margin-left: 0;
+}
+
+/*跟进记录类别页面 - END*/
+
+/*查看记录页面*/
+.checkRecord-detail{
+    background-color: #fff;
+}
+.checkText{
+    padding: 3%;
+    width: 100%;
+    font-size: 0.8rem;
+    resize: none;
+    height: 100px;
+    border-bottom: 1px solid #d8d8d9;
+}

@@ -1,0 +1,95 @@
+@import "variable.less";
+@import "mixin.less";
+
+.com-list-a {
+  background: @list-color;
+  font-size: .8rem;
+
+  .top-border();
+  .bottom-border();
+
+  li {
+    padding-left: 3%;
+    padding-right: 15px;
+    height: @list-li-height;
+    line-height: @list-li-height;
+    position: relative;
+
+    .top-border();
+
+    &:first-child{
+      &:before{
+        display: none;
+      }
+    }
+
+    .block-left,.block-right {
+      display: block;
+      height: @list-li-height;
+      line-height: @list-li-height;
+    }
+    .block-left {
+      float: left;
+    }
+    .block-right {
+      float: right;
+    }
+
+    &:before {
+      width: 97%;
+      margin-left: 3%;
+    }
+    &:active {
+      background-color: @activeColor;
+    }
+  }
+
+}
+
+.com-check-list-a {
+  background: @list-color;
+  font-size: .8rem;
+
+  //.top-border();
+  //.bottom-border();
+
+  li {
+    padding-left: 3%;
+    padding-right: 15px;
+    height: @list-li-height;
+    line-height: @list-li-height;
+    position: relative;
+
+    .top-border();
+
+    &:first-child{
+      &:before{
+        display: none;
+      }
+    }
+
+    .block-left,.block-right {
+      display: block;
+      height: @list-li-height;
+    }
+    .block-left {
+      float: left;
+    }
+    .block-right {
+      float: right;
+    }
+
+    &:before {
+      width: 97%;
+      margin-left: 3%;
+    }
+    &.checked{
+        background-image: url(../../images/check.png);
+        background-repeat: no-repeat;
+        background-position: 95% 50%;
+        background-size: 20px;
+    }
+  }
+
+}
+
